@@ -1,4 +1,5 @@
 import Logo from "../../assets/logo.png";
+import Profile from "../../assets/profile.png";
 import { Icon } from "../../components/Icon";
 
 export function Home() {
@@ -86,6 +87,31 @@ export function Home() {
 
               <span className="text-white-white1 text-base">2023</span>
             </div>
+          </div>
+        </section>
+
+        <section className="p-6 space-y-6 bg-green">
+          <h2 className="text-3xl font-bold text-white-white1">Sobre</h2>
+
+          <div className="py-5 space-y-8">
+            <img
+              src={Profile}
+              alt="Imagem em formato retrato de Amanda Borges"
+              className="rounded-[5px]"
+            />
+
+            <p className="text-base text-white-white1">
+              Olá, eu sou a Amanda Borges e seja muito bem-vindo ao meu perfil.
+              Sou formada em Arquitetura e Urbanismo pela Universidade Paulista
+              na cidade de Bauru/SP e estou inserida na área de projetos de
+              arquitetura e design de interiores. Iniciei neste mundo no 1º ano
+              da faculdade (2017), realizando alguns estágios nas áreas de
+              arquitetura comercial, residencial e design de interiores. Sempre
+              estou me empenhando em entender e colocar em prática o maior
+              número de ferramentas e softwares, sempre visando o conhecimento,
+              este, sendo indispensável, independentemente da área em que se
+              atua.
+            </p>
           </div>
         </section>
       </main>
