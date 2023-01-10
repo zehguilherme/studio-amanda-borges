@@ -115,6 +115,41 @@ export function Home() {
           </div>
         </section>
       </main>
+
+      <footer
+        className="bg-pink flex items-center justify-between pr-3"
+        id="contato"
+      >
+        <a href="/">
+          <img src={Logo} alt="Imagem do logo do site Studio Amanda Borges" />
+        </a>
+
+        <ul className="flex items-center space-x-1 text-white-white1">
+          <li className="flex items-center">
+            <a
+              href="https://www.instagram.com/studio.amandaborges/"
+              target="_blank"
+              className="inline-block p-[10px]"
+            >
+              <Icon name="instagram" className="w-7" />
+            </a>
+          </li>
+          <li className="flex items-center">
+            <a
+              href="https://wa.me/send?phone=5514998695347"
+              target="_blank"
+              className="inline-block p-[10px]"
+            >
+              <Icon name="whatsapp" className="w-7" />
+            </a>
+          </li>
+          <li className="flex items-center">
+            <a href="#" target="_blank" className="inline-block p-[10px]">
+              <Icon name="email" className="w-7" />
+            </a>
+          </li>
+        </ul>
+      </footer>
     </>
   );
 }
