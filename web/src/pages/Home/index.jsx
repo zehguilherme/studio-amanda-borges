@@ -4,35 +4,47 @@ import { Icon } from "../../components/Icon";
 
 export function Home() {
   return (
-    <>
-      <header className="pb-6 bg-pink">
-        <div className="flex justify-between items-center pr-6 text-white-white1">
+    <div className="container mx-auto">
+      <header className="pb-6 bg-pink lg:p-0 lg:flex lg:justify-between lg:items-center">
+        <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
           <a href="/">
             <img src={Logo} alt="Imagem do logo do site Studio Amanda Borges" />
           </a>
 
-          <Icon name="hamburger" />
+          <Icon name="hamburger" className="w-12 lg:hidden" />
         </div>
 
         <nav>
-          <ul className="text-white-white1">
+          <ul className="text-white-white1 lg:flex lg:px-6 lg:py-5">
             <li className="text-lg font-bold">
-              <a href="#" className="flex justify-center items-center h-12">
+              <a
+                href="/"
+                className="flex justify-center items-center h-12 lg:h-11 px-6"
+              >
                 Home
               </a>
             </li>
             <li className="text-lg font-bold">
-              <a href="#" className="flex justify-center items-center h-12">
+              <a
+                href="#projetos"
+                className="flex justify-center items-center h-12 lg:h-11 px-6"
+              >
                 Projetos
               </a>
             </li>
             <li className="text-lg font-bold">
-              <a href="#" className="flex justify-center items-center h-12">
+              <a
+                href="#sobre"
+                className="flex justify-center items-center h-12 lg:h-11 px-6"
+              >
                 Sobre
               </a>
             </li>
             <li className="text-lg font-bold">
-              <a href="#" className="flex justify-center items-center h-12">
+              <a
+                href="#contato"
+                className="flex justify-center items-center h-12 lg:h-11 px-6"
+              >
                 Contato
               </a>
             </li>
@@ -41,14 +53,16 @@ export function Home() {
       </header>
 
       <main>
-        <section className="p-6 space-y-6">
-          <h2 className="text-3xl font-bold">Projetos</h2>
+        <section className="p-6 space-y-6 lg:py-8 lg:space-y-5">
+          <h2 className="text-3xl font-bold" id="projetos">
+            Projetos
+          </h2>
 
-          <ul>
+          <ul className="lg:flex justify-center">
             <li>
               <a
                 href="#"
-                className="flex justify-center items-center h-12 text-2xl font-bold"
+                className="flex justify-center items-center h-12 text-2xl font-bold lg:lg:h-11 lg:p-[14px]"
               >
                 Todos
               </a>
@@ -56,7 +70,7 @@ export function Home() {
             <li>
               <a
                 href="#"
-                className="flex justify-center items-center h-12 text-2xl"
+                className="flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px]"
               >
                 Residencial
               </a>
@@ -64,7 +78,7 @@ export function Home() {
             <li>
               <a
                 href="#"
-                className="flex justify-center items-center h-12 text-2xl"
+                className="flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px]"
               >
                 Comercial
               </a>
@@ -72,35 +86,77 @@ export function Home() {
             <li>
               <a
                 href="#"
-                className="flex justify-center items-center h-12 text-2xl"
+                className="flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px]"
               >
                 Interiores
               </a>
             </li>
           </ul>
 
-          <div className="w-full h-[312px] rounded-[5px] flex items-end bg-[url('https://picsum.photos/312/312')]">
-            <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
-              <h4 className="text-white-white1 text-xl font-bold">
-                Lorem ipsum dolor sit amet
-              </h4>
+          <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <a href="#">
+              <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
+                <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
+                  <h4 className="text-white-white1 text-xl font-bold">
+                    Lorem ipsum dolor sit amet
+                  </h4>
 
-              <span className="text-white-white1 text-base">2023</span>
-            </div>
+                  <span className="text-white-white1 text-base">2023</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="#">
+              <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
+                <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
+                  <h4 className="text-white-white1 text-xl font-bold">
+                    Lorem ipsum dolor sit amet
+                  </h4>
+
+                  <span className="text-white-white1 text-base">2023</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="#">
+              <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
+                <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
+                  <h4 className="text-white-white1 text-xl font-bold">
+                    Lorem ipsum dolor sit amet
+                  </h4>
+
+                  <span className="text-white-white1 text-base">2023</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="#">
+              <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
+                <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
+                  <h4 className="text-white-white1 text-xl font-bold">
+                    Lorem ipsum dolor sit amet
+                  </h4>
+
+                  <span className="text-white-white1 text-base">2023</span>
+                </div>
+              </div>
+            </a>
           </div>
         </section>
 
-        <section className="p-6 space-y-6 bg-green">
-          <h2 className="text-3xl font-bold text-white-white1">Sobre</h2>
+        <section className="p-6 space-y-6 bg-green lg:py-5">
+          <h2 className="text-3xl font-bold text-white-white1" id="sobre">
+            Sobre
+          </h2>
 
-          <div className="py-5 space-y-8">
+          <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
             <img
               src={Profile}
               alt="Imagem em formato retrato de Amanda Borges"
               className="rounded-[5px]"
             />
 
-            <p className="text-base text-white-white1">
+            <p className="text-base text-white-white1 max-w-[395px]">
               Olá, eu sou a Amanda Borges e seja muito bem-vindo ao meu perfil.
               Sou formada em Arquitetura e Urbanismo pela Universidade Paulista
               na cidade de Bauru/SP e estou inserida na área de projetos de
@@ -150,6 +206,6 @@ export function Home() {
           </li>
         </ul>
       </footer>
-    </>
+    </div>
   );
 }
