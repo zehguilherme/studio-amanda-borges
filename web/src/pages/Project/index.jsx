@@ -92,6 +92,32 @@ export function Project() {
             </p>
           </div>
         </section>
+
+        <section className="space-y-8 px-6 pb-6">
+          <img
+            src="https://picsum.photos/320/549"
+            alt="Descrição da imagem"
+            className="rounded-[5px]"
+          />
+
+          <img
+            src="https://picsum.photos/320/549"
+            alt="Descrição da imagem"
+            className="rounded-[5px]"
+          />
+
+          <img
+            src="https://picsum.photos/320/549"
+            alt="Descrição da imagem"
+            className="rounded-[5px]"
+          />
+
+          <img
+            src="https://picsum.photos/320/549"
+            alt="Descrição da imagem"
+            className="rounded-[5px]"
+          />
+        </section>
       </main>
     </>
   );
