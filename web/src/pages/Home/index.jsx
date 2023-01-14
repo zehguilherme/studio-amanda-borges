@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import Profile from "../../assets/profile.png";
 import { Icon } from "../../components/Icon";
@@ -8,12 +9,12 @@ export function Home() {
       <header className="bg-pink">
         <div className="container mx-auto pb-6 lg:p-0 lg:flex lg:justify-between lg:items-center">
           <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
-            <a href="/">
+            <Link to={"/"}>
               <img
                 src={Logo}
                 alt="Imagem do logo do site Studio Amanda Borges"
               />
-            </a>
+            </Link>
 
             <Icon name="hamburger" className="w-12 lg:hidden" />
           </div>
@@ -21,12 +22,12 @@ export function Home() {
           <nav>
             <ul className="text-white-white1 lg:flex lg:px-6 lg:py-5">
               <li className="text-lg font-bold">
-                <a
-                  href="/"
+                <Link
+                  to={"/"}
                   className="flex justify-center items-center h-12 lg:h-11 px-6"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="text-lg font-bold">
                 <a
@@ -100,7 +101,7 @@ export function Home() {
             </ul>
 
             <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <a href="#">
+              <Link to={"/projeto"}>
                 <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
                   <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
                     <h4 className="text-white-white1 text-xl font-bold">
@@ -110,9 +111,9 @@ export function Home() {
                     <span className="text-white-white1 text-base">2023</span>
                   </div>
                 </div>
-              </a>
+              </Link>
 
-              <a href="#">
+              <Link to={"/projeto"}>
                 <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
                   <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
                     <h4 className="text-white-white1 text-xl font-bold">
@@ -122,9 +123,9 @@ export function Home() {
                     <span className="text-white-white1 text-base">2023</span>
                   </div>
                 </div>
-              </a>
+              </Link>
 
-              <a href="#">
+              <Link to={"/projeto"}>
                 <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
                   <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
                     <h4 className="text-white-white1 text-xl font-bold">
@@ -134,9 +135,9 @@ export function Home() {
                     <span className="text-white-white1 text-base">2023</span>
                   </div>
                 </div>
-              </a>
+              </Link>
 
-              <a href="#">
+              <Link to={"/projeto"}>
                 <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
                   <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
                     <h4 className="text-white-white1 text-xl font-bold">
@@ -146,7 +147,7 @@ export function Home() {
                     <span className="text-white-white1 text-base">2023</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </section>
