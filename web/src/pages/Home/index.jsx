@@ -199,7 +199,7 @@ export function Home() {
             </li>
             <li className="flex items-center">
               <a
-                href="https://wa.me/send?phone=5514998695347"
+                href="https://wa.me/5514998695347"
                 target="_blank"
                 className="inline-block p-[10px]"
               >
@@ -207,7 +207,11 @@ export function Home() {
               </a>
             </li>
             <li className="flex items-center">
-              <a href="#" target="_blank" className="inline-block p-[10px]">
+              <a
+                href="mailto:amanda_leticiah@hotmail.com"
+                target="_blank"
+                className="inline-block p-[10px]"
+              >
                 <Icon name="email" className="w-7" />
               </a>
             </li>
