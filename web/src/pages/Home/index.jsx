@@ -10,6 +10,7 @@ export function Home() {
     <>
       <Helmet>
         <title>Studio Amanda Borges | Home</title>
+        <meta name="theme-color" content="#B6939A" />
       </Helmet>
 
       <header className="bg-pink">

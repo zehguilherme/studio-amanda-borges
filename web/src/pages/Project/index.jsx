@@ -8,6 +8,7 @@ export function Project() {
     <>
       <Helmet>
         <title>Studio Amanda Borges | Projeto</title>
+        <meta name="theme-color" content="#F4F4F4" />
       </Helmet>
 
     <div className="bg-white-white2">
