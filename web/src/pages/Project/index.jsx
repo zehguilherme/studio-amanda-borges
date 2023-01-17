@@ -1,9 +1,15 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 import { Icon } from "../../components/Icon";
 
 export function Project() {
   return (
+    <>
+      <Helmet>
+        <title>Studio Amanda Borges | Projeto</title>
+      </Helmet>
+
     <div className="bg-white-white2">
       <header>
         <div className="container mx-auto h-[120px] px-6 flex justify-start items-center">
@@ -156,5 +162,6 @@ export function Project() {
         </div>
       </main>
     </div>
+    </>
   );
 }
