@@ -30,7 +30,7 @@ export function Home() {
               <li className="text-lg font-bold">
                 <Link
                   to={"/"}
-                  className="flex justify-center items-center h-12 lg:h-11 px-6"
+                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
                 >
                   Home
                 </Link>
@@ -38,7 +38,7 @@ export function Home() {
               <li className="text-lg font-bold">
                 <a
                   href="#projetos"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6"
+                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
                 >
                   Projetos
                 </a>
@@ -46,7 +46,7 @@ export function Home() {
               <li className="text-lg font-bold">
                 <a
                   href="#sobre"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6"
+                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
                 >
                   Sobre
                 </a>
@@ -54,7 +54,7 @@ export function Home() {
               <li className="text-lg font-bold">
                 <a
                   href="#contato"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6"
+                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
                 >
                   Contato
                 </a>
