@@ -4,6 +4,7 @@ import { ReactComponent as email } from "./svgs/email.svg";
 import { ReactComponent as hamburger } from "./svgs/hamburguer.svg";
 import { ReactComponent as instagram } from "./svgs/instagram.svg";
 import { ReactComponent as whatsapp } from "./svgs/whatsapp.svg";
+import { ReactComponent as xMark } from "./svgs/x-mark.svg";
 
 const icons = {
   arrowUp: arrowUp,
@@ -12,6 +13,7 @@ const icons = {
   whatsapp: whatsapp,
   email: email,
   hamburger: hamburger,
+  xMark: xMark,
 };
 
 export function Icon({ name, ...props }) {
