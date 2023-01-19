@@ -1,11 +1,18 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
+import { useState } from "react";
 import Logo from "../../assets/logo.png";
 import Profile from "../../assets/profile.png";
 import { Icon } from "../../components/Icon";
 
 export function Home() {
+  const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
+
+  function handleNavMenuChange() {
+    setNavMenuIsOpened(!navMenuIsOpened);
+  }
+
   return (
     <>
       <Helmet>
@@ -14,7 +21,13 @@ export function Home() {
       </Helmet>
 
       <header className="bg-pink">
-        <div className="container mx-auto pb-6 lg:p-0 lg:flex lg:justify-between lg:items-center">
+        <div
+          className={
+            navMenuIsOpened
+              ? "pb-6 container mx-auto lg:p-0 lg:flex lg:justify-between lg:items-center"
+              : "container mx-auto lg:p-0 lg:flex lg:justify-between lg:items-center"
+          }
+        >
           <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
             <Link to={"/"}>
               <img
@@ -23,10 +36,20 @@ export function Home() {
               />
             </Link>
 
-            <Icon name="hamburger" className="w-12 lg:hidden" />
+            <button
+              type="button"
+              className="lg:hidden"
+              onClick={handleNavMenuChange}
+            >
+              {navMenuIsOpened ? (
+                <Icon name="xMark" className="w-12" />
+              ) : (
+                <Icon name="hamburger" className="w-12" />
+              )}
+            </button>
           </div>
 
-          <nav>
+          <nav className={navMenuIsOpened ? "block" : "hidden lg:block"}>
             <ul className="text-white-white1 lg:flex lg:px-6 lg:py-5">
               <li className="text-lg font-bold">
                 <Link
