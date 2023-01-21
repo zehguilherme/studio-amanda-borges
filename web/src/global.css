@@ -9,3 +9,12 @@ html {
 body {
   font-family: "Cairo", sans-serif;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #ffffff;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff;
+}
