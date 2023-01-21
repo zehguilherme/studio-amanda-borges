@@ -6,6 +6,12 @@ import Logo from "../../assets/logo.png";
 import Profile from "../../assets/profile.png";
 import { Icon } from "../../components/Icon";
 
+import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css/bundle";
+
 export function Home() {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
 
@@ -89,6 +95,57 @@ export function Home() {
       </header>
 
       <main>
+        <section className="bg-white-white2">
+          <div className="container mx-auto">
+            <Swiper
+              modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
+              centeredSlides={true}
+              autoHeight={true}
+              setWrapperSize={true}
+              roundLengths={true}
+              navigation={true}
+              pagination={{ clickable: true }}
+              keyboard={{ enabled: true, onlyInViewport: true }}
+              a11y={{
+                enabled: true,
+                prevSlideMessage: "Slide anterior",
+                nextSlideMessage: "Próximo slide",
+              }}
+              loop={true}
+              autoplay={{ disableOnInteraction: false }}
+            >
+              <SwiperSlide>
+                <img
+                  src="https://picsum.photos/1920/500"
+                  alt="Descrição da imagem"
+                  className="h-[500px] w-auto object-none"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="https://picsum.photos/1920/500"
+                  alt="Descrição da imagem"
+                  className="h-[500px] w-auto object-none"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="https://picsum.photos/1920/500"
+                  alt="Descrição da imagem"
+                  className="h-[500px] w-auto object-none"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="https://picsum.photos/1920/500"
+                  alt="Descrição da imagem"
+                  className="h-[500px] w-auto object-none"
+                />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </section>
+
         <section className="bg-white-white2">
           <div className="container mx-auto p-6 space-y-6 lg:py-8 lg:space-y-5">
             <h2 className="text-3xl font-bold" id="projetos">
@@ -193,6 +250,7 @@ export function Home() {
                 src={Profile}
                 alt="Imagem em formato retrato de Amanda Borges"
                 className="rounded-[5px]"
+                loading="lazy"
               />
 
               <p className="text-base text-white-white1 max-w-[395px]">
