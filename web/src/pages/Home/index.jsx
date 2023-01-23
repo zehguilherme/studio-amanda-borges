@@ -1,16 +1,16 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useState } from "react";
+import "swiper/css/bundle";
+
 import Logo from "../../assets/logo.png";
 import Profile from "../../assets/profile.png";
 import { Icon } from "../../components/Icon";
 
-import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css/bundle";
+import { ProjectCard } from "../../components/ProjectCard";
 
 export function Home() {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
@@ -188,53 +188,37 @@ export function Home() {
             </ul>
 
             <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <Link to={"/projeto"}>
-                <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
-                  <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
-                    <h4 className="text-white-white1 text-xl font-bold">
-                      Lorem ipsum dolor sit amet
-                    </h4>
+              <ProjectCard
+                projectUrl="/projeto"
+                imgUrl="https://picsum.photos/400"
+                imgTitle="Descrição da imagem"
+                projectTitle="abcdefghijklmnopqrstuvxyz01234"
+                projectYear="2023"
+              />
 
-                    <span className="text-white-white1 text-base">2023</span>
-                  </div>
-                </div>
-              </Link>
+              <ProjectCard
+                projectUrl="/projeto"
+                imgUrl="https://picsum.photos/400"
+                imgTitle="Descrição da imagem"
+                projectTitle="abcdefghijklmnopqrstuvxyz01234"
+                projectYear="2023"
+              />
 
-              <Link to={"/projeto"}>
-                <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
-                  <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
-                    <h4 className="text-white-white1 text-xl font-bold">
-                      Lorem ipsum dolor sit amet
-                    </h4>
+              <ProjectCard
+                projectUrl="/projeto"
+                imgUrl="https://picsum.photos/400"
+                imgTitle="Descrição da imagem"
+                projectTitle="abcdefghijklmnopqrstuvxyz01234"
+                projectYear="2023"
+              />
 
-                    <span className="text-white-white1 text-base">2023</span>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to={"/projeto"}>
-                <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
-                  <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
-                    <h4 className="text-white-white1 text-xl font-bold">
-                      Lorem ipsum dolor sit amet
-                    </h4>
-
-                    <span className="text-white-white1 text-base">2023</span>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to={"/projeto"}>
-                <div className="aspect-square rounded-[5px] flex items-end bg-[url('https://picsum.photos/400/400')]">
-                  <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
-                    <h4 className="text-white-white1 text-xl font-bold">
-                      Lorem ipsum dolor sit amet
-                    </h4>
-
-                    <span className="text-white-white1 text-base">2023</span>
-                  </div>
-                </div>
-              </Link>
+              <ProjectCard
+                projectUrl="/projeto"
+                imgUrl="https://picsum.photos/400"
+                imgTitle="Descrição da imagem"
+                projectTitle="abcdefghijklmnopqrstuvxyz01234"
+                projectYear="2023"
+              />
             </div>
           </div>
         </section>
