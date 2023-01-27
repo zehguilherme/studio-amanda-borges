@@ -1,3 +1,4 @@
+import { useQuery } from "graphql-hooks";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
@@ -14,6 +15,18 @@ import { ProjectCard } from "../../components/ProjectCard";
 
 export function Home() {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
+
+  const CAROUSEL_QUERY = `query {
+    carousel {
+      images {
+        id,
+        url,
+        alt
+      }
+    }
+  }`;
+
+  const { loading, error, data: carouselData } = useQuery(CAROUSEL_QUERY);
 
   function handleNavMenuChange() {
     setNavMenuIsOpened(!navMenuIsOpened);
@@ -114,34 +127,23 @@ export function Home() {
               loop={true}
               autoplay={{ disableOnInteraction: false }}
             >
-              <SwiperSlide>
-                <img
-                  src="https://picsum.photos/1920/500"
-                  alt="Descrição da imagem"
-                  className="h-[500px] w-auto object-none"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src="https://picsum.photos/1920/500"
-                  alt="Descrição da imagem"
-                  className="h-[500px] w-auto object-none"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src="https://picsum.photos/1920/500"
-                  alt="Descrição da imagem"
-                  className="h-[500px] w-auto object-none"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src="https://picsum.photos/1920/500"
-                  alt="Descrição da imagem"
-                  className="h-[500px] w-auto object-none"
-                />
-              </SwiperSlide>
+              {loading ? (
+                <SwiperSlide className="h-[500px] w-full">
+                  <div className="flex justify-center items-center p-7">
+                    <Icon className="animate-spin h-8 w-8" name="spin" />
+                  </div>
+                </SwiperSlide>
+              ) : (
+                carouselData?.carousel.images.map((image) => (
+                  <SwiperSlide key={image.id}>
+                    <img
+                      src={image.url}
+                      alt={image.alt}
+                      className="h-[500px] w-full object-cover object-center"
+                    />
+                  </SwiperSlide>
+                ))
+              )}
             </Swiper>
           </div>
         </section>

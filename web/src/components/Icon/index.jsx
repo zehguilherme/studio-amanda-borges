@@ -3,6 +3,7 @@ import { ReactComponent as back } from "./svgs/back.svg";
 import { ReactComponent as email } from "./svgs/email.svg";
 import { ReactComponent as hamburger } from "./svgs/hamburguer.svg";
 import { ReactComponent as instagram } from "./svgs/instagram.svg";
+import { ReactComponent as spin } from "./svgs/spin.svg";
 import { ReactComponent as whatsapp } from "./svgs/whatsapp.svg";
 import { ReactComponent as xMark } from "./svgs/x-mark.svg";
 
@@ -14,6 +15,7 @@ const icons = {
   email: email,
   hamburger: hamburger,
   xMark: xMark,
+  spin: spin,
 };
 
 export function Icon({ name, ...props }) {
