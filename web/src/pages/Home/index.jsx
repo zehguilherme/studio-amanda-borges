@@ -36,6 +36,12 @@ export function Home() {
   }`;
 
   const {
+    loading: carouselLoading,
+    error: carouselError,
+    data: carouselData,
+  } = useQuery(CAROUSEL_QUERY);
+
+  const {
     loading: aboutLoading,
     error: aboutError,
     data: aboutData,
@@ -121,45 +127,45 @@ export function Home() {
       </header>
 
       <main>
-        <section className="bg-white-white2">
-          <div className="container mx-auto">
-            <Swiper
-              modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
-              centeredSlides={true}
-              autoHeight={true}
-              setWrapperSize={true}
-              roundLengths={true}
-              navigation={true}
-              pagination={{ clickable: true }}
-              keyboard={{ enabled: true, onlyInViewport: true }}
-              a11y={{
-                enabled: true,
-                prevSlideMessage: "Slide anterior",
-                nextSlideMessage: "Próximo slide",
-              }}
-              loop={true}
-              autoplay={{ disableOnInteraction: false }}
-            >
-              {loading ? (
-                <SwiperSlide className="h-[500px] w-full">
-                  <div className="flex justify-center items-center p-7">
-                    <Icon className="animate-spin h-8 w-8" name="spin" />
-                  </div>
-                </SwiperSlide>
-              ) : (
-                carouselData?.carousel.images.map((image) => (
-                  <SwiperSlide key={image.id}>
-                    <img
-                      src={image.url}
-                      alt={image.alt}
-                      className="h-[500px] w-full object-cover object-center"
-                    />
-                  </SwiperSlide>
-                ))
-              )}
-            </Swiper>
+        {carouselLoading ? (
+          <div className="flex justify-center items-center p-7 bg-white-white2">
+            <Icon className="animate-spin h-8 w-8" name="spin" />
           </div>
-        </section>
+        ) : (
+          !carouselError && (
+            <section className="bg-white-white2">
+              <div className="container mx-auto">
+                <Swiper
+                  modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
+                  centeredSlides={true}
+                  autoHeight={true}
+                  setWrapperSize={true}
+                  roundLengths={true}
+                  navigation={true}
+                  pagination={{ clickable: true }}
+                  keyboard={{ enabled: true, onlyInViewport: true }}
+                  a11y={{
+                    enabled: true,
+                    prevSlideMessage: "Slide anterior",
+                    nextSlideMessage: "Próximo slide",
+                  }}
+                  loop={true}
+                  autoplay={{ disableOnInteraction: false }}
+                >
+                  {carouselData?.carousel?.images?.map((image) => (
+                    <SwiperSlide key={image?.id}>
+                      <img
+                        src={image?.url}
+                        alt={image?.alt}
+                        className="h-[500px] w-full object-cover object-center"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </section>
+          )
+        )}
 
         <section className="bg-white-white2">
           <div className="container mx-auto p-6 space-y-6 lg:py-8 lg:space-y-5">
