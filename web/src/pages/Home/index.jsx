@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 
 import Logo from "../../assets/logo.png";
-import Profile from "../../assets/profile.png";
 import { Icon } from "../../components/Icon";
 
 import { ProjectCard } from "../../components/ProjectCard";
@@ -26,7 +25,21 @@ export function Home() {
     }
   }`;
 
-  const { loading, error, data: carouselData } = useQuery(CAROUSEL_QUERY);
+  const ABOUT_QUERY = `query {
+    about {
+      image {
+        url,
+        alt
+      },
+      text
+    }
+  }`;
+
+  const {
+    loading: aboutLoading,
+    error: aboutError,
+    data: aboutData,
+  } = useQuery(ABOUT_QUERY);
 
   function handleNavMenuChange() {
     setNavMenuIsOpened(!navMenuIsOpened);
@@ -231,27 +244,26 @@ export function Home() {
               Sobre
             </h2>
 
-            <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
-              <img
-                src={Profile}
-                alt="Imagem em formato retrato de Amanda Borges"
-                className="rounded-[5px]"
-                loading="lazy"
-              />
+            {aboutLoading ? (
+              <div className="flex justify-center items-center p-7 text-white-white1">
+                <Icon className="animate-spin h-8 w-8" name="spin" />
+              </div>
+            ) : (
+              !aboutError && (
+                <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
+                  <img
+                    src={aboutData?.about?.image?.url}
+                    alt={aboutData?.about?.image?.alt}
+                    className="rounded-[5px]"
+                    loading="lazy"
+                  />
 
-              <p className="text-base text-white-white1 max-w-[395px]">
-                Olá, eu sou a Amanda Borges e seja muito bem-vindo ao meu
-                perfil. Sou formada em Arquitetura e Urbanismo pela Universidade
-                Paulista na cidade de Bauru/SP e estou inserida na área de
-                projetos de arquitetura e design de interiores. Iniciei neste
-                mundo no 1º ano da faculdade (2017), realizando alguns estágios
-                nas áreas de arquitetura comercial, residencial e design de
-                interiores. Sempre estou me empenhando em entender e colocar em
-                prática o maior número de ferramentas e softwares, sempre
-                visando o conhecimento, este, sendo indispensável,
-                independentemente da área em que se atua.
-              </p>
-            </div>
+                  <p className="text-base text-white-white1 max-w-[395px] whitespace-pre-wrap">
+                    {aboutData?.about?.text}
+                  </p>
+                </div>
+              )
+            )}
           </div>
         </section>
       </main>
