@@ -25,6 +25,18 @@ export function Home() {
     }
   }`;
 
+  const PROJECTS_QUERY = `query {
+    allProjects(orderBy: year_DESC) {
+      id,
+      name,
+      year,
+      images {
+        url,
+        alt
+      }
+    }
+  }`;
+
   const ABOUT_QUERY = `query {
     about {
       image {
@@ -46,6 +58,12 @@ export function Home() {
     error: aboutError,
     data: aboutData,
   } = useQuery(ABOUT_QUERY);
+
+  const {
+    loading: projectsLoading,
+    error: projectsError,
+    data: projectsData,
+  } = useQuery(PROJECTS_QUERY);
 
   function handleNavMenuChange() {
     setNavMenuIsOpened(!navMenuIsOpened);
@@ -208,39 +226,26 @@ export function Home() {
               </li>
             </ul>
 
-            <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <ProjectCard
-                projectUrl="/projeto"
-                imgUrl="https://picsum.photos/400"
-                imgTitle="Descrição da imagem"
-                projectTitle="abcdefghijklmnopqrstuvxyz01234"
-                projectYear="2023"
-              />
-
-              <ProjectCard
-                projectUrl="/projeto"
-                imgUrl="https://picsum.photos/400"
-                imgTitle="Descrição da imagem"
-                projectTitle="abcdefghijklmnopqrstuvxyz01234"
-                projectYear="2023"
-              />
-
-              <ProjectCard
-                projectUrl="/projeto"
-                imgUrl="https://picsum.photos/400"
-                imgTitle="Descrição da imagem"
-                projectTitle="abcdefghijklmnopqrstuvxyz01234"
-                projectYear="2023"
-              />
-
-              <ProjectCard
-                projectUrl="/projeto"
-                imgUrl="https://picsum.photos/400"
-                imgTitle="Descrição da imagem"
-                projectTitle="abcdefghijklmnopqrstuvxyz01234"
-                projectYear="2023"
-              />
-            </div>
+            {projectsLoading ? (
+              <div className="flex justify-center items-center p-7 bg-white-white2">
+                <Icon className="animate-spin h-8 w-8" name="spin" />
+              </div>
+            ) : (
+              !projectsError && (
+                <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {projectsData?.allProjects?.map((project) => (
+                    <ProjectCard
+                      key={project?.id}
+                      projectUrl="/projeto"
+                      imgUrl={project?.images[0]?.url}
+                      imgTitle={project?.images[0]?.alt}
+                      projectTitle={project?.name}
+                      projectYear={project?.year}
+                    />
+                  ))}
+                </div>
+              )
+            )}
           </div>
         </section>
 
