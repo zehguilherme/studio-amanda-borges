@@ -8,7 +8,7 @@ export function ProjectCard({
   projectYear,
 }) {
   return (
-    <Link to={projectUrl}>
+    <Link to={projectUrl} className="inline-block w-full h-full">
       <div
         style={{ backgroundImage: `url(${imgUrl})` }}
         className={`aspect-square rounded-[5px] flex items-end bg-cover bg-center`}
