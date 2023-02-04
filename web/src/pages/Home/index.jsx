@@ -236,7 +236,7 @@ export function Home() {
                   {projectsData?.allProjects?.map((project) => (
                     <ProjectCard
                       key={project?.id}
-                      projectUrl="/projeto"
+                      projectUrl={`/projeto/${project?.id}`}
                       imgUrl={project?.images[0]?.url}
                       imgTitle={project?.images[0]?.alt}
                       projectTitle={project?.name}
