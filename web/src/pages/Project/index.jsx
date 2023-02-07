@@ -54,7 +54,7 @@ export function Project() {
         ) : (
           !error && (
             <main className="container mx-auto">
-              <h1 className="text-black text-4xl font-bold px-6">
+              <h1 className="text-black text-4xl font-bold px-6 break-words">
                 {data?.project?.name}
               </h1>
 
@@ -95,8 +95,15 @@ export function Project() {
                       Etapa apresentada
                     </h2>
 
-                    <p className="text-base text-black xl:w-full">
-                      {data?.project?.stepPresented}
+                    <p className="xl:w-full space-x-5">
+                      {data?.project?.stepPresented?.map((stepPresented) => (
+                        <span
+                          key={stepPresented}
+                          className="inline-block text-base text-black"
+                        >
+                          {stepPresented}
+                        </span>
+                      ))}
                     </p>
                   </div>
 
@@ -105,8 +112,15 @@ export function Project() {
                       Softwares usados
                     </h2>
 
-                    <p className="text-base text-black xl:w-full">
-                      {data?.project?.usedSoftware}
+                    <p className="xl:w-full space-x-5">
+                      {data?.project?.usedSoftware?.map((software) => (
+                        <span
+                          key={software}
+                          className="inline-block text-base text-black"
+                        >
+                          {software}
+                        </span>
+                      ))}
                     </p>
                   </div>
 
