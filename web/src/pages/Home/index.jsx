@@ -1,7 +1,7 @@
 import { useQuery } from "graphql-hooks";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,11 +9,27 @@ import "swiper/css/bundle";
 
 import Logo from "../../assets/logo.png";
 import { Icon } from "../../components/Icon";
-
 import { ProjectCard } from "../../components/ProjectCard";
 
 export function Home() {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const projectTypeSearchParam = searchParams.has("q")
+    ? searchParams.get("q")
+    : null;
+
+  const projectTypeSearchParamcapitalFirstLetter = projectTypeSearchParam
+    ?.toLowerCase()
+    .replace(/\b\w/g, (s) => s.toUpperCase());
+
+  const filter =
+    projectTypeSearchParamcapitalFirstLetter === undefined
+      ? ""
+      : `, filter: {
+      projectType: { eq: ${projectTypeSearchParamcapitalFirstLetter} }
+    }`;
 
   const CAROUSEL_QUERY = `query {
     carousel {
@@ -26,7 +42,7 @@ export function Home() {
   }`;
 
   const PROJECTS_QUERY = `query {
-    allProjects(orderBy: year_DESC) {
+    allProjects(orderBy: year_DESC ${filter}) {
       id,
       name,
       year,
@@ -193,36 +209,44 @@ export function Home() {
 
             <ul className="lg:flex justify-center">
               <li>
-                <a
-                  href="#"
-                  className="flex justify-center items-center h-12 text-2xl font-bold lg:lg:h-11 lg:p-[14px]"
+                <Link
+                  to={"/"}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === null ? "font-bold" : ""
+                  }`}
                 >
                   Todos
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px]"
+                <Link
+                  to={"/?q=residencial"}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === "residencial" ? "font-bold" : ""
+                  }`}
                 >
                   Residencial
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px]"
+                <Link
+                  to={"/?q=comercial"}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === "comercial" ? "font-bold" : ""
+                  }`}
                 >
                   Comercial
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px]"
+                <Link
+                  to={"/?q=interiores"}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === "interiores" ? "font-bold" : ""
+                  }`}
                 >
                   Interiores
-                </a>
+                </Link>
               </li>
             </ul>
 
