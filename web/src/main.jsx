@@ -5,11 +5,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { client } from "./api";
 
 import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
 import { Project } from "./pages/Project";
 
 import "./global.css";
 
 const router = createBrowserRouter([
+  {
+    errorElement: <NotFound />,
+  },
   {
     path: "/",
     element: <Home />,
