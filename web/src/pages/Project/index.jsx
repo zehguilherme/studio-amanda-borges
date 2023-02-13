@@ -86,7 +86,7 @@ export function Project() {
                     </h2>
 
                     <p className="text-base text-black xl:w-full">
-                      {data?.project?.metreage} m²
+                      {data?.project?.metreage.toString().replace(".", ",")} m²
                     </p>
                   </div>
 
