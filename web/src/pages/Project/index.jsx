@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 
 import { Icon } from "../../components/Icon";
+import { ScrollUpButton } from "../../components/ScrollUpButton";
 
 export function Project() {
   const { id } = useParams();
@@ -169,6 +170,8 @@ export function Project() {
             </main>
           )
         )}
+
+        <ScrollUpButton />
       </div>
     </>
   );
