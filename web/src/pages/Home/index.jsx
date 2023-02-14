@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css/bundle";
 
-import Logo from "../../assets/logo.png";
 import { Icon } from "../../components/Icon";
 import { ProjectCard } from "../../components/ProjectCard";
 import { ScrollUpButton } from "../../components/ScrollUpButton";
@@ -103,10 +102,7 @@ export function Home() {
         >
           <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
             <Link to={"/"}>
-              <img
-                src={Logo}
-                alt="Imagem do logo do site Studio Amanda Borges"
-              />
+              <Icon name="logo" className="w-[150px]" />
             </Link>
 
             <button
@@ -307,7 +303,7 @@ export function Home() {
       <footer className="bg-pink" id="contato">
         <div className="container mx-auto flex items-center justify-between pr-3">
           <a href="/">
-            <img src={Logo} alt="Imagem do logo do site Studio Amanda Borges" />
+            <Icon name="logo" className="w-[150px]" />
           </a>
 
           <ul className="flex items-center space-x-1 text-white-white1">
