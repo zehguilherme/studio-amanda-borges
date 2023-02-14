@@ -10,6 +10,7 @@ import "swiper/css/bundle";
 import Logo from "../../assets/logo.png";
 import { Icon } from "../../components/Icon";
 import { ProjectCard } from "../../components/ProjectCard";
+import { ScrollUpButton } from "../../components/ScrollUpButton";
 
 export function Home() {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
@@ -340,6 +341,8 @@ export function Home() {
           </ul>
         </div>
       </footer>
+
+      <ScrollUpButton />
     </>
   );
 }
