@@ -24,12 +24,12 @@ export function ScrollUpButton() {
 
   return (
     <button
-      className={`rounded-[5px] text-center p-3 hover:bg-gray-200 hover:border-black fixed bottom-5 right-4 text-black ${
+      className={`rounded-full text-center p-3 bg-gray-200 hover:bg-gray-200/75 fixed bottom-5 right-4 text-black ${
         visible ? "block" : "hidden"
       }`}
       onClick={() => scrollToTop()}
     >
-      <Icon name="arrowUp" className="w-6" />
+      <Icon name="arrowUp" className="w-5 lg:w-6" />
     </button>
   );
 }
