@@ -1,12 +1,21 @@
 import { useQuery } from "graphql-hooks";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
+import { Lightbox } from "yet-another-react-lightbox";
+import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
+
+import "yet-another-react-lightbox/plugins/captions.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import "yet-another-react-lightbox/styles.css";
 
 import { Icon } from "../../components/Icon";
 import { ScrollUpButton } from "../../components/ScrollUpButton";
 
 export function Project() {
   const { id } = useParams();
+
+  const [indexImageOpened, setIndexImageOpened] = useState(-1);
 
   const PROJECT_QUERY = `query {
     project(filter: {
@@ -18,6 +27,8 @@ export function Project() {
         id
         url
         alt
+        width
+        height
       }
       projectType
       description
@@ -157,12 +168,13 @@ export function Project() {
                 </section>
 
                 <section className="flex flex-col justify-center items-center space-y-8 px-6 pb-6 sm:grid sm:space-y-0 sm:grid-cols-2 sm:gap-5 md:grid-cols-3 xl:grid-cols-2 xl:order-1 xl:p-0 xl:w-1/2">
-                  {data?.project?.images?.map((projectImage) => (
+                  {data?.project?.images?.map((projectImage, index) => (
                     <img
                       key={projectImage?.id}
                       src={projectImage?.url}
                       alt={projectImage?.alt}
-                      className="rounded-[5px] aspect-square object-cover object-center"
+                      className="rounded-[5px] aspect-square object-cover object-center cursor-pointer"
+                      onClick={() => setIndexImageOpened(index)}
                     />
                   ))}
                 </section>
@@ -170,6 +182,21 @@ export function Project() {
             </main>
           )
         )}
+
+        <Lightbox
+          open={indexImageOpened >= 0}
+          index={indexImageOpened}
+          close={() => setIndexImageOpened(-1)}
+          plugins={[Zoom, Thumbnails]}
+          zoom={{ scrollToZoom: true }}
+          slides={data?.project?.images?.map((projectImage) => ({
+            key: projectImage?.id,
+            src: projectImage?.url,
+            alt: projectImage?.alt,
+            width: projectImage?.width,
+            height: projectImage?.height,
+          }))}
+        />
 
         <ScrollUpButton />
       </div>
