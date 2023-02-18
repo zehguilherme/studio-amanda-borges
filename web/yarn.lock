@@ -1707,3 +1707,8 @@ yaml@^1.10.0, yaml@^1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
+
+yet-another-react-lightbox@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/yet-another-react-lightbox/-/yet-another-react-lightbox-2.3.1.tgz#a90498fe895779dddcd29cce15cee038dbf54259"
+  integrity sha512-7XNWWjoWCP1TGAfhxO6HOHQ5R/hx1g3XEXlZi6hAfrRICcK+/HEj1eT3wE6vgzOAyGAAKI7RZ9LBD+XKf3Cb3Q==
