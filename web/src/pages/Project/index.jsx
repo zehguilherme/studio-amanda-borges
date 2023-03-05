@@ -2,7 +2,12 @@ import { useQuery } from "graphql-hooks";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import Skeleton from "react-loading-skeleton";
-import { Link, useParams } from "react-router-dom";
+import {
+  Link,
+  ScrollRestoration,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { Lightbox } from "yet-another-react-lightbox";
 import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
 
@@ -44,6 +49,11 @@ export function Project() {
   }`;
 
   const { loading, error, data } = useQuery(PROJECT_QUERY);
+  const navigate = useNavigate();
+
+  function handlePageNavigation() {
+    navigate(-1);
+  }
 
   return (
     <div className="bg-white-white2">
@@ -54,7 +64,10 @@ export function Project() {
 
       <header>
         <div className="container mx-auto h-[120px] px-6 flex justify-start items-center">
-          <Link to={"/"} className="p-[2px] text-black">
+          <Link
+            onClick={() => handlePageNavigation()}
+            className="p-[2px] text-black"
+          >
             <Icon name="back" className="w-11 h-auto" />
           </Link>
         </div>
@@ -236,6 +249,8 @@ export function Project() {
       />
 
       <ScrollUpButton />
+
+      <ScrollRestoration />
     </div>
   );
 }
