@@ -8,6 +8,7 @@ import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Project } from "./pages/Project";
 
+import { SkeletonTheme } from "react-loading-skeleton";
 import "./global.css";
 
 const router = createBrowserRouter([
@@ -25,9 +26,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ClientContext.Provider value={client}>
-      <RouterProvider router={router} />
-    </ClientContext.Provider>
-  </React.StrictMode>
+  <SkeletonTheme baseColor="#cccccc" borderRadius="0.5rem">
+    <React.StrictMode>
+      <ClientContext.Provider value={client}>
+        <RouterProvider router={router} />
+      </ClientContext.Provider>
+    </React.StrictMode>
+  </SkeletonTheme>
 );
