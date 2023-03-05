@@ -1,10 +1,12 @@
 import { useQuery } from "graphql-hooks";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import Skeleton from "react-loading-skeleton";
 import { Link, useSearchParams } from "react-router-dom";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import "swiper/css/bundle";
 
 import { Icon } from "../../components/Icon";
@@ -159,8 +161,8 @@ export function Home() {
 
       <main>
         {carouselLoading ? (
-          <div className="flex justify-center items-center p-7 bg-white-white2">
-            <Icon className="animate-spin h-8 w-8" name="spin" />
+          <div className="container mx-auto">
+            <Skeleton height={500} className="w-full" borderRadius={0} />
           </div>
         ) : (
           !carouselError && (
@@ -247,14 +249,17 @@ export function Home() {
               </li>
             </ul>
 
-            {projectsLoading ? (
-              <div className="flex justify-center items-center p-7 bg-white-white2">
-                <Icon className="animate-spin h-8 w-8" name="spin" />
-              </div>
-            ) : (
-              !projectsError && (
-                <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {projectsData?.allProjects?.map((project) => (
+            {!projectsError && (
+              <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {projectsLoading ? (
+                  <>
+                    <Skeleton width={272} height={272} />
+                    <Skeleton width={272} height={272} />
+                    <Skeleton width={272} height={272} />
+                    <Skeleton width={272} height={272} />
+                  </>
+                ) : (
+                  projectsData?.allProjects?.map((project) => (
                     <ProjectCard
                       key={project?.id}
                       projectUrl={`/projeto/${project?.id}`}
@@ -263,9 +268,9 @@ export function Home() {
                       projectTitle={project?.name}
                       projectYear={project?.year}
                     />
-                  ))}
-                </div>
-              )
+                  ))
+                )}
+              </div>
             )}
           </div>
         </section>
@@ -276,25 +281,32 @@ export function Home() {
               Sobre
             </h2>
 
-            {aboutLoading ? (
-              <div className="flex justify-center items-center p-7 text-white-white1">
-                <Icon className="animate-spin h-8 w-8" name="spin" />
-              </div>
-            ) : (
-              !aboutError && (
-                <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
+            {!aboutError && (
+              <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
+                {aboutLoading ? (
+                  <Skeleton
+                    width={272}
+                    height={392}
+                    baseColor="#dddddd"
+                    highlightColor="#dddddd"
+                  />
+                ) : (
                   <img
                     src={aboutData?.about?.image?.url}
                     alt={aboutData?.about?.image?.alt}
                     className="rounded-[5px]"
                     loading="lazy"
                   />
+                )}
 
-                  <p className="text-base text-white-white1 max-w-[395px] whitespace-pre-wrap">
-                    {aboutData?.about?.text}
-                  </p>
-                </div>
-              )
+                <p className="text-base text-white-white1 max-w-[395px] whitespace-pre-wrap">
+                  {aboutLoading ? (
+                    <Skeleton count={16} width={272} />
+                  ) : (
+                    aboutData?.about?.text
+                  )}
+                </p>
+              </div>
             )}
           </div>
         </section>
