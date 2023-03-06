@@ -28,6 +28,7 @@ export function ScrollUpButton() {
         visible ? "block" : "hidden"
       }`}
       onClick={() => scrollToTop()}
+      aria-label="Realizar rolagem da página para o topo"
     >
       <Icon name="arrowUp" className="w-5 lg:w-6" />
     </button>

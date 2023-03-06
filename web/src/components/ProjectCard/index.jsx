@@ -15,9 +15,9 @@ export function ProjectCard({
         title={imgTitle}
       >
         <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900">
-          <h4 className="text-white-white1 text-xl font-bold break-all">
+          <h3 className="text-white-white1 text-xl font-bold break-all">
             {projectTitle}
-          </h4>
+          </h3>
 
           <span className="text-white-white1 text-base">{projectYear}</span>
         </div>
