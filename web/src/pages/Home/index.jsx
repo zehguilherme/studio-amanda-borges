@@ -103,7 +103,9 @@ export function Home() {
           }
         >
           <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
-            <Link to={"/"}>
+            <h1 className="sr-only">Studio Amanda Borges</h1>
+
+            <Link to={"/"} aria-label="Atualizar a página Home">
               <Icon name="logo" className="w-[150px]" />
             </Link>
 
@@ -314,7 +316,7 @@ export function Home() {
 
       <footer className="bg-pink" id="contato">
         <div className="container mx-auto flex items-center justify-between pr-3">
-          <a href="/">
+          <a href="/" aria-label="Atualizar a página Home">
             <Icon name="logo" className="w-[150px]" />
           </a>
 
@@ -324,6 +326,7 @@ export function Home() {
                 href="https://www.instagram.com/studio.amandaborges/"
                 target="_blank"
                 className="inline-block p-[10px]"
+                aria-label="Navegar para o Instagram"
               >
                 <Icon name="instagram" className="w-7" />
               </a>
@@ -333,6 +336,7 @@ export function Home() {
                 href="https://wa.me/5514998695347"
                 target="_blank"
                 className="inline-block p-[10px]"
+                aria-label="Navegar para o WhatsApp"
               >
                 <Icon name="whatsapp" className="w-7" />
               </a>
@@ -342,6 +346,7 @@ export function Home() {
                 href="mailto:amanda_leticiah@hotmail.com"
                 target="_blank"
                 className="inline-block p-[10px]"
+                aria-label="Enviar um e-mail"
               >
                 <Icon name="email" className="w-7" />
               </a>
