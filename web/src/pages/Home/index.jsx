@@ -161,7 +161,7 @@ export function Home() {
         </div>
       </header>
 
-      <main>
+      <main aria-label="main-home">
         {carouselLoading ? (
           <div className="container mx-auto">
             <Skeleton height={500} className="w-full" borderRadius={0} />
