@@ -74,7 +74,7 @@ export function Project() {
       </header>
 
       {!error && (
-        <main className="container mx-auto">
+        <main className="container mx-auto" aria-label="main-project">
           <h1 className="text-black text-4xl font-bold px-6 break-words">
             {loading ? <Skeleton /> : data?.project?.name}
           </h1>
