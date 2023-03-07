@@ -1,6 +1,6 @@
 import { useQuery } from "graphql-hooks";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Skeleton from "react-loading-skeleton";
 import { Link, useSearchParams } from "react-router-dom";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
@@ -89,10 +89,12 @@ export function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Studio Amanda Borges | Home</title>
-        <meta name="theme-color" content="#B6939A" />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet prioritizeSeoTags>
+          <title>Studio Amanda Borges | Home</title>
+          <meta name="theme-color" content="#B6939A" />
+        </Helmet>
+      </HelmetProvider>
 
       <header className="bg-pink">
         <div
