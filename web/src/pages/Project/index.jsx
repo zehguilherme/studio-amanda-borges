@@ -1,6 +1,6 @@
 import { useQuery } from "graphql-hooks";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Skeleton from "react-loading-skeleton";
 import {
   Link,
@@ -57,10 +57,12 @@ export function Project() {
 
   return (
     <div className="bg-white-white2">
-      <Helmet>
-        <title>Studio Amanda Borges | Projeto</title>
-        <meta name="theme-color" content="#F4F4F4" />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet prioritizeSeoTags>
+          <title>Studio Amanda Borges | Projeto</title>
+          <meta name="theme-color" content="#F4F4F4" />
+        </Helmet>
+      </HelmetProvider>
 
       <header>
         <div className="container mx-auto h-[120px] px-6 flex justify-start items-center">
