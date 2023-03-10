@@ -107,7 +107,7 @@ export function Home() {
           <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
             <h1 className="sr-only">Studio Amanda Borges</h1>
 
-            <Link to={"/"} aria-label="Atualizar a página Home">
+            <Link to={"/"} aria-label="Navegar para a página Home">
               <Icon name="logo" className="w-[150px]" />
             </Link>
 
@@ -318,9 +318,9 @@ export function Home() {
 
       <footer className="bg-pink" id="contato">
         <div className="container mx-auto flex items-center justify-between pr-3">
-          <a href="/" aria-label="Atualizar a página Home">
+          <Link to={"/"} aria-label="Navegar para a página Home">
             <Icon name="logo" className="w-[150px]" />
-          </a>
+          </Link>
 
           <ul className="flex items-center space-x-1 text-white-white1">
             <li className="flex items-center">
