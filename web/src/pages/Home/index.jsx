@@ -107,7 +107,7 @@ export function Home() {
           <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
             <h1 className="sr-only">Studio Amanda Borges</h1>
 
-            <Link to={"/"} aria-label="Atualizar a página Home">
+            <Link to={"/"} aria-label="Navegar para a página Home">
               <Icon name="logo" className="w-[150px]" />
             </Link>
 
@@ -215,7 +215,9 @@ export function Home() {
                 <Link
                   to={"/"}
                   className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
-                    projectTypeSearchParam === null ? "font-bold" : ""
+                    projectTypeSearchParam === null
+                      ? "font-bold"
+                      : "hover:text-black/50"
                   }`}
                 >
                   Todos
@@ -225,7 +227,9 @@ export function Home() {
                 <Link
                   to={"/?q=residencial"}
                   className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
-                    projectTypeSearchParam === "residencial" ? "font-bold" : ""
+                    projectTypeSearchParam === "residencial"
+                      ? "font-bold"
+                      : "hover:text-black/50"
                   }`}
                 >
                   Residencial
@@ -235,7 +239,9 @@ export function Home() {
                 <Link
                   to={"/?q=comercial"}
                   className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
-                    projectTypeSearchParam === "comercial" ? "font-bold" : ""
+                    projectTypeSearchParam === "comercial"
+                      ? "font-bold"
+                      : "hover:text-black/50"
                   }`}
                 >
                   Comercial
@@ -245,7 +251,9 @@ export function Home() {
                 <Link
                   to={"/?q=interiores"}
                   className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
-                    projectTypeSearchParam === "interiores" ? "font-bold" : ""
+                    projectTypeSearchParam === "interiores"
+                      ? "font-bold"
+                      : "hover:text-black/50"
                   }`}
                 >
                   Interiores
@@ -318,9 +326,9 @@ export function Home() {
 
       <footer className="bg-pink" id="contato">
         <div className="container mx-auto flex items-center justify-between pr-3">
-          <a href="/" aria-label="Atualizar a página Home">
+          <Link to={"/"} aria-label="Navegar para a página Home">
             <Icon name="logo" className="w-[150px]" />
-          </a>
+          </Link>
 
           <ul className="flex items-center space-x-1 text-white-white1">
             <li className="flex items-center">
