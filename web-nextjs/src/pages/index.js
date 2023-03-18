@@ -1,12 +1,39 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Hamburguer, } from '@/components/icons/Hamburger';
+import { request } from '@/infra/cms/datocms';
+
+import { Hamburguer } from '@/components/icons/Hamburger';
 import { Logo } from '@/components/icons/Logo';
 import { Xmark } from '@/components/icons/Xmark';
 
-export default function Home () {
+import "swiper/css/bundle";
+
+export async function getServerSideProps () {
+  const CAROUSEL_QUERY = `query {
+    carousel {
+      images {
+        id,
+        url,
+        alt
+      }
+    }
+  }`;
+
+  const carouselData = await request({
+    query: CAROUSEL_QUERY
+  });
+
+  return {
+    props: { carouselData }
+  }
+}
+
+export default function Home ({ carouselData }) {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
 
   function handleNavMenuChange () {
@@ -86,6 +113,44 @@ export default function Home () {
           </nav>
         </div>
       </header>
+
+      <main aria-label="main-home">
+        <section className="bg-white-white2">
+          <div className="container mx-auto">
+            <Swiper
+              modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
+              centeredSlides={true}
+              autoHeight={true}
+              setWrapperSize={true}
+              roundLengths={true}
+              navigation={true}
+              pagination={{ clickable: true }}
+              keyboard={{ enabled: true, onlyInViewport: true }}
+              a11y={{
+                enabled: true,
+                prevSlideMessage: "Slide anterior",
+                nextSlideMessage: "Próximo slide",
+              }}
+              loop={true}
+              autoplay={{ disableOnInteraction: false }}
+            >
+              {carouselData?.carousel?.images?.map((image) => (
+                <SwiperSlide key={image?.id}>
+                  <Image
+                    src={image?.url}
+                    alt={image?.alt}
+                    width={1536}
+                    height={500}
+                    placeholder='blur'
+                    blurDataURL={image?.url}
+                    className="h-[500px] w-full object-cover object-center"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </section>
+      </main>
     </>
   )
 }

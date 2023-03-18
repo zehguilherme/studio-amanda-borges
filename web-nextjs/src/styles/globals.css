@@ -24,11 +24,11 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid #f4f4f4; /* creates padding around scroll thumb */
 }
 
-.swiper-button-prev,
-.swiper-button-next {
+body .swiper-button-prev,
+body .swiper-button-next {
   color: #ffffff;
 }
 
-.swiper-pagination-bullet-active {
+body .swiper-pagination-bullet-active {
   background-color: #ffffff;
 }
