@@ -7,13 +7,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { request } from '@/infra/cms/datocms';
 
+import { ProjectCard } from '@/components/ProjectCard';
 import { Hamburguer } from '@/components/icons/Hamburger';
 import { Logo } from '@/components/icons/Logo';
 import { Xmark } from '@/components/icons/Xmark';
 
+import { useRouter } from 'next/router';
 import "swiper/css/bundle";
 
-export async function getServerSideProps () {
+export async function getServerSideProps (context) {
+  const { query } = context
+  const { q: projectTypeSearchParam } = query
+
+  const projectTypeSearchParamcapitalFirstLetter = projectTypeSearchParam
+    ?.toLowerCase()
+    .replace(/\b\w/g, (s) => s.toUpperCase());
+
+  const filter =
+    projectTypeSearchParamcapitalFirstLetter === undefined
+      ? ""
+      : `, filter: {
+      projectType: { eq: ${projectTypeSearchParamcapitalFirstLetter} }
+    }`;
+
   const CAROUSEL_QUERY = `query {
     carousel {
       images {
@@ -24,17 +40,36 @@ export async function getServerSideProps () {
     }
   }`;
 
+  const PROJECTS_QUERY = `query {
+    allProjects(orderBy: year_DESC ${filter}) {
+      id,
+      name,
+      year,
+      images {
+        url,
+        alt
+      }
+    }
+  }`;
+
   const carouselData = await request({
     query: CAROUSEL_QUERY
   });
 
+  const projectsData = await request({
+    query: PROJECTS_QUERY
+  });
+
   return {
-    props: { carouselData }
+    props: { carouselData, projectsData },
   }
 }
 
-export default function Home ({ carouselData }) {
+export default function Home ({ carouselData, projectsData }) {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
+
+  const { query } = useRouter()
+  const { q: projectTypeSearchParam } = query
 
   function handleNavMenuChange () {
     setNavMenuIsOpened(!navMenuIsOpened);
@@ -148,6 +183,79 @@ export default function Home ({ carouselData }) {
                 </SwiperSlide>
               ))}
             </Swiper>
+          </div>
+        </section>
+
+        <section className="bg-white-white2">
+          <div className="container mx-auto p-6 space-y-6 lg:py-8 lg:space-y-5">
+            <h2 className="text-3xl font-bold" id="projetos">
+              Projetos
+            </h2>
+
+            <ul className="lg:flex justify-center">
+              <li>
+                <Link
+                  href="/"
+                  scroll={false}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === undefined
+                    ? "font-bold"
+                    : "hover:text-black/50"
+                    }`}
+                >
+                  Todos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/?q=${encodeURIComponent('residencial')}`}
+                  scroll={false}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === "residencial"
+                    ? "font-bold"
+                    : "hover:text-black/50"
+                    }`}
+                >
+                  Residencial
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/?q=${encodeURIComponent('comercial')}`}
+                  scroll={false}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === "comercial"
+                    ? "font-bold"
+                    : "hover:text-black/50"
+                    }`}
+                >
+                  Comercial
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/?q=${encodeURIComponent('interiores')}`}
+                  scroll={false}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === "interiores"
+                    ? "font-bold"
+                    : "hover:text-black/50"
+                    }`}
+                >
+                  Interiores
+                </Link>
+              </li>
+            </ul>
+
+            <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {projectsData?.allProjects?.map((project) => (
+                <ProjectCard
+                  key={project?.id}
+                  projectUrl={`/projeto/${project?.id}`}
+                  imgUrl={project?.images[0]?.url}
+                  imgTitle={project?.images[0]?.alt}
+                  projectTitle={project?.name}
+                  projectYear={project?.year}
+                />
+              ))
+              }
+            </div>
           </div>
         </section>
       </main>
