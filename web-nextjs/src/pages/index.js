@@ -52,6 +52,16 @@ export async function getServerSideProps (context) {
     }
   }`;
 
+  const ABOUT_QUERY = `query {
+    about {
+      image {
+        url,
+        alt
+      },
+      text
+    }
+  }`;
+
   const carouselData = await request({
     query: CAROUSEL_QUERY
   });
@@ -60,12 +70,16 @@ export async function getServerSideProps (context) {
     query: PROJECTS_QUERY
   });
 
+  const aboutData = await request({
+    query: ABOUT_QUERY
+  });
+
   return {
-    props: { carouselData, projectsData },
+    props: { carouselData, projectsData, aboutData },
   }
 }
 
-export default function Home ({ carouselData, projectsData }) {
+export default function Home ({ carouselData, projectsData, aboutData }) {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
 
   const { query } = useRouter()
@@ -256,6 +270,32 @@ export default function Home ({ carouselData, projectsData }) {
               ))
               }
             </div>
+          </div>
+        </section>
+
+        <section className="bg-green">
+          <div className="container mx-auto p-6 space-y-6 lg:py-5">
+            <h2 className="text-3xl font-bold text-white-white1" id="sobre">
+              Sobre
+            </h2>
+
+            {
+              <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
+                <Image
+                  src={aboutData?.about?.image?.url}
+                  alt={aboutData?.about?.image?.alt}
+                  width={312}
+                  height={392}
+                  placeholder='blur'
+                  blurDataURL={aboutData?.about?.image?.url}
+                  className="rounded-[5px]"
+                />
+
+                <p className="text-base text-white-white1 max-w-[395px] whitespace-pre-wrap">
+                  {aboutData?.about?.text}
+                </p>
+              </div>
+            }
           </div>
         </section>
       </main>
