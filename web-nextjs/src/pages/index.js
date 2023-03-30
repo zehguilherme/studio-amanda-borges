@@ -264,7 +264,7 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
               {projectsData?.allProjects?.map((project) => (
                 <ProjectCard
                   key={project?.id}
-                  projectUrl={`/projeto/${project?.id}`}
+                  projectUrl={`projeto/${project?.id}`}
                   imgUrl={project?.images[0]?.url}
                   imgTitle={project?.images[0]?.alt}
                   projectTitle={project?.name}
