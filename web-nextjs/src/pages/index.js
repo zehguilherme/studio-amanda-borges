@@ -118,6 +118,7 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
             <button
               type="button"
               className="lg:hidden"
+              aria-label='Botão hambúrguer'
               onClick={handleNavMenuChange}
             >
               {navMenuIsOpened ? (
