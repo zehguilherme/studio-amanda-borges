@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { request } from '@/infra/cms/datocms';
 
 import { ProjectCard } from '@/components/ProjectCard';
+import { ScrollUpButton } from '@/components/ScrollUpButton';
 import { Email } from '@/components/icons/Email';
 import { Hamburguer } from '@/components/icons/Hamburger';
 import { Instagram } from '@/components/icons/Instagram';
@@ -343,6 +344,8 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
           </ul>
         </div>
       </footer>
+
+      <ScrollUpButton />
     </>
   )
 }

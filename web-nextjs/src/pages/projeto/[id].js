@@ -8,6 +8,7 @@ import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
 import { request } from "@/infra/cms/datocms";
 
 import { LightboxNextJsImage } from "@/components/LightboxNextJsImage";
+import { ScrollUpButton } from "@/components/ScrollUpButton";
 import { ArrowBack } from "@/components/icons/ArrowBack";
 
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -206,6 +207,8 @@ export default function Project ({ projectData }) {
           render={{ slide: LightboxNextJsImage }}
         />
       </div>
+
+      <ScrollUpButton />
     </>
   );
 }
