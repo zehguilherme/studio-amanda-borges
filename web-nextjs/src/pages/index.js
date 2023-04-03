@@ -269,7 +269,7 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
                   key={project?.id}
                   projectUrl={`projeto/${project?.id}`}
                   imgUrl={project?.images[0]?.url}
-                  imgTitle={project?.images[0]?.alt}
+                  imgAlt={project?.images[0]?.alt}
                   projectTitle={project?.name}
                   projectYear={project?.year}
                 />
