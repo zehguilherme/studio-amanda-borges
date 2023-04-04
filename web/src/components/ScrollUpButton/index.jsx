@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useWindowScroll } from "react-use";
 
-import { Icon } from "../Icon";
+import { ArrowUp } from "../icons/ArrowUp";
 
 export function ScrollUpButton() {
   const { y: pageYOffset } = useWindowScroll();
@@ -30,7 +30,8 @@ export function ScrollUpButton() {
       onClick={() => scrollToTop()}
       aria-label="Realizar rolagem da página para o topo"
     >
-      <Icon name="arrowUp" className="w-5 lg:w-6" />
+      {/* <Icon name="arrowUp" className="w-5 lg:w-6" /> */}
+      <ArrowUp className="w-5 lg:w-6" />
     </button>
   );
 }
