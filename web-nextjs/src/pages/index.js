@@ -118,6 +118,7 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
             <button
               type="button"
               className="lg:hidden"
+              aria-label='Botão hambúrguer'
               onClick={handleNavMenuChange}
             >
               {navMenuIsOpened ? (
@@ -192,8 +193,9 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
                   <Image
                     src={image?.url}
                     alt={image?.alt}
-                    width={1536}
-                    height={500}
+                    width={0}
+                    height={0}
+                    sizes='100vw'
                     placeholder='blur'
                     blurDataURL={image?.url}
                     className="h-[500px] w-full object-cover object-center"
@@ -267,7 +269,7 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
                   key={project?.id}
                   projectUrl={`projeto/${project?.id}`}
                   imgUrl={project?.images[0]?.url}
-                  imgTitle={project?.images[0]?.alt}
+                  imgAlt={project?.images[0]?.alt}
                   projectTitle={project?.name}
                   projectYear={project?.year}
                 />
