@@ -8,6 +8,9 @@ const nextConfig = {
         hostname: 'www.datocms-assets.com',
       },
     ],
+  },
+  experimental: {
+    scrollRestoration: true
   }
 }
 
