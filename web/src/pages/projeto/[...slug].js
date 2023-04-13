@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
@@ -17,7 +17,8 @@ import "yet-another-react-lightbox/styles.css";
 
 export async function getServerSideProps (context) {
   const { params } = context;
-  const { id } = params;
+  const { slug } = params;
+  const id = slug[0]
 
   const PROJECT_QUERY = `query {
         project(filter: {
@@ -54,6 +55,9 @@ export async function getServerSideProps (context) {
 
 export default function Project ({ projectData }) {
   const [indexImageOpened, setIndexImageOpened] = useState(-1);
+  const router = useRouter()
+
+  const firstProjectImage = projectData?.project?.images[0]?.url !== undefined ? projectData?.project?.images[0]?.url : ''
 
   return (
     <>
@@ -61,14 +65,15 @@ export default function Project ({ projectData }) {
         <title>Studio Amanda Borges | Projeto</title>
         <meta name="theme-color" content="#F4F4F4" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:image" content={`*.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`} />
       </Head>
 
       <div className="bg-white-white2">
         <header>
           <div className="container mx-auto h-[120px] px-6 flex justify-start items-center">
-            <Link href="/" scroll={false} className="p-[2px] text-black">
+            <button onClick={() => router.back()} className="p-[2px] text-black" aria-label="Navegar para a página Home">
               <ArrowBack className="w-11 h-auto" />
-            </Link>
+            </button>
           </div>
         </header>
 
@@ -185,6 +190,7 @@ export default function Project ({ projectData }) {
                   blurDataURL={projectImage?.url}
                   className="rounded-[5px] aspect-square object-cover object-center cursor-pointer"
                   onClick={() => setIndexImageOpened(index)}
+                  tabIndex={index}
                 />
               ))}
             </section>
