@@ -15,10 +15,10 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const { params } = context;
   const { slug } = params;
-  const id = slug[0]
+  const id = slug[0];
 
   const PROJECT_QUERY = `query {
         project(filter: {
@@ -53,11 +53,14 @@ export async function getServerSideProps (context) {
   };
 }
 
-export default function Project ({ projectData }) {
+export default function Project({ projectData }) {
   const [indexImageOpened, setIndexImageOpened] = useState(-1);
-  const router = useRouter()
+  const router = useRouter();
 
-  const firstProjectImage = projectData?.project?.images[0]?.url !== undefined ? projectData?.project?.images[0]?.url : ''
+  const firstProjectImage =
+    projectData?.project?.images[0]?.url !== undefined
+      ? projectData?.project?.images[0]?.url
+      : "";
 
   return (
     <>
@@ -65,13 +68,20 @@ export default function Project ({ projectData }) {
         <title>Studio Amanda Borges | Projeto</title>
         <meta name="theme-color" content="#F4F4F4" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:image" content={`*.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`} />
+        <meta
+          property="og:image"
+          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
+        />
       </Head>
 
       <div className="bg-white-white2">
         <header>
           <div className="container mx-auto h-[120px] px-6 flex justify-start items-center">
-            <button onClick={() => router.back()} className="p-[2px] text-black" aria-label="Navegar para a página Home">
+            <button
+              onClick={() => router.back()}
+              className="p-[2px] text-black"
+              aria-label="Navegar para a página Home"
+            >
               <ArrowBack className="w-11 h-auto" />
             </button>
           </div>
@@ -186,7 +196,7 @@ export default function Project ({ projectData }) {
                   alt={projectImage?.alt}
                   width={348}
                   height={348}
-                  placeholder='blur'
+                  placeholder="blur"
                   blurDataURL={projectImage?.url}
                   className="rounded-[5px] aspect-square object-cover object-center cursor-pointer"
                   onClick={() => setIndexImageOpened(index)}
