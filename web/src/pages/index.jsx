@@ -1,27 +1,27 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { request } from '@/infra/cms/datocms';
+import { request } from "@/infra/cms/datocms";
 
-import { ProjectCard } from '@/components/ProjectCard';
-import { ScrollUpButton } from '@/components/ScrollUpButton';
-import { Email } from '@/components/icons/Email';
-import { Hamburguer } from '@/components/icons/Hamburger';
-import { Instagram } from '@/components/icons/Instagram';
-import { Logo } from '@/components/icons/Logo';
-import { WhatsApp } from '@/components/icons/WhatsApp';
-import { Xmark } from '@/components/icons/Xmark';
+import { ProjectCard } from "@/components/ProjectCard";
+import { ScrollUpButton } from "@/components/ScrollUpButton";
+import { Email } from "@/components/icons/Email";
+import { Hamburguer } from "@/components/icons/Hamburger";
+import { Instagram } from "@/components/icons/Instagram";
+import { Logo } from "@/components/icons/Logo";
+import { WhatsApp } from "@/components/icons/WhatsApp";
+import { Xmark } from "@/components/icons/Xmark";
 
 import "swiper/css/bundle";
 
-export async function getServerSideProps (context) {
-  const { query } = context
-  const { q: projectTypeSearchParam } = query
+export async function getServerSideProps(context) {
+  const { query } = context;
+  const { q: projectTypeSearchParam } = query;
 
   const projectTypeSearchParamcapitalFirstLetter = projectTypeSearchParam
     ?.toLowerCase()
@@ -67,29 +67,29 @@ export async function getServerSideProps (context) {
   }`;
 
   const carouselData = await request({
-    query: CAROUSEL_QUERY
+    query: CAROUSEL_QUERY,
   });
 
   const projectsData = await request({
-    query: PROJECTS_QUERY
+    query: PROJECTS_QUERY,
   });
 
   const aboutData = await request({
-    query: ABOUT_QUERY
+    query: ABOUT_QUERY,
   });
 
   return {
     props: { carouselData, projectsData, aboutData },
-  }
+  };
 }
 
-export default function Home ({ carouselData, projectsData, aboutData }) {
+export default function Home({ carouselData, projectsData, aboutData }) {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
 
-  const { query } = useRouter()
-  const { q: projectTypeSearchParam } = query
+  const { query } = useRouter();
+  const { q: projectTypeSearchParam } = query;
 
-  function handleNavMenuChange () {
+  function handleNavMenuChange() {
     setNavMenuIsOpened(!navMenuIsOpened);
   }
 
@@ -118,13 +118,13 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
             <button
               type="button"
               className="lg:hidden"
-              aria-label='Botão hambúrguer'
+              aria-label="Botão hambúrguer"
               onClick={handleNavMenuChange}
             >
               {navMenuIsOpened ? (
-                <Xmark className="w-12" />
+                <Xmark className="w-12" aria-expanded="true" />
               ) : (
-                <Hamburguer className="w-12" />
+                <Hamburguer className="w-12" aria-expanded="false" />
               )}
             </button>
           </div>
@@ -195,8 +195,8 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
                     alt={image?.alt}
                     width={0}
                     height={0}
-                    sizes='100vw'
-                    placeholder='blur'
+                    sizes="100vw"
+                    placeholder="blur"
                     blurDataURL={image?.url}
                     className="h-[500px] w-full object-cover object-center"
                   />
@@ -217,46 +217,50 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
                 <Link
                   href="/"
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === undefined
-                    ? "font-bold"
-                    : "hover:text-black/50"
-                    }`}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === undefined
+                      ? "font-bold"
+                      : "hover:text-black/50"
+                  }`}
                 >
                   Todos
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/?q=${encodeURIComponent('residencial')}`}
+                  href={`/?q=${encodeURIComponent("residencial")}`}
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === "residencial"
-                    ? "font-bold"
-                    : "hover:text-black/50"
-                    }`}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === "residencial"
+                      ? "font-bold"
+                      : "hover:text-black/50"
+                  }`}
                 >
                   Residencial
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/?q=${encodeURIComponent('comercial')}`}
+                  href={`/?q=${encodeURIComponent("comercial")}`}
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === "comercial"
-                    ? "font-bold"
-                    : "hover:text-black/50"
-                    }`}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === "comercial"
+                      ? "font-bold"
+                      : "hover:text-black/50"
+                  }`}
                 >
                   Comercial
                 </Link>
               </li>
               <li>
                 <Link
-                  href={`/?q=${encodeURIComponent('interiores')}`}
+                  href={`/?q=${encodeURIComponent("interiores")}`}
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${projectTypeSearchParam === "interiores"
-                    ? "font-bold"
-                    : "hover:text-black/50"
-                    }`}
+                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                    projectTypeSearchParam === "interiores"
+                      ? "font-bold"
+                      : "hover:text-black/50"
+                  }`}
                 >
                   Interiores
                 </Link>
@@ -267,14 +271,15 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
               {projectsData?.allProjects?.map((project) => (
                 <ProjectCard
                   key={project?.id}
-                  projectUrl={`projeto/${project?.id}/${project.name.toLowerCase().replace(/ /g, '-')}`}
+                  projectUrl={`projeto/${project?.id}/${project.name
+                    .toLowerCase()
+                    .replace(/ /g, "-")}`}
                   imgUrl={project?.images[0]?.url}
                   imgAlt={project?.images[0]?.alt}
                   projectTitle={project?.name}
                   projectYear={project?.year}
                 />
-              ))
-              }
+              ))}
             </div>
           </div>
         </section>
@@ -292,7 +297,7 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
                   alt={aboutData?.about?.image?.alt}
                   width={312}
                   height={392}
-                  placeholder='blur'
+                  placeholder="blur"
                   blurDataURL={aboutData?.about?.image?.url}
                   className="rounded-[5px]"
                 />
@@ -349,5 +354,5 @@ export default function Home ({ carouselData, projectsData, aboutData }) {
 
       <ScrollUpButton />
     </>
-  )
+  );
 }
