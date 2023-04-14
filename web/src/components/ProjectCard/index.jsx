@@ -17,7 +17,7 @@ export function ProjectCard({
         height={351}
         placeholder="blur"
         blurDataURL={imgUrl}
-        className={`aspect-square rounded-[5px] object-center object-cover`}
+        className="aspect-square rounded-[5px] object-center object-cover"
       />
 
       <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900 absolute bottom-0">
