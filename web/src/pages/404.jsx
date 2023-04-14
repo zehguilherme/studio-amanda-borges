@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PageNotFound } from "@/components/icons/PageNotFound";
 
-export default function NotFound () {
+export default function NotFound() {
   return (
     <>
       <Head>
