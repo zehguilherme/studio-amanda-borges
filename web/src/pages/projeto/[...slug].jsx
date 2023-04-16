@@ -65,7 +65,12 @@ export default function Project({ projectData }) {
   return (
     <>
       <Head>
-        <title>Studio Amanda Borges | Projeto</title>
+        <title>Studio Amanda Borges | {projectData?.project?.name}</title>
+        <meta name="title" content={`${projectData?.project?.name}`} />
+        <meta
+          name="description"
+          content={`${projectData?.project?.description}`}
+        />
         <meta name="theme-color" content="#F4F4F4" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
