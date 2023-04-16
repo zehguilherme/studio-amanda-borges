@@ -66,15 +66,41 @@ export default function Project({ projectData }) {
     <>
       <Head>
         <title>Studio Amanda Borges | {projectData?.project?.name}</title>
-        <meta name="title" content={`${projectData?.project?.name}`} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#F4F4F4" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content={`${projectData?.project?.name}`} />
         <meta
-          name="description"
+          property="og:description"
           content={`${projectData?.project?.description}`}
         />
-        <meta name="theme-color" content="#F4F4F4" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           property="og:image"
+          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
+        />
+
+        {/* WhatsApp */}
+        <meta
+          property="og:image:secure_url"
+          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="526" />
+        <meta property="og:image:height" content="275" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:title"
+          content={`${projectData?.project?.name}`}
+        />
+        <meta
+          property="twitter:description"
+          content={`${projectData?.project?.description}`}
+        />
+        <meta
+          property="twitter:image"
           content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
         />
       </Head>
