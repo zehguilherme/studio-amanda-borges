@@ -2,7 +2,7 @@ import { GraphQLClient } from "graphql-request";
 
 export function request ({ query, variables }) {
     const headers = {
-        authorization: `Bearer ${process.env.VITE_API_TOKEN}`,
+        authorization: `Bearer ${process.env.DATOCMS_TOKEN}`,
         'X-Include-Drafts': 'true'
     };
 
