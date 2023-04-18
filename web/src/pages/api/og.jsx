@@ -14,8 +14,8 @@ export default function handler(request) {
       <div
         style={{
           backgroundImage: `url('${projectImage}')`,
-          objectPosition: "center",
-          objectFit: "cover",
+          backgroundSize: "526px 275px",
+          backgroundPosition: "center",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -34,9 +34,25 @@ export default function handler(request) {
               "linear-gradient(0deg, rgba(17,24,39,1) 0%, rgba(17,24,39,0) 100%, rgba(0,212,255,1) 100%)",
           }}
         >
-          <h1 style={{ color: "white", fontSize: 35 }}>{projectName}</h1>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 35,
+              textShadow: "1px 2px 5px #000000",
+            }}
+          >
+            {projectName}
+          </h1>
 
-          <h2 style={{ color: "white", fontSize: 25 }}>{projectYear}</h2>
+          <h2
+            style={{
+              color: "white",
+              fontSize: 25,
+              textShadow: "1px 2px 5px #000000",
+            }}
+          >
+            {projectYear}
+          </h2>
         </div>
       </div>
     ),
