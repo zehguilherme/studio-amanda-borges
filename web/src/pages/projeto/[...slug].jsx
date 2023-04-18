@@ -96,11 +96,11 @@ export default function Project({ projectData }) {
         {/* URL */}
         <meta
           property="og:url"
-          content="https://studioamandaborges.vercel.app/"
+          content="https://studioamandaborges.vercel.app"
         />
         <meta
           property="twitter:url"
-          content="https://studioamandaborges.vercel.app/"
+          content="https://studioamandaborges.vercel.app"
         />
 
         {/* Image */}
@@ -116,9 +116,8 @@ export default function Project({ projectData }) {
         />
         <meta property="og:image:width" content="526" />
         <meta property="og:image:height" content="275" />
-        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:type" content="website" />
-        <meta property="og:updated_time" content="1440432930" />
 
         {/* Favicon */}
         <link
