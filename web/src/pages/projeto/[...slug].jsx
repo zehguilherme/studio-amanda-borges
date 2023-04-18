@@ -65,43 +65,78 @@ export default function Project({ projectData }) {
   return (
     <>
       <Head>
-        <title>Studio Amanda Borges | {projectData?.project?.name}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#F4F4F4" />
 
-        {/* Open Graph / Facebook */}
-        <meta property="og:title" content={`${projectData?.project?.name}`} />
+        {/* Title */}
+        <title>Studio Amanda Borges | {projectData?.project?.name}</title>
+        <meta
+          name="title"
+          content={`Studio Amanda Borges | ${projectData?.project?.name}`}
+        />
+        <meta
+          property="twitter:title"
+          content={`Studio Amanda Borges | ${projectData?.project?.name}`}
+        />
+
+        {/* Description */}
+        <meta
+          name="description"
+          content={`${projectData?.project?.description}`}
+        />
         <meta
           property="og:description"
           content={`${projectData?.project?.description}`}
         />
         <meta
-          property="og:image"
-          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
-        />
-
-        {/* WhatsApp */}
-        <meta
-          property="og:image:secure_url"
-          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
-        />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="526" />
-        <meta property="og:image:height" content="275" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:title"
-          content={`${projectData?.project?.name}`}
-        />
-        <meta
           property="twitter:description"
           content={`${projectData?.project?.description}`}
         />
+
+        {/* URL */}
+        <meta
+          property="og:url"
+          content="https://studioamandaborges.vercel.app/"
+        />
+        <meta
+          property="twitter:url"
+          content="https://studioamandaborges.vercel.app/"
+        />
+
+        {/* Image */}
         <meta
           property="twitter:image"
           content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="og:image"
+          itemProp="image"
+          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
+        />
+        <meta property="og:image:width" content="526" />
+        <meta property="og:image:height" content="275" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:updated_time" content="1440432930" />
+
+        {/* Favicon */}
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="./public/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="./public/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="./public/favicon-16x16.png"
         />
       </Head>
 
