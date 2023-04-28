@@ -20,7 +20,7 @@ import { Xmark } from "@/components/icons/Xmark";
 import "swiper/css/bundle";
 
 export async function getServerSideProps(context) {
-  const { query } = context;
+  const { query, preview } = context;
   const { q: projectTypeSearchParam } = query;
 
   const projectTypeSearchParamcapitalFirstLetter = projectTypeSearchParam
@@ -68,14 +68,17 @@ export async function getServerSideProps(context) {
 
   const carouselData = await request({
     query: CAROUSEL_QUERY,
+    preview: preview,
   });
 
   const projectsData = await request({
     query: PROJECTS_QUERY,
+    preview: preview,
   });
 
   const aboutData = await request({
     query: ABOUT_QUERY,
+    preview: preview,
   });
 
   return {
@@ -271,9 +274,7 @@ export default function Home({ carouselData, projectsData, aboutData }) {
               {projectsData?.allProjects?.map((project) => (
                 <ProjectCard
                   key={project?.id}
-                  projectUrl={`projeto/${project?.id}/${project.name
-                    .toLowerCase()
-                    .replace(/ /g, "-")}`}
+                  projectUrl={`projeto/${project?.id}`}
                   imgUrl={project?.images[0]?.url}
                   imgAlt={project?.images[0]?.alt}
                   projectTitle={project?.name}
@@ -353,6 +354,10 @@ export default function Home({ carouselData, projectsData, aboutData }) {
       </footer>
 
       <ScrollUpButton />
+
+      {process.env.NODE_ENV !== "production" && (
+        <Link href="/api/preview">Modo de preview</Link>
+      )}
     </>
   );
 }

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
@@ -11,51 +10,61 @@ import { LightboxNextJsImage } from "@/components/LightboxNextJsImage";
 import { ScrollUpButton } from "@/components/ScrollUpButton";
 import { ArrowBack } from "@/components/icons/ArrowBack";
 
+import Link from "next/link";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
 
 export async function getServerSideProps(context) {
-  const { params } = context;
-  const { slug } = params;
-  const id = slug[0];
+  const { params, preview } = context;
+  const { id } = params;
 
-  const PROJECT_QUERY = `query {
-        project(filter: {
-          id: {eq: ${id}}
-        }) {
-          id
-          name
-          images {
-            id
-            url
-            alt
-            width
-            height
-          }
-          projectType
-          description
-          metreage
-          stepPresented
-          usedSoftware
-          place
-          year
-          needsProgram
-        }
-      }`;
+  const PROJECT_QUERY = `{
+    project(filter: {id: {eq: "${id}"}}) {
+      id
+      name
+      images {
+        id
+        url
+        alt
+        width
+        height
+      }
+      projectType
+      description
+      metreage
+      stepPresented
+      usedSoftware
+      place
+      year
+      needsProgram
+    }
+  }`;
 
-  const projectData = await request({
-    query: PROJECT_QUERY,
-  });
+  try {
+    const projectData = await request({
+      query: PROJECT_QUERY,
+      preview: preview,
+    });
 
-  return {
-    props: { projectData },
-  };
+    if (projectData.project === null) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: { projectData },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
 
 export default function Project({ projectData }) {
   const [indexImageOpened, setIndexImageOpened] = useState(-1);
-  const router = useRouter();
 
   const firstProjectImage =
     projectData?.project?.images[0]?.url !== undefined
@@ -142,13 +151,14 @@ export default function Project({ projectData }) {
       <div className="bg-white-white2">
         <header>
           <div className="container mx-auto h-[120px] px-6 flex justify-start items-center">
-            <button
-              onClick={() => router.back()}
+            <Link
+              href="/"
+              scroll={false}
               className="p-[2px] text-black"
               aria-label="Navegar para a página Home"
             >
               <ArrowBack className="w-11 h-auto" />
-            </button>
+            </Link>
           </div>
         </header>
 
@@ -290,6 +300,10 @@ export default function Project({ projectData }) {
       </div>
 
       <ScrollUpButton />
+
+      {process.env.NODE_ENV !== "production" && (
+        <Link href="/api/preview">Modo de preview</Link>
+      )}
     </>
   );
 }
