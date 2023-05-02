@@ -75,6 +75,7 @@ export default function Project({ projectData }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <meta name="theme-color" content="#F4F4F4" />
 
         {/* Title */}
@@ -127,25 +128,6 @@ export default function Project({ projectData }) {
         <meta property="og:image:height" content="275" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:type" content="website" />
-
-        {/* Favicon */}
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="./public/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="./public/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="./public/favicon-16x16.png"
-        />
       </Head>
 
       <div className="bg-white-white2">
