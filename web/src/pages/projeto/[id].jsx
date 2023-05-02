@@ -105,11 +105,11 @@ export default function Project({ projectData }) {
         {/* URL */}
         <meta
           property="og:url"
-          content="https://studioamandaborges.vercel.app"
+          content={`https://studioamandaborges.vercel.app/projeto/${projectData?.project?.id}`}
         />
         <meta
           property="twitter:url"
-          content="https://studioamandaborges.vercel.app"
+          content={`https://studioamandaborges.vercel.app/projeto/${projectData?.project?.id}`}
         />
 
         {/* Image */}
