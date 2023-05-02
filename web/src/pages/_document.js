@@ -7,32 +7,7 @@ export default function Document () {
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
 
-        <meta name="theme-color" content="#B6939A" />
-
         <meta property="og:locale" content="pt_BR" />
-
-        {/* Title */}
-        <meta name="title" content="Studio Amanda Borges" />
-
-        {/* Description */}
-        <meta name="description" content="Meu nome é Amanda Borges! Sou formada em Arquitetura e Urbanismo pela Universidade Paulista na cidade de Bauru/SP e já trabalhei com projetos de
-interiores, comerciais, residenciais e de móveis e expositores."/>
-        <meta
-          property="og:description" content="Meu nome é Amanda Borges! Sou formada em Arquitetura e Urbanismo pela Universidade Paulista na cidade de Bauru/SP e já trabalhei com projetos de
-          interiores, comerciais, residenciais e de móveis e expositores."/>
-        <meta
-          property="twitter:description" content="Meu nome é Amanda Borges! Sou formada em Arquitetura e Urbanismo pela Universidade Paulista na cidade de Bauru/SP e já trabalhei com projetos de
-          interiores, comerciais, residenciais e de móveis e expositores."/>
-
-        {/* URL */}
-        <meta
-          property="og:url"
-          content="https://studioamandaborges.vercel.app"
-        />
-        <meta
-          property="twitter:url"
-          content="https://studioamandaborges.vercel.app"
-        />
 
         {/* Favicon */}
         <link rel="apple-touch-icon" sizes="180x180" href="./public/apple-touch-icon.png" />
