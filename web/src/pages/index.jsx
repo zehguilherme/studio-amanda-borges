@@ -88,6 +88,7 @@ export async function getServerSideProps(context) {
 
 export default function Home({ carouselData, projectsData, aboutData }) {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
+  const noProjectsFound = Object.keys(projectsData?.allProjects).length === 0;
 
   const { query } = useRouter();
   const { q: projectTypeSearchParam } = query;
@@ -319,17 +320,31 @@ interiores, comerciais, residenciais e de móveis e expositores."
               </li>
             </ul>
 
-            <div className="flex flex-col justify-center items-center space-y-7 sm:space-y-0 sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {projectsData?.allProjects?.map((project) => (
-                <ProjectCard
-                  key={project?.id}
-                  projectUrl={`projeto/${project?.id}`}
-                  imgUrl={project?.images[0]?.url}
-                  imgAlt={project?.images[0]?.alt}
-                  projectTitle={project?.name}
-                  projectYear={project?.year}
-                />
-              ))}
+            <div
+              className={`flex flex-col justify-center items-center space-y-7 sm:space-y-0 ${
+                noProjectsFound
+                  ? ""
+                  : "sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              }`}
+            >
+              {noProjectsFound ? (
+                <div className="flex flex-col items-center space-y-10 w-full h-full">
+                  <h3 className="text-black text-xl font-bold text-center">
+                    Nenhum projeto encontrado nessa categoria!
+                  </h3>
+                </div>
+              ) : (
+                projectsData?.allProjects?.map(project => (
+                  <ProjectCard
+                    key={project?.id}
+                    projectUrl={`projeto/${encodeURIComponent(project?.id)}`}
+                    imgUrl={project?.images[0]?.url}
+                    imgAlt={project?.images[0]?.alt}
+                    projectTitle={project?.name}
+                    projectYear={project?.year}
+                  />
+                ))
+              )}
             </div>
           </div>
         </section>
