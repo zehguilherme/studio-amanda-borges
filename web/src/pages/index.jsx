@@ -137,16 +137,9 @@ interiores, comerciais, residenciais e de móveis e expositores."
         />
 
         {/* Image */}
-        <meta
-          property="twitter:image"
-          content="https://www.datocms-assets.com/85603/1678211901-studio_amanda_borges.png"
-        />
+        <meta property="twitter:image" content="/home-og.png" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="og:image"
-          itemProp="image"
-          content="https://www.datocms-assets.com/85603/1678211901-studio_amanda_borges.png"
-        />
+        <meta property="og:image" itemProp="image" content="/home-og.png" />
         <meta property="og:image:width" content="526" />
         <meta property="og:image:height" content="275" />
         <meta property="og:image:type" content="image/png" />
