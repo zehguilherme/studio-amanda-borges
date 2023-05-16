@@ -54,7 +54,7 @@ export default function NotFound() {
           itemProp="image"
           content="/not-found-page.png"
         />
-        <meta property="og:image:width" content="526" />
+        <meta property="og:image:width" content="414" />
         <meta property="og:image:height" content="275" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:type" content="website" />
