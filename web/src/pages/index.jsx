@@ -105,9 +105,9 @@ export default function Home({ carouselData, projectsData, aboutData }) {
         <meta name="theme-color" content="#B6939A" />
 
         {/* Title */}
-        <title>Studio Amanda Borges | Home</title>
-        <meta name="title" content="Studio Amanda Borges | Home" />
-        <meta property="twitter:title" content="Studio Amanda Borges | Home" />
+        <title>Studio Amanda Borges</title>
+        <meta name="title" content="Studio Amanda Borges" />
+        <meta property="twitter:title" content="Studio Amanda Borges" />
 
         {/* Description */}
         <meta
