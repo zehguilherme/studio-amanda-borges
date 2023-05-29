@@ -7,8 +7,8 @@
 </h1>
 
 <div align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/zehguilherme/personal-curriculum">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zehguilherme/architecture-portfolio">
+  <img alt="GitHub" src="https://img.shields.io/github/license/zehguilherme/studio-amanda-borges">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zehguilherme/studio-amanda-borges">
 </div>
 
 <br>
