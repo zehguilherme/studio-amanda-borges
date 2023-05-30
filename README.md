@@ -66,7 +66,7 @@ Start the application
 
 ## 📝 License
 
-This project is under the GNU General Public license. See the  [license](LICENSE) for more information.
+This project is under the MIT license. See the [license](LICENSE) for more information.
 
 ---
 

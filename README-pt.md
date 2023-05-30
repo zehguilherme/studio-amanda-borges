@@ -66,7 +66,7 @@ Inicie a aplicação
 
 ## 📝 Licença
 
-Este projeto está sob a licença GNU General Public. Dê uma olhada na [licença](LICENSE) para mais informações.
+Este projeto está sob a licença MIT. Dê uma olhada na [licença](LICENSE) para mais informações.
 
 ---
 
