@@ -7,7 +7,6 @@
 </h1>
 
 <div align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/zehguilherme/studio-amanda-borges">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zehguilherme/studio-amanda-borges">
 </div>
 
@@ -63,10 +62,6 @@ Start the application
 4. Push to the branch: `git push origin my-new-feature`;
 5. Create a new Pull Request;
 6. After the merge of your pull request is done, you can delete your branch.
-
-## 📝 License
-
-This project is under the MIT license. See the [license](LICENSE) for more information.
 
 ---
 
