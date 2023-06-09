@@ -7,7 +7,6 @@
 </h1>
 
 <div align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/zehguilherme/studio-amanda-borges">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zehguilherme/studio-amanda-borges">
 </div>
 
@@ -23,7 +22,7 @@
 
 ### Front-end
 
-- [ReactJS](https://pt-br.reactjs.org/)
+- [NextJS](https://nextjs.org/)
 - [Google Fonts](https://fonts.google.com/)
 - [Swiper](https://swiperjs.com/) - Componente para criação de carrosséis
 - [Yet Another React Lightbox](https://yet-another-react-lightbox.com/) - Componente de visualização de imagens
@@ -63,10 +62,6 @@ Inicie a aplicação
 4. Faça push para o branch: `git push origin minha-nova-feature`;
 5. Crie uma nova Pull Request;
 6. Depois que o merge de sua Pull Request for concluída, você pode excluir sua branch.
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Dê uma olhada na [licença](LICENSE) para mais informações.
 
 ---
 
