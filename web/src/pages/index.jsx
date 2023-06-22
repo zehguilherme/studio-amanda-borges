@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,14 +9,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { request } from "@/infra/cms/datocms";
 
+import { Header } from "@/components/Header";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ScrollUpButton } from "@/components/ScrollUpButton";
 import { Email } from "@/components/icons/Email";
-import { Hamburguer } from "@/components/icons/Hamburger";
 import { Instagram } from "@/components/icons/Instagram";
 import { Logo } from "@/components/icons/Logo";
 import { WhatsApp } from "@/components/icons/WhatsApp";
-import { Xmark } from "@/components/icons/Xmark";
 
 import "swiper/css/bundle";
 
@@ -146,73 +146,10 @@ interiores, comerciais, residenciais e de móveis e expositores."
         <meta property="og:type" content="website" />
       </Head>
 
-      <header className="bg-pink">
-        <div
-          className={
-            navMenuIsOpened
-              ? "pb-6 container mx-auto lg:p-0 lg:flex lg:justify-between lg:items-center"
-              : "container mx-auto lg:p-0 lg:flex lg:justify-between lg:items-center"
-          }
-        >
-          <div className="flex justify-between items-center pr-6 text-white-white1 lg:p-0 lg:flex-none">
-            <h1 className="sr-only">Studio Amanda Borges</h1>
-
-            <Link href="/" aria-label="Navegar para a página Home">
-              <Logo className="w-[150px]" />
-            </Link>
-
-            <button
-              type="button"
-              className="lg:hidden"
-              aria-label="Botão hambúrguer"
-              onClick={handleNavMenuChange}
-            >
-              {navMenuIsOpened ? (
-                <Xmark className="w-12" aria-expanded="true" />
-              ) : (
-                <Hamburguer className="w-12" aria-expanded="false" />
-              )}
-            </button>
-          </div>
-
-          <nav className={navMenuIsOpened ? "block" : "hidden lg:block"}>
-            <ul className="text-white-white1 lg:flex lg:px-6 lg:py-5">
-              <li className="text-lg font-bold">
-                <Link
-                  href="/"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="text-lg font-bold">
-                <a
-                  href="#projetos"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
-                >
-                  Projetos
-                </a>
-              </li>
-              <li className="text-lg font-bold">
-                <a
-                  href="#sobre"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
-                >
-                  Sobre
-                </a>
-              </li>
-              <li className="text-lg font-bold">
-                <a
-                  href="#contato"
-                  className="flex justify-center items-center h-12 lg:h-11 px-6 hover:transition-all duration-100 hover:opacity-50 lg:hover:border-b lg:hover:opacity-100"
-                >
-                  Contato
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header
+        navMenuIsOpened={navMenuIsOpened}
+        handleNavMenuChange={handleNavMenuChange}
+      />
 
       <main aria-label="main-home">
         <section className="bg-white-white2">
