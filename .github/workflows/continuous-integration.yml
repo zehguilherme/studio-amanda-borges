@@ -13,9 +13,9 @@ jobs:
         working-directory: web
         run: "yarn install"
       - name: "Lint"
-        run: "yarn lint"
+        run: "yarn run lint"
       - name: "Lint Fix"
-        run: "yarn lint -- --fix"
+        run: "yarn run lint -- --fix"
   test:
     runs-on: ubuntu-latest
     steps:
@@ -24,4 +24,4 @@ jobs:
         working-directory: web
         run: "yarn install"
       - name: "Test - Jest"
-        run: "yarn test"
+        run: "yarn run test"
