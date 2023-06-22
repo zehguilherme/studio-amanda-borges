@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: "Enter web folder"
+        run: "cd web"
       - name: "Install Dependencies"
         run: "yarn"
       - name: "Lint"
@@ -20,6 +22,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: "Enter web folder"
+        run: "cd web"
       - name: "Install Dependencies"
         run: "yarn"
       - name: "Test - Jest"
