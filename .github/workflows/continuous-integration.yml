@@ -7,17 +7,31 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
-      - name: "Install Dependencies"
-        run: "cd ./web && yarn install"
-      - name: "Lint"
-        run: "yarn lint"
+        name: Setup Node.js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: v18.x
+        name: Install Dependencies
+      - run: |
+          cd ./web
+          yarn
+      - name: Lint
+        run: yarn lint
   test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
-      - name: "Install Dependencies"
-        run: "cd ./web && yarn install"
-      - name: "Test - Jest"
-        run: "yarn test"
+        name: Setup Node.js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: v18.x
+      - name: Install Dependencies
+        run: |
+          cd ./web
+          yarn
+      - name: Test - Jest
+        run: yarn test
