@@ -10,8 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "Install Dependencies"
-        working-directory: web
-        run: "yarn install"
+        run: |
+          cd web
+          yarn install
       - name: "Lint"
         run: "yarn run lint"
       - name: "Lint Fix"
@@ -21,7 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "Install Dependencies"
-        working-directory: web
-        run: "yarn install"
+        run: |
+          cd web
+          yarn install
       - name: "Test - Jest"
         run: "yarn run test"
