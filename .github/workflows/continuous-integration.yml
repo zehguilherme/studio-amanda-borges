@@ -9,29 +9,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        name: Setup Node.js
-      - uses: actions/setup-node@v3
+      - name: Repository Checkout
+        uses: actions/checkout@v3
+      - name: Enter project folder
+        run: cd ./web
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: v18.x
-        name: Install Dependencies
-      - run: |
-          cd ./web
-          yarn
+      - name: Install Dependencies
+        run: yarn
       - name: Lint
         run: yarn lint
+
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        name: Setup Node.js
-      - uses: actions/setup-node@v3
+      - name: Repository Checkout
+        uses: actions/checkout@v3
+      - name: Enter project folder
+        run: cd ./web
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: v18.x
       - name: Install Dependencies
-        run: |
-          cd ./web
-          yarn
+        run: yarn
       - name: Test - Jest
         run: yarn test
