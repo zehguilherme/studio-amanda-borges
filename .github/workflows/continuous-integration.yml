@@ -19,6 +19,8 @@ jobs:
         run: cd ./web
       - name: Install Dependencies
         run: yarn
+      - name: Install Eslint
+        run: yarn eslint
       - name: Lint
         uses: sibiraj-s/action-eslint@v2
 
