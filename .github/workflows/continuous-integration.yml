@@ -12,7 +12,7 @@ jobs:
       - name: Repository Checkout
         uses: actions/checkout@v3
       - name: Enter project folder
-        run: cd ./web && ls -la
+        run: cd ./web
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -20,7 +20,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Lint
-        run: yarn lint
+        run: yarn eslint "./**/*.{jsx,jsx,ts,tsx}"
 
   test:
     runs-on: ubuntu-latest
