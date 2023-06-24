@@ -18,11 +18,9 @@ jobs:
       - name: Enter project folder
         run: cd ./web
       - name: Install Dependencies
-        run: yarn
-      - name: Install Eslint
-        run: yarn eslint
+        run: yarn install
       - name: Lint
-        uses: sibiraj-s/action-eslint@v2
+        uses: yarn lint
 
   test:
     runs-on: ubuntu-latest
@@ -37,6 +35,6 @@ jobs:
       - name: Enter project folder
         run: cd ./web
       - name: Install Dependencies
-        run: yarn
+        run: yarn install
       - name: Test - Jest
         run: yarn test
