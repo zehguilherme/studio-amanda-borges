@@ -12,13 +12,13 @@ jobs:
       - name: Repository Checkout
         uses: actions/checkout@v3
       - name: Enter project folder
-        run: cd ./web
+        run: cd ./web && ls -la
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: v18.x
       - name: Install Dependencies
-        run: yarn install && ls -la
+        run: yarn install
       - name: Lint
         run: yarn lint
 
