@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v3
+      - name: Enter project folder
+        run: cd ./web
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: v18.x
-      - name: Enter project folder
-        run: cd ./web
       - name: Install Dependencies
         run: yarn install && ls -la
       - name: Lint
@@ -28,12 +28,12 @@ jobs:
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v3
+      - name: Enter project folder
+        run: cd ./web
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: v18.x
-      - name: Enter project folder
-        run: cd ./web
       - name: Install Dependencies
         run: yarn install
       - name: Test - Jest
