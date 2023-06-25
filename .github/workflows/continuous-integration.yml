@@ -1,0 +1,43 @@
+name: "[CI] Continuous Integration"
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: v18.x
+      - name: Install Dependencies
+        working-directory: ./web
+        run: yarn install
+      - name: Lint
+        working-directory: ./web
+        run: yarn lint
+      - name: Lint Fix
+        working-directory: ./web
+        run: yarn lint:fix
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: v18.x
+      - name: Install Dependencies
+        working-directory: ./web
+        run: yarn install
+      - name: Test - Jest
+        working-directory: ./web
+        run: yarn test

@@ -24,7 +24,7 @@ export function ScrollUpButton() {
 
   return (
     <button
-      className={`rounded-full text-center p-3 bg-gray-200 hover:bg-gray-200/75 fixed bottom-5 right-4 text-black ${
+      className={`fixed bottom-5 right-4 rounded-full bg-gray-200 p-3 text-center text-black hover:bg-gray-200/75 ${
         visible ? "block" : "hidden"
       }`}
       onClick={() => scrollToTop()}

@@ -5,6 +5,7 @@ export function Logo(props) {
       x="0px"
       y="0px"
       viewBox="0 0 1500 1500"
+      name="logo"
       {...props}
     >
       <path
