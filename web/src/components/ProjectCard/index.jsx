@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,15 +18,15 @@ export function ProjectCard({
         height={351}
         placeholder="blur"
         blurDataURL={imgUrl}
-        className="aspect-square rounded-[5px] object-center object-cover"
+        className="aspect-square rounded-[5px] object-cover object-center"
       />
 
-      <div className="flex flex-col items-start space-y-1 p-6 w-full bg-gradient-to-t from-gray-900 absolute bottom-0">
-        <h3 className="text-white-white1 text-xl font-bold break-all">
+      <div className="absolute bottom-0 flex w-full flex-col items-start space-y-1 bg-gradient-to-t from-gray-900 p-6">
+        <h3 className="break-all text-xl font-bold text-white-white1">
           {projectTitle}
         </h3>
 
-        <span className="text-white-white1 text-base">{projectYear}</span>
+        <span className="text-base text-white-white1">{projectYear}</span>
       </div>
     </Link>
   );

@@ -1,14 +1,14 @@
 import { GraphQLClient } from "graphql-request";
 
-const BASE_ENDPOINT = 'https://graphql.datocms.com'
-const PREVIEW_ENDPOINT = 'https://graphql.datocms.com/preview'
+const BASE_ENDPOINT = "https://graphql.datocms.com";
+const PREVIEW_ENDPOINT = "https://graphql.datocms.com/preview";
 
-export function request ({ query, variables, preview }) {
+export function request({ query, variables, preview }) {
   const headers = {
     authorization: `Bearer ${process.env.DATOCMS_TOKEN}`,
   };
 
-  const ENDPOINT = preview ? PREVIEW_ENDPOINT : BASE_ENDPOINT
+  const ENDPOINT = preview ? PREVIEW_ENDPOINT : BASE_ENDPOINT;
 
   const client = new GraphQLClient(ENDPOINT, { headers });
 

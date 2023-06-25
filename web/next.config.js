@@ -4,14 +4,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'www.datocms-assets.com',
+        protocol: "https",
+        hostname: "www.datocms-assets.com",
       },
     ],
   },
   experimental: {
-    scrollRestoration: true
-  }
-}
+    scrollRestoration: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -61,19 +61,19 @@ export default function NotFound() {
       </Head>
 
       <main
-        className="bg-white-white2 h-screen w-screen flex justify-center items-center p-6"
+        className="flex h-screen w-screen items-center justify-center bg-white-white2 p-6"
         aria-label="main-not-found-page"
       >
-        <div className="flex flex-col justify-evenly items-center h-full w-full">
+        <div className="flex h-full w-full flex-col items-center justify-evenly">
           <PageNotFound className="max-w-[600px]" />
 
-          <h1 className="text-4xl text-black text-center">
+          <h1 className="text-center text-4xl text-black">
             Página não encontrada!
           </h1>
 
           <Link
             href="/"
-            className="text-base bg-green hover:brightness-95 text-white-white1 p-5 rounded-[5px]"
+            className="rounded-[5px] bg-green p-5 text-base text-white-white1 hover:brightness-95"
             aria-label="Navegar para a página Home"
           >
             Voltar para Home

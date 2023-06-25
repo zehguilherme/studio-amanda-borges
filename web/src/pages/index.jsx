@@ -23,15 +23,15 @@ export async function getServerSideProps(context) {
   const { query, preview } = context;
   const { q: projectTypeSearchParam } = query;
 
-  const projectTypeSearchParamcapitalFirstLetter = projectTypeSearchParam
+  const projectTypeSearchParamCapitalFirstLetter = projectTypeSearchParam
     ?.toLowerCase()
     .replace(/\b\w/g, (s) => s.toUpperCase());
 
   const filter =
-    projectTypeSearchParamcapitalFirstLetter === undefined
+    projectTypeSearchParamCapitalFirstLetter === undefined
       ? ""
       : `, filter: {
-      projectType: { eq: ${projectTypeSearchParamcapitalFirstLetter} }
+      projectType: { eq: ${projectTypeSearchParamCapitalFirstLetter} }
     }`;
 
   const CAROUSEL_QUERY = `query {
@@ -190,17 +190,17 @@ interiores, comerciais, residenciais e de móveis e expositores."
         </section>
 
         <section className="bg-white-white2">
-          <div className="container mx-auto p-6 space-y-6 lg:py-8 lg:space-y-5">
+          <div className="container mx-auto space-y-6 p-6 lg:space-y-5 lg:py-8">
             <h2 className="text-3xl font-bold" id="projetos">
               Projetos
             </h2>
 
-            <ul className="lg:flex justify-center">
+            <ul className="justify-center lg:flex">
               <li>
                 <Link
                   href="/"
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                  className={`flex h-12 items-center justify-center text-2xl lg:lg:h-11 lg:p-[14px] ${
                     projectTypeSearchParam === undefined
                       ? "font-bold"
                       : "hover:text-black/50"
@@ -213,7 +213,7 @@ interiores, comerciais, residenciais e de móveis e expositores."
                 <Link
                   href={`/?q=${encodeURIComponent("residencial")}`}
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                  className={`flex h-12 items-center justify-center text-2xl lg:lg:h-11 lg:p-[14px] ${
                     projectTypeSearchParam === "residencial"
                       ? "font-bold"
                       : "hover:text-black/50"
@@ -226,7 +226,7 @@ interiores, comerciais, residenciais e de móveis e expositores."
                 <Link
                   href={`/?q=${encodeURIComponent("comercial")}`}
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                  className={`flex h-12 items-center justify-center text-2xl lg:lg:h-11 lg:p-[14px] ${
                     projectTypeSearchParam === "comercial"
                       ? "font-bold"
                       : "hover:text-black/50"
@@ -239,7 +239,7 @@ interiores, comerciais, residenciais e de móveis e expositores."
                 <Link
                   href={`/?q=${encodeURIComponent("interiores")}`}
                   scroll={false}
-                  className={`flex justify-center items-center h-12 text-2xl lg:lg:h-11 lg:p-[14px] ${
+                  className={`flex h-12 items-center justify-center text-2xl lg:lg:h-11 lg:p-[14px] ${
                     projectTypeSearchParam === "interiores"
                       ? "font-bold"
                       : "hover:text-black/50"
@@ -251,20 +251,20 @@ interiores, comerciais, residenciais e de móveis e expositores."
             </ul>
 
             <div
-              className={`flex flex-col justify-center items-center space-y-7 sm:space-y-0 ${
+              className={`flex flex-col items-center justify-center space-y-7 sm:space-y-0 ${
                 noProjectsFound
                   ? ""
-                  : "sm:grid sm:gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                  : "sm:grid sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 xl:grid-cols-4"
               }`}
             >
               {noProjectsFound ? (
-                <div className="flex flex-col items-center space-y-10 w-full h-full">
-                  <h3 className="text-black text-xl font-bold text-center">
+                <div className="flex h-full w-full flex-col items-center space-y-10">
+                  <h3 className="text-center text-xl font-bold text-black">
                     Nenhum projeto encontrado nessa categoria!
                   </h3>
                 </div>
               ) : (
-                projectsData?.allProjects?.map(project => (
+                projectsData?.allProjects?.map((project) => (
                   <ProjectCard
                     key={project?.id}
                     projectUrl={`projeto/${encodeURIComponent(project?.id)}`}
@@ -280,13 +280,13 @@ interiores, comerciais, residenciais e de móveis e expositores."
         </section>
 
         <section className="bg-green">
-          <div className="container mx-auto p-6 space-y-6 lg:py-5">
+          <div className="container mx-auto space-y-6 p-6 lg:py-5">
             <h2 className="text-3xl font-bold text-white-white1" id="sobre">
               Sobre
             </h2>
 
             {
-              <div className="py-5 space-y-8 flex flex-col items-center lg:flex-row lg:justify-center lg:items-start lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
+              <div className="flex flex-col items-center space-y-8 py-5 lg:flex-row lg:items-start lg:justify-center lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
                 <Image
                   src={aboutData?.about?.image?.url}
                   alt={aboutData?.about?.image?.alt}
@@ -297,7 +297,7 @@ interiores, comerciais, residenciais e de móveis e expositores."
                   className="rounded-[5px]"
                 />
 
-                <p className="text-base text-white-white1 max-w-[395px] whitespace-pre-wrap">
+                <p className="max-w-[395px] whitespace-pre-wrap text-base text-white-white1">
                   {aboutData?.about?.text}
                 </p>
               </div>
