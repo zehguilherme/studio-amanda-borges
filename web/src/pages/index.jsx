@@ -110,21 +110,9 @@ export default function Home({ carouselData, projectsData, aboutData }) {
         <meta property="twitter:title" content="Studio Amanda Borges" />
 
         {/* Description */}
-        <meta
-          name="description"
-          content="Meu nome é Amanda Borges! Sou formada em Arquitetura e Urbanismo pela Universidade Paulista na cidade de Bauru/SP e já trabalhei com projetos de
-interiores, comerciais, residenciais e de móveis e expositores."
-        />
-        <meta
-          property="og:description"
-          content="Meu nome é Amanda Borges! Sou formada em Arquitetura e Urbanismo pela Universidade Paulista na cidade de Bauru/SP e já trabalhei com projetos de
-          interiores, comerciais, residenciais e de móveis e expositores."
-        />
-        <meta
-          property="twitter:description"
-          content="Meu nome é Amanda Borges! Sou formada em Arquitetura e Urbanismo pela Universidade Paulista na cidade de Bauru/SP e já trabalhei com projetos de
-          interiores, comerciais, residenciais e de móveis e expositores."
-        />
+        <meta name="description" content={aboutData?.about?.text} />
+        <meta property="og:description" content={aboutData?.about?.text} />
+        <meta property="twitter:description" content={aboutData?.about?.text} />
 
         {/* URL */}
         <meta
