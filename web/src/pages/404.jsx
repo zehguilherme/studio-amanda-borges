@@ -47,17 +47,6 @@ export default function NotFound() {
         />
 
         {/* Image */}
-        <meta property="twitter:image" content="/not-found-page.png" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="og:image"
-          itemProp="image"
-          content="/not-found-page.png"
-        />
-        <meta property="og:image:width" content="414" />
-        <meta property="og:image:height" content="275" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:type" content="website" />
       </Head>
 
       <main
