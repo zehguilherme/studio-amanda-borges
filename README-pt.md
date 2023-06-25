@@ -52,7 +52,7 @@ Inicie a aplicação
 
 1. `cd web`
 2. `yarn` ou `npm install`
-3. `yarn start` ou `npm run start`
+3. `yarn dev` ou `npm run dev`
 
 ## 🤔 Como contribuir
 
