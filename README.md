@@ -7,7 +7,9 @@
 </h1>
 
 <div align="center">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/zehguilherme/studio-amanda-borges">
+
+  ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/zehguilherme/studio-amanda-borges/continuous-integration.yml)
+
 </div>
 
 <br>
