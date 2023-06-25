@@ -21,6 +21,9 @@ jobs:
       - name: Lint
         working-directory: ./web
         run: yarn lint
+      - name: Lint Fix
+        working-directory: ./web
+        run: yarn lint:fix
 
   test:
     runs-on: ubuntu-latest
