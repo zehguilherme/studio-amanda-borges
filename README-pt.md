@@ -29,6 +29,8 @@
 - [Swiper](https://swiperjs.com/) - Componente para criação de carrosséis
 - [Yet Another React Lightbox](https://yet-another-react-lightbox.com/) - Componente de visualização de imagens
 - [TailwindCSS](https://tailwindcss.com/)
+- [Jest](https://jestjs.io/) - Testes
+- [Testing Library](https://testing-library.com/) - Testes
 
 #### Layout
 
