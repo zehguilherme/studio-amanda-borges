@@ -29,6 +29,8 @@
 - [Swiper](https://swiperjs.com/) - Component for creating carousels
 - [Yet Another React Lightbox](https://yet-another-react-lightbox.com/) - Image preview component
 - [TailwindCSS](https://tailwindcss.com/)
+- [Jest](https://jestjs.io/) - Tests
+- [Testing Library](https://testing-library.com/) - Tests
 
 #### Layout
 
