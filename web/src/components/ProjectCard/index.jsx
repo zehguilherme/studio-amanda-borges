@@ -16,8 +16,6 @@ export function ProjectCard({
         alt={imgAlt}
         width={351}
         height={351}
-        placeholder="blur"
-        blurDataURL={imgUrl}
         className="aspect-square rounded-[5px] object-cover object-center"
       />
 
