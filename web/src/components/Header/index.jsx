@@ -32,9 +32,9 @@ export function Header({ navMenuIsOpened, handleNavMenuChange }) {
             onClick={handleNavMenuChange}
           >
             {navMenuIsOpened ? (
-              <Xmark className="w-12" aria-expanded="true" />
+              <Xmark className="w-12" />
             ) : (
-              <Hamburguer className="w-12" aria-expanded="false" />
+              <Hamburguer className="w-12" />
             )}
           </button>
         </div>
