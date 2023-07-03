@@ -3,12 +3,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { request } from "@/infra/cms/datocms";
 
+import { About } from "@/components/About";
 import { Header } from "@/components/Header";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ScrollUpButton } from "@/components/ScrollUpButton";
@@ -88,7 +89,18 @@ export async function getServerSideProps(context) {
 
 export default function Home({ carouselData, projectsData, aboutData }) {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false);
-  const noProjectsFound = Object.keys(projectsData?.allProjects).length === 0;
+  const [carouselImagesProjects, setCarouselImagesProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [about, setAbout] = useState({
+    image: {
+      url: "",
+      alt: "",
+    },
+    text: "",
+  });
+
+  const noProjectsFound = projects.length === 0;
+  const noProjectImagesFoundOnCarousel = carouselImagesProjects === undefined;
 
   const { query } = useRouter();
   const { q: projectTypeSearchParam } = query;
@@ -96,6 +108,22 @@ export default function Home({ carouselData, projectsData, aboutData }) {
   function handleNavMenuChange() {
     setNavMenuIsOpened(!navMenuIsOpened);
   }
+
+  useEffect(() => {
+    setCarouselImagesProjects(carouselData?.carousel?.images);
+    setAbout({
+      ...about,
+      image: {
+        url: aboutData?.about?.image?.url,
+        alt: aboutData?.about?.image?.alt,
+      },
+      text: aboutData?.about?.text,
+    });
+  }, []);
+
+  useEffect(() => {
+    setProjects(projectsData?.allProjects);
+  }, [projects, projectTypeSearchParam]);
 
   return (
     <>
@@ -148,38 +176,40 @@ export default function Home({ carouselData, projectsData, aboutData }) {
       <main aria-label="main-home">
         <section className="bg-white-white2">
           <div className="container mx-auto">
-            <Swiper
-              modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
-              centeredSlides={true}
-              autoHeight={true}
-              setWrapperSize={true}
-              roundLengths={true}
-              navigation={true}
-              pagination={{ clickable: true }}
-              keyboard={{ enabled: true, onlyInViewport: true }}
-              a11y={{
-                enabled: true,
-                prevSlideMessage: "Slide anterior",
-                nextSlideMessage: "Próximo slide",
-              }}
-              loop={true}
-              autoplay={{ disableOnInteraction: false }}
-            >
-              {carouselData?.carousel?.images?.map((image) => (
-                <SwiperSlide key={image?.id}>
-                  <Image
-                    src={image?.url}
-                    alt={image?.alt}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    placeholder="blur"
-                    blurDataURL={image?.url}
-                    className="h-[500px] w-full object-cover object-center"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {noProjectImagesFoundOnCarousel ? (
+              <></>
+            ) : (
+              <Swiper
+                modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
+                centeredSlides={true}
+                autoHeight={true}
+                setWrapperSize={true}
+                roundLengths={true}
+                navigation={true}
+                pagination={{ clickable: true }}
+                keyboard={{ enabled: true, onlyInViewport: true }}
+                a11y={{
+                  enabled: true,
+                  prevSlideMessage: "Slide anterior",
+                  nextSlideMessage: "Próximo slide",
+                }}
+                loop={true}
+                autoplay={{ disableOnInteraction: false }}
+              >
+                {carouselImagesProjects.map((image) => (
+                  <SwiperSlide key={image?.id}>
+                    <Image
+                      src={image?.url}
+                      alt={image?.alt}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="h-[500px] w-full object-cover object-center"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
           </div>
         </section>
 
@@ -258,7 +288,7 @@ export default function Home({ carouselData, projectsData, aboutData }) {
                   </h3>
                 </div>
               ) : (
-                projectsData?.allProjects?.map((project) => (
+                projects.map((project) => (
                   <ProjectCard
                     key={project?.id}
                     projectUrl={`projeto/${encodeURIComponent(project?.id)}`}
@@ -274,29 +304,11 @@ export default function Home({ carouselData, projectsData, aboutData }) {
         </section>
 
         <section className="bg-green">
-          <div className="container mx-auto space-y-6 p-6 lg:py-5">
-            <h2 className="text-3xl font-bold text-white-white1" id="sobre">
-              Sobre
-            </h2>
-
-            {
-              <div className="flex flex-col items-center space-y-8 py-5 lg:flex-row lg:items-start lg:justify-center lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
-                <Image
-                  src={aboutData?.about?.image?.url}
-                  alt={aboutData?.about?.image?.alt}
-                  width={312}
-                  height={392}
-                  placeholder="blur"
-                  blurDataURL={aboutData?.about?.image?.url}
-                  className="rounded-[5px]"
-                />
-
-                <p className="max-w-[395px] whitespace-pre-wrap text-base text-white-white1">
-                  {aboutData?.about?.text}
-                </p>
-              </div>
-            }
-          </div>
+          <About
+            imageUrl={about?.image?.url}
+            imageAltText={about?.image?.alt}
+            description={about?.text}
+          />
         </section>
       </main>
 

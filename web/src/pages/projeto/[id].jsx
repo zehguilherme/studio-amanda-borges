@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
 
@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
   const { params, preview } = context;
   const { id } = params;
 
-  const PROJECT_QUERY = `{
+  const PROJECT_QUERY = `query {
     project(filter: {id: {eq: "${id}"}}) {
       id
       name
@@ -66,11 +66,36 @@ export async function getServerSideProps(context) {
 
 export default function Project({ projectData }) {
   const [indexImageOpened, setIndexImageOpened] = useState(-1);
+  const [project, setProject] = useState({
+    id: "",
+    name: "",
+    images: [
+      {
+        id: "",
+        url: "",
+        alt: "",
+        width: 0,
+        height: 0,
+      },
+    ],
+    projectType: "",
+    description: "",
+    metreage: 0,
+    stepPresented: [""],
+    usedSoftware: [""],
+    place: "",
+    year: 0,
+    needsProgram: "",
+  });
 
   const firstProjectImage =
     projectData?.project?.images[0]?.url !== undefined
       ? projectData?.project?.images[0]?.url
       : "";
+
+  useEffect(() => {
+    setProject(projectData?.project);
+  }, []);
 
   return (
     <>
@@ -147,7 +172,7 @@ export default function Project({ projectData }) {
 
         <main className="container mx-auto" aria-label="main-project">
           <h1 className="break-words px-6 text-4xl font-bold text-black">
-            {projectData?.project?.name}
+            {project?.name}
           </h1>
 
           <div className="xl:flex xl:items-start xl:space-x-[55px] xl:space-x-reverse xl:px-6 xl:py-8">
@@ -158,7 +183,7 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="text-base text-black xl:w-full">
-                  {projectData?.project?.projectType}
+                  {project?.projectType}
                 </p>
               </div>
 
@@ -168,7 +193,7 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="whitespace-pre-line text-base text-black sm:whitespace-normal xl:w-full">
-                  {projectData?.project?.description}
+                  {project?.description}
                 </p>
               </div>
 
@@ -178,8 +203,7 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="text-base text-black xl:w-full">
-                  {projectData?.project?.metreage.toString().replace(".", ",") +
-                    " m²"}
+                  {project?.metreage?.toString().replace(".", ",") + " m²"}
                 </p>
               </div>
 
@@ -189,7 +213,7 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="space-x-5 xl:w-full">
-                  {projectData?.project?.stepPresented?.map((stepPresented) => (
+                  {project?.stepPresented?.map((stepPresented) => (
                     <span
                       key={stepPresented}
                       className="inline-block text-base text-black"
@@ -206,7 +230,7 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="space-x-5 xl:w-full">
-                  {projectData?.project?.usedSoftware?.map((software) => (
+                  {project.usedSoftware?.map((software) => (
                     <span
                       key={software}
                       className="inline-block text-base text-black"
@@ -223,7 +247,7 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="text-base text-black xl:w-full">
-                  {projectData?.project?.place}
+                  {project?.place}
                 </p>
               </div>
 
@@ -231,7 +255,7 @@ export default function Project({ projectData }) {
                 <h2 className="text-3xl font-bold text-black xl:w-full">Ano</h2>
 
                 <p className="text-base text-black xl:w-full">
-                  {projectData?.project?.year}
+                  {project?.year}
                 </p>
               </div>
 
@@ -241,26 +265,28 @@ export default function Project({ projectData }) {
                 </h2>
 
                 <p className="text-base text-black xl:w-full">
-                  {projectData?.project?.needsProgram}
+                  {project?.needsProgram}
                 </p>
               </div>
             </section>
 
             <section className="flex flex-col items-center justify-center space-y-8 px-6 pb-6 sm:grid sm:grid-cols-2 sm:gap-5 sm:space-y-0 md:grid-cols-3 xl:order-1 xl:w-1/2 xl:grid-cols-2 xl:p-0">
-              {projectData?.project?.images?.map((projectImage, index) => (
-                <Image
-                  key={projectImage?.id}
-                  src={projectImage?.url}
-                  alt={projectImage?.alt}
-                  width={348}
-                  height={348}
-                  placeholder="blur"
-                  blurDataURL={projectImage?.url}
-                  className="aspect-square cursor-pointer rounded-[5px] object-cover object-center"
-                  onClick={() => setIndexImageOpened(index)}
-                  tabIndex={index}
-                />
-              ))}
+              {project?.images?.map(
+                (projectImage, index) =>
+                  projectImage &&
+                  index && (
+                    <Image
+                      key={projectImage?.id}
+                      src={projectImage?.url}
+                      alt={projectImage?.alt}
+                      width={348}
+                      height={348}
+                      className="aspect-square cursor-pointer rounded-[5px] object-cover object-center"
+                      onClick={() => setIndexImageOpened(index)}
+                      tabIndex={index}
+                    />
+                  )
+              )}
             </section>
           </div>
         </main>
