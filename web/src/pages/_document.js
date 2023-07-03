@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Head, Html, Main, NextScript } from "next/document";
 
-export default function Document() {
+export default function Document () {
   return (
     <Html lang="pt-BR">
       <Head>
