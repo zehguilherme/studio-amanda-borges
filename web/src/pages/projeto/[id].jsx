@@ -273,8 +273,9 @@ export default function Project({ projectData }) {
             <section className="flex flex-col items-center justify-center space-y-8 px-6 pb-6 sm:grid sm:grid-cols-2 sm:gap-5 sm:space-y-0 md:grid-cols-3 xl:order-1 xl:w-1/2 xl:grid-cols-2 xl:p-0">
               {project?.images?.map(
                 (projectImage, index) =>
-                  projectImage &&
-                  index && (
+                  projectImage?.id &&
+                  projectImage?.url &&
+                  projectImage?.alt && (
                     <Image
                       key={projectImage?.id}
                       src={projectImage?.url}
