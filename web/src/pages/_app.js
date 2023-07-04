@@ -9,9 +9,9 @@ const cairo = Cairo({ subsets: ["latin"] });
 
 export default function App ({ Component, pageProps }) {
   return (
-    <main className={cairo.className}>
+    <div className={cairo.className}>
       <Component {...pageProps} />
       <Analytics />
-    </main>
+    </div>
   );
 }
