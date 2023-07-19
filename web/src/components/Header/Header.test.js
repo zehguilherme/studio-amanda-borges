@@ -23,10 +23,10 @@ describe("Header component", () => {
     expect(homeLink).toBeInTheDocument();
   });
 
-  it("should render a logo svg", () => {
-    const { container } = render(<Logo />);
+  it("should render the site logo", () => {
+    const { container: logoHtmlElement } = render(<Logo />);
 
-    const logoElement = container.querySelector("svg");
+    const logoElement = logoHtmlElement.querySelector("svg");
     expect(logoElement).toHaveAttribute("name", "logo");
     expect(logoElement).toBeVisible();
     expect(logoElement).toBeInTheDocument();

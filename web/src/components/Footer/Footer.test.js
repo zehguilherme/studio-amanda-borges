@@ -15,7 +15,7 @@ describe("About component", () => {
     expect(homeLink).toBeInTheDocument();
   });
 
-  it("should render a logo svg", () => {
+  it("should render the site logo", () => {
     const { container } = render(<Logo />);
 
     const logoElement = container.querySelector("svg");
