@@ -4,6 +4,7 @@ export function Instagram(props) {
       viewBox="0 0 24 28"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
+      name="instagram"
       {...props}
     >
       <g clipPath="url(#clip0_410_203)">
