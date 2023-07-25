@@ -9,7 +9,7 @@ export function About({ imageUrl, imageAltText, description }) {
       </h2>
 
       <div className="flex flex-col items-center space-y-8 py-5 lg:flex-row lg:items-start lg:justify-center lg:space-x-12 lg:space-y-0 lg:px-6 lg:py-5">
-        {imageUrl && imageAltText && description && (
+        {imageUrl && imageAltText && (
           <Image
             src={imageUrl}
             alt={imageAltText}
