@@ -58,6 +58,13 @@ Start the application
 2. `yarn` or `npm install`
 3. `yarn dev` or `npm run dev`
 
+## ✅ Tests
+
+### Unit tests
+
+1. `cd web`
+2. `yarn test` or `npm test`
+
 ## 🤔 How to contribute
 
 1. Fork the project;
