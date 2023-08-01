@@ -58,6 +58,13 @@ Inicie a aplicação
 2. `yarn` ou `npm install`
 3. `yarn dev` ou `npm run dev`
 
+## ✅ Testes
+
+### Testes unitários
+
+1. `cd web`
+2. `yarn test` ou `npm test`
+
 ## 🤔 Como contribuir
 
 1. Faça um fork do projeto;
