@@ -63,7 +63,7 @@ Inicie a aplicação
 ### Testes unitários
 
 1. `cd web`
-2. `yarn test` ou `npm test`
+2. `yarn test` ou `npm run test`
 
 ## 🤔 Como contribuir
 
