@@ -63,7 +63,7 @@ Start the application
 ### Unit tests
 
 1. `cd web`
-2. `yarn test` or `npm test`
+2. `yarn test` or `npm run test`
 
 ## 🤔 How to contribute
 
