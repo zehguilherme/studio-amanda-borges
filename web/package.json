@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"./**/*.{js,jsx,ts,tsx}\"",
-    "lint:fix": "yarn lint -- --fix",
+    "lint:fix": "yarn lint --fix",
     "test:watch": "jest --watchAll",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.0",

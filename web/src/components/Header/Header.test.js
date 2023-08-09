@@ -6,65 +6,67 @@ import { Hamburguer } from "../icons/Hamburger";
 import { Logo } from "../icons/Logo";
 import { Xmark } from "../icons/Xmark";
 
-describe("Header component", () => {
-  it("should render a h1 title", () => {
-    render(<Header />);
+describe("Home page", () => {
+  describe("Header component", () => {
+    it("should render a h1 title", () => {
+      render(<Header />);
 
-    const header1 = screen.getByText("Studio Amanda Borges");
-    expect(header1).toHaveClass("sr-only");
-    expect(header1).toBeInTheDocument();
-  });
+      const header1 = screen.getByText("Studio Amanda Borges");
+      expect(header1).toHaveClass("sr-only");
+      expect(header1).toBeInTheDocument();
+    });
 
-  it("should render a link to the Home page", () => {
-    render(<Header />);
+    it("should render a link to the Home page", () => {
+      render(<Header />);
 
-    const homeLink = screen.getByLabelText("Navegar para a página Home");
-    expect(homeLink).toHaveAttribute("href", "/");
-    expect(homeLink).toBeInTheDocument();
-  });
+      const homeLink = screen.getByLabelText("Navegar para a página Home");
+      expect(homeLink).toHaveAttribute("href", "/");
+      expect(homeLink).toBeInTheDocument();
+    });
 
-  it("should render the site logo", () => {
-    const { container: logoHtmlElement } = render(<Logo />);
+    it("should render the site logo", () => {
+      const { container: logoHtmlElement } = render(<Logo />);
 
-    const logoElement = logoHtmlElement.querySelector("svg");
-    expect(logoElement).toHaveAttribute("name", "logo");
-    expect(logoElement).toBeVisible();
-    expect(logoElement).toBeInTheDocument();
-  });
+      const logoElement = logoHtmlElement.querySelector("svg");
+      expect(logoElement).toHaveAttribute("name", "logo");
+      expect(logoElement).toBeVisible();
+      expect(logoElement).toBeInTheDocument();
+    });
 
-  it("should render a button with a X mark icon or Hamburger icon", async () => {
-    const user = userEvent.setup();
+    it("should render a button with a letter X icon if the menu is open or Hamburger icon if the menu closed", async () => {
+      const user = userEvent.setup();
 
-    render(<Header />);
+      render(<Header />);
 
-    const navMenuButton = screen.getByRole("button");
-    expect(navMenuButton).toHaveAttribute("name", "menu-button");
-    expect(navMenuButton).toHaveAttribute("type", "button");
-    expect(navMenuButton).toBeInTheDocument();
+      const navMenuButton = screen.getByRole("button");
+      expect(navMenuButton).toHaveAttribute("name", "menu-button");
+      expect(navMenuButton).toHaveAttribute("type", "button");
+      expect(navMenuButton).toBeInTheDocument();
 
-    await user.click(navMenuButton);
+      await user.click(navMenuButton);
 
-    const { container: hamburger } = render(<Hamburguer />);
-    const hamburgerElement = hamburger.querySelector("svg");
-    expect(hamburgerElement).toHaveAttribute("name", "hamburger");
-    expect(hamburgerElement).toBeVisible();
+      const { container: hamburger } = render(<Hamburguer />);
+      const hamburgerElement = hamburger.querySelector("svg");
+      expect(hamburgerElement).toHaveAttribute("name", "hamburger");
+      expect(hamburgerElement).toBeVisible();
 
-    await user.click(navMenuButton);
+      await user.click(navMenuButton);
 
-    const { container: xMark } = render(<Xmark />);
-    const xMarkElement = xMark.querySelector("svg");
-    expect(xMarkElement).toHaveAttribute("name", "x-mark");
-    expect(xMarkElement).toBeVisible();
-  });
+      const { container: xMark } = render(<Xmark />);
+      const xMarkElement = xMark.querySelector("svg");
+      expect(xMarkElement).toHaveAttribute("name", "x-mark");
+      expect(xMarkElement).toBeVisible();
+    });
 
-  it("should render 4 links with their correctly styles", () => {
-    render(<Header />);
+    it("should render 4 links with their correctly styles", () => {
+      render(<Header />);
 
-    const links = screen.getAllByRole("link");
+      const links = screen.getAllByRole("link");
 
-    links.forEach((link) => {
-      expect(link).toHaveAttribute("href");
-      expect(link).toBeInTheDocument();
+      links.forEach((link) => {
+        expect(link).toHaveAttribute("href");
+        expect(link).toBeInTheDocument();
+      });
     });
   });
 });
