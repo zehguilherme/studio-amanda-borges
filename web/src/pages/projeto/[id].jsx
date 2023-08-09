@@ -9,8 +9,8 @@ import { request } from "@/infra/cms/datocms";
 
 import { LightboxNextJsImage } from "@/components/LightboxNextJsImage";
 import { ScrollUpButton } from "@/components/ScrollUpButton";
-import { ArrowBack } from "@/components/icons/ArrowBack";
 
+import { HeaderProject } from "@/components/HeaderProject";
 import Link from "next/link";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -157,18 +157,7 @@ export default function Project({ projectData }) {
       </Head>
 
       <div className="bg-white-white2">
-        <header>
-          <div className="container mx-auto flex h-[120px] items-center justify-start px-6">
-            <Link
-              href="/"
-              scroll={false}
-              className="p-[2px] text-black"
-              aria-label="Navegar para a página Home"
-            >
-              <ArrowBack className="h-auto w-11" />
-            </Link>
-          </div>
-        </header>
+        <HeaderProject />
 
         <main className="container mx-auto" aria-label="main-project">
           <h1 className="break-words px-6 text-4xl font-bold text-black">
