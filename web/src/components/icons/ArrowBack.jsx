@@ -4,6 +4,7 @@ export function ArrowBack(props) {
       viewBox="0 0 48 48"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
+      name="arrow-back"
       {...props}
     >
       <path
