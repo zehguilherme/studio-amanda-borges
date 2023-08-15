@@ -105,7 +105,7 @@ export default function Project({ projectData }) {
         <meta name="theme-color" content="#F4F4F4" />
 
         {/* Title */}
-        <title>Studio Amanda Borges | {projectData?.project?.name}</title>
+        <title>{`Studio Amanda Borges - ${projectData?.project?.name}`}</title>
         <meta
           name="title"
           content={`Studio Amanda Borges | ${projectData?.project?.name}`}
