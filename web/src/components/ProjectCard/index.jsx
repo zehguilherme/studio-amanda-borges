@@ -16,6 +16,7 @@ export function ProjectCard({
         alt={imgAlt}
         width={351}
         height={351}
+        priority={true}
         className="aspect-square rounded-[5px] object-cover object-center"
       />
 
