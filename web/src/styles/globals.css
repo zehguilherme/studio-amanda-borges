@@ -22,9 +22,17 @@ body::-webkit-scrollbar-thumb {
 
 body .swiper-button-prev,
 body .swiper-button-next {
-  color: #ffffff;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.33);
+  padding: 2rem 1.5rem;
 }
 
 body .swiper-pagination-bullet-active {
   background-color: #ffffff;
+  border: 1px solid #000000;
 }
