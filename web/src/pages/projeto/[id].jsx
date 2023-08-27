@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
@@ -11,6 +10,7 @@ import { LightboxNextJsImage } from "@/components/LightboxNextJsImage";
 import { ScrollUpButton } from "@/components/ScrollUpButton";
 
 import { HeaderProject } from "@/components/HeaderProject";
+import { ProjectInformation } from "@/components/ProjectInformation";
 import Link from "next/link";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -160,125 +160,19 @@ export default function Project({ projectData }) {
         <HeaderProject />
 
         <main className="container mx-auto" aria-label="main-project">
-          <h1 className="break-words px-6 text-4xl font-bold text-black">
-            {project?.name}
-          </h1>
-
-          <div className="xl:flex xl:items-start xl:space-x-[55px] xl:space-x-reverse xl:px-6 xl:py-8">
-            <section className="space-y-5 p-6 xl:order-2 xl:w-1/2 xl:space-y-5 xl:p-0">
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Tipo
-                </h2>
-
-                <p className="text-base text-black xl:w-full">
-                  {project?.projectType}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Descrição
-                </h2>
-
-                <p className="whitespace-pre-line text-base text-black sm:whitespace-normal xl:w-full">
-                  {project?.description}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Metragem
-                </h2>
-
-                <p className="text-base text-black xl:w-full">
-                  {project?.metreage?.toString().replace(".", ",") + " m²"}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Etapa apresentada
-                </h2>
-
-                <p className="space-x-5 xl:w-full">
-                  {project?.stepPresented?.map((stepPresented) => (
-                    <span
-                      key={stepPresented}
-                      className="inline-block text-base text-black"
-                    >
-                      {stepPresented}
-                    </span>
-                  ))}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Softwares usados
-                </h2>
-
-                <p className="space-x-5 xl:w-full">
-                  {project.usedSoftware?.map((software) => (
-                    <span
-                      key={software}
-                      className="inline-block text-base text-black"
-                    >
-                      {software}
-                    </span>
-                  ))}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Local
-                </h2>
-
-                <p className="text-base text-black xl:w-full">
-                  {project?.place}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">Ano</h2>
-
-                <p className="text-base text-black xl:w-full">
-                  {project?.year}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start justify-center space-y-3 xl:flex-row xl:justify-start xl:space-x-7 xl:space-y-0">
-                <h2 className="text-3xl font-bold text-black xl:w-full">
-                  Programa de Necessidades
-                </h2>
-
-                <p className="text-base text-black xl:w-full">
-                  {project?.needsProgram}
-                </p>
-              </div>
-            </section>
-
-            <section className="flex flex-col items-center justify-center space-y-8 px-6 pb-6 sm:grid sm:grid-cols-2 sm:gap-5 sm:space-y-0 md:grid-cols-3 xl:order-1 xl:w-1/2 xl:grid-cols-2 xl:p-0">
-              {project?.images?.map(
-                (projectImage, index) =>
-                  projectImage?.id &&
-                  projectImage?.url &&
-                  projectImage?.alt && (
-                    <Image
-                      key={projectImage?.id}
-                      src={projectImage?.url}
-                      alt={projectImage?.alt}
-                      width={348}
-                      height={348}
-                      className="aspect-square cursor-pointer rounded-[5px] object-cover object-center"
-                      onClick={() => setIndexImageOpened(index)}
-                      tabIndex={index}
-                    />
-                  )
-              )}
-            </section>
-          </div>
+          <ProjectInformation
+            name={project?.name}
+            description={project?.description}
+            type={project?.projectType}
+            meterage={project?.metreage}
+            stepsPresented={project?.stepPresented}
+            usedSoftwares={project?.usedSoftware}
+            place={project?.place}
+            year={project?.year}
+            needsProgram={project?.needsProgram}
+            images={project?.images}
+            setIndexImageOpened={setIndexImageOpened}
+          />
         </main>
 
         <Lightbox
