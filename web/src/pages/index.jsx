@@ -202,6 +202,7 @@ export default function Home({ carouselData, projectsData, aboutData }) {
                       height={0}
                       sizes="100vw"
                       className="h-[500px] w-full object-cover object-center"
+                      placeholder="empty"
                       priority={true}
                     />
                   </SwiperSlide>
