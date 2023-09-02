@@ -4,7 +4,7 @@ import { HeaderProject } from ".";
 import { ArrowBack } from "../icons/ArrowBack";
 
 describe("Project page", () => {
-  describe("Header component", () => {
+  describe("Header project component", () => {
     it("should render a anchor pointing to home page", () => {
       render(<HeaderProject />);
 
