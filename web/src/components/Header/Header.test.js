@@ -58,7 +58,7 @@ describe("Home page", () => {
       expect(xMarkElement).toBeVisible();
     });
 
-    it("should render 4 links with their correctly styles", () => {
+    it("should render 4 links (one for every section)", () => {
       render(<Header />);
 
       const links = screen.getAllByRole("link");
@@ -67,6 +67,28 @@ describe("Home page", () => {
         expect(link).toHaveAttribute("href");
         expect(link).toBeInTheDocument();
       });
+    });
+
+    it("should check if every link adds a anchor to the url when clicked", async () => {
+      const user = userEvent.setup();
+
+      render(<Header />);
+
+      const homeLink = screen.getByText("Home");
+      await user.click(homeLink);
+      expect(homeLink).toHaveAttribute("href", "/");
+
+      const projectsLink = screen.getByText("Projetos");
+      await user.click(projectsLink);
+      expect(projectsLink).toHaveAttribute("href", "#projetos");
+
+      const aboutLink = screen.getByText("Sobre");
+      await user.click(aboutLink);
+      expect(aboutLink).toHaveAttribute("href", "#sobre");
+
+      const contactLink = screen.getByText("Contato");
+      await user.click(contactLink);
+      expect(contactLink).toHaveAttribute("href", "#contato");
     });
   });
 });
