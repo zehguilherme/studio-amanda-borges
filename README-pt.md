@@ -6,12 +6,6 @@
   Studio Amanda Borges
 </h1>
 
-<div align="center">
-
-  ![Status do Workflow do GitHub (com evento)](https://img.shields.io/github/actions/workflow/status/zehguilherme/studio-amanda-borges/continuous-integration.yml)
-
-</div>
-
 <br>
 
 <div align="center">
