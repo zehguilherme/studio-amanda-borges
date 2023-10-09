@@ -10,7 +10,10 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
-  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+  setupFilesAfterEnv: [
+    "@testing-library/jest-dom/extend-expect",
+    "./src/jest.setup.js",
+  ],
 
   testEnvironment: "jest-environment-jsdom",
 };

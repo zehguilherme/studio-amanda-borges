@@ -3,7 +3,8 @@ import { GraphQLClient } from "graphql-request";
 const BASE_ENDPOINT = "https://graphql.datocms.com";
 const PREVIEW_ENDPOINT = "https://graphql.datocms.com/preview";
 
-export function request({ query, variables, preview }) {
+// eslint-disable-next-line prettier/prettier
+export function request ({ query, variables, preview }) {
   const headers = {
     authorization: `Bearer ${process.env.DATOCMS_TOKEN}`,
   };

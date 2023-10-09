@@ -15,6 +15,11 @@ import { ScrollUpButton } from "@/components/ScrollUpButton";
 
 import { Footer } from "@/components/Footer";
 import { Projects } from "@/components/Projects";
+import { GET_ABOUT_DATA } from "@/graphql/aboutQuery";
+import {
+  GET_ALL_CAROUSEL_PROJECTS,
+  GET_ALL_PROJECTS,
+} from "@/graphql/projectQueries";
 import "swiper/css/bundle";
 
 export async function getServerSideProps(context) {
@@ -28,54 +33,22 @@ export async function getServerSideProps(context) {
   const filter =
     projectTypeSearchParamCapitalFirstLetter === undefined
       ? ""
-      : `, filter: {
+      : `filter: {
       projectType: { eq: ${projectTypeSearchParamCapitalFirstLetter} }
     }`;
 
-  const CAROUSEL_QUERY = `query {
-    carousel {
-      images {
-        id,
-        url,
-        alt
-      }
-    }
-  }`;
-
-  const PROJECTS_QUERY = `query {
-    allProjects(orderBy: year_DESC ${filter}) {
-      id,
-      name,
-      year,
-      images {
-        url,
-        alt
-      }
-    }
-  }`;
-
-  const ABOUT_QUERY = `query {
-    about {
-      image {
-        url,
-        alt
-      },
-      text
-    }
-  }`;
-
   const carouselData = await request({
-    query: CAROUSEL_QUERY,
+    query: GET_ALL_CAROUSEL_PROJECTS,
     preview: preview,
   });
 
   const projectsData = await request({
-    query: PROJECTS_QUERY,
+    query: GET_ALL_PROJECTS(filter),
     preview: preview,
   });
 
   const aboutData = await request({
-    query: ABOUT_QUERY,
+    query: GET_ABOUT_DATA,
     preview: preview,
   });
 
