@@ -1,6 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { GET_ALL_PROJECTS } from "@/graphql/projectQueries";
+import { request } from "@/infra/cms/datocms";
 import { Projects } from ".";
 
 describe("Home page", () => {
@@ -65,8 +67,46 @@ describe("Home page", () => {
       });
     });
 
-    // it("should check whether there are projects or not for existing type (link)", () => {
+    it("should test the link that has projects", async () => {
+      const projectsData = await request({
+        query: GET_ALL_PROJECTS(""),
+        variables: {
+          projectsAmount: "all",
+        },
+      });
 
-    // });
+      const projectsList = projectsData.allProjects;
+
+      render(<Projects projects={projectsList} noProjectsFound={false} />);
+
+      expect(projectsList).not.toBe([]);
+    });
+
+    it("should test the link that does not have projects", async () => {
+      const { rerender } = render(
+        <Projects projects={[]} noProjectsFound={true} />
+      );
+
+      const user = userEvent.setup();
+
+      const commercialLink = screen.getByText("Comercial");
+      await user.click(commercialLink);
+
+      const projectsData = await request({
+        query: GET_ALL_PROJECTS('filter: {projectType: {eq: "Comercial"}}'),
+        variables: {
+          projectsAmount: 0,
+        },
+      });
+
+      const projectsList = projectsData.allProjects;
+
+      rerender(<Projects projects={projectsList} noProjectsFound={true} />);
+
+      const noProjectsFoundHeader3 = screen.getByText(
+        "Nenhum projeto encontrado nessa categoria!"
+      );
+      expect(noProjectsFoundHeader3).toBeVisible();
+    });
   });
 });
