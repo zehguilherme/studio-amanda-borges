@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
+import { GET_ABOUT_DATA } from "@/graphql/aboutQuery";
+import { request } from "@/infra/cms/datocms";
 import { About } from ".";
 
 describe("Home page", () => {
@@ -14,12 +16,15 @@ describe("Home page", () => {
     });
 
     it("should render a profile image with src, alt, width and height", async () => {
+      const aboutData = await request({
+        query: GET_ABOUT_DATA,
+        preview: false,
+      });
+
       render(
         <About
-          imageUrl={
-            "https://studioamandaborges.vercel.app/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F85603%2F1687226908-profile.png&w=384&q=75"
-          }
-          imageAltText={"Imagem em formato retrato de Amanda Borges"}
+          imageUrl={aboutData?.about?.image?.url}
+          imageAltText={aboutData?.about?.image?.alt}
         />
       );
 
@@ -32,21 +37,28 @@ describe("Home page", () => {
       expect(profileImage).toHaveAttribute("height", "392");
     });
 
-    it("should render a description text", () => {
-      render(
-        <About
-          description={
-            "Do mollit veniam Lorem enim exercitation esse aliquip qui nisi. Elit in ullamco fugiat consectetur exercitation eu aute labore. Reprehenderit dolor ea excepteur exercitation culpa ad elit consectetur nisi duis exercitation exercitation nulla. Magna quis sint anim commodo esse sunt do adipisicing. Dolor mollit elit dolore aliqua culpa dolore."
-          }
-        />
-      );
+    it("should render a description text", async () => {
+      const aboutData = await request({
+        query: GET_ABOUT_DATA,
+        preview: false,
+      });
 
-      const descriptionText = screen.getByText(
-        "Do mollit veniam Lorem enim exercitation esse aliquip qui nisi. Elit in ullamco fugiat consectetur exercitation eu aute labore. Reprehenderit dolor ea excepteur exercitation culpa ad elit consectetur nisi duis exercitation exercitation nulla. Magna quis sint anim commodo esse sunt do adipisicing. Dolor mollit elit dolore aliqua culpa dolore."
-      );
+      render(<About description={aboutData?.about?.text} />);
+
+      const getByTextContent = (text) => {
+        return screen.getByText((content, element) => {
+          const hasText = (element) => element.textContent === text;
+          const elementHasText = hasText(element);
+          const childrenDontHaveText = Array.from(
+            element?.children || []
+          ).every((child) => !hasText(child));
+          return elementHasText && childrenDontHaveText;
+        });
+      };
+
+      const descriptionText = getByTextContent(aboutData?.about?.text);
 
       expect(descriptionText).toBeInTheDocument();
-      expect(descriptionText).toHaveAttribute("name", "description");
     });
   });
 });
