@@ -62,4 +62,18 @@ export const handlers = [
       );
     }
   }),
+
+  graphql.query("GET_ABOUT_DATA", (request, response, context) => {
+    return response(
+      context.data({
+        about: {
+          image: {
+            url: "https://www.datocms-assets.com/85603/1692387905-perfil.jpg",
+            alt: "Imagem em formato retrato de Amanda Borges 1",
+          },
+          text: "Olá, sou Amanda Borges, arquiteta e urbanista formada pela Universidade Paulista. Com meus 25 anos de idade e 3 anos de experiência em projetos de interiores e móveis, encontrei minha verdadeira paixão pelo design de interiores.  Além da minha formação acadêmica, possuo conhecimentos sólidos em diversos softwares essenciais para a prática arquitetônica. Sou proficiente em AutoCAD, Revit, ArchiCad, SketchUp, Lumion, Layout Sketchup, Enscape, V-Ray para SketchUp e Pacote Office. Acredito na importância da comunicação clara e na atenção aos detalhes, para garantir que todas as etapas sejam executadas de maneira eficiente. 1",
+        },
+      })
+    );
+  }),
 ];
