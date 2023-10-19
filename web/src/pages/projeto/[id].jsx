@@ -88,11 +88,6 @@ export default function Project({ projectData }) {
     needsProgram: "",
   });
 
-  const firstProjectImage =
-    projectData?.project?.images[0]?.url !== undefined
-      ? projectData?.project?.images[0]?.url
-      : "";
-
   useEffect(() => {
     setProject(projectData?.project);
   }, []);
@@ -138,22 +133,6 @@ export default function Project({ projectData }) {
           property="twitter:url"
           content={`https://studioamandaborges.vercel.app/projeto/${projectData?.project?.id}`}
         />
-
-        {/* Image */}
-        <meta
-          property="twitter:image"
-          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="og:image"
-          itemProp="image"
-          content={`https://studioamandaborges.vercel.app/api/og?projectName=${projectData?.project?.name}&projectYear=${projectData?.project?.year}&projectImage=${firstProjectImage}`}
-        />
-        <meta property="og:image:width" content="526" />
-        <meta property="og:image:height" content="275" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:type" content="website" />
       </Head>
 
       <div className="bg-white-white2">
