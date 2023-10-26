@@ -76,4 +76,53 @@ export const handlers = [
       })
     );
   }),
+
+  graphql.query("GET_PROJECT", (request, response, context) => {
+    return response(
+      context.data({
+        project: {
+          id: "163975552",
+          name: "Cozinha Vista Alegre 1",
+          images: [
+            {
+              id: "61348244",
+              url: "https://www.datocms-assets.com/85603/1687465166-20.jpg",
+              alt: "Render",
+              width: 1080,
+              height: 1080,
+            },
+            {
+              id: "61348245",
+              url: "https://www.datocms-assets.com/85603/1687262269-18.png",
+              alt: "Vistas internas",
+              width: 1080,
+              height: 1080,
+            },
+            {
+              id: "61348246",
+              url: "https://www.datocms-assets.com/85603/1686505515-19.png",
+              alt: "Vista A Técnica",
+              width: 1080,
+              height: 1080,
+            },
+            {
+              id: "61348247",
+              url: "https://www.datocms-assets.com/85603/1687261725-17.png",
+              alt: "Isométrica explodida",
+              width: 1080,
+              height: 1080,
+            },
+          ],
+          projectType: "Interiores",
+          description: "Cozinha",
+          metreage: 5,
+          stepPresented: ["Render", "Projeto Executivo"],
+          usedSoftware: ["Sketchup"],
+          place: "Bauru/SP",
+          year: 2023,
+          needsProgram: "Projeto de interiores de uma cozinha pequena.",
+        },
+      })
+    );
+  }),
 ];
