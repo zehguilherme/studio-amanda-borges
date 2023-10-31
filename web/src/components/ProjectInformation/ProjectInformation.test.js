@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import { GET_PROJECT } from "@/graphql/projectQueries";
 import { request } from "@/infra/cms/datocms";
@@ -154,6 +154,57 @@ describe("Project page", () => {
         "Projeto de interiores de uma cozinha pequena."
       );
       expect(projectNeedsProgram).toBeInTheDocument();
+    });
+
+    it("should check if the quantity of images of the project are greater than zero", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(<ProjectInformation images={projectData?.project?.images} />);
+
+      const imagesArray = projectData?.project?.images;
+      const imagesArrayCount = imagesArray.length;
+
+      expect(imagesArrayCount).toBeGreaterThan(0);
+
+      const projectImages = await screen.findAllByRole("img");
+
+      projectImages.forEach((image) => {
+        expect(image).toBeInTheDocument();
+        expect(image).toHaveAttribute("src");
+        expect(image).toHaveAttribute("alt");
+        expect(image).toHaveAttribute("width", "348");
+        expect(image).toHaveAttribute("height", "348");
+        expect(image).toHaveAttribute("tabIndex");
+      });
+    });
+
+    it("should check if the project image are opened when clicked", async () => {
+      const setIndexImageOpened = jest.fn();
+
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(
+        <ProjectInformation
+          images={projectData?.project?.images}
+          setIndexImageOpened={setIndexImageOpened}
+        />
+      );
+
+      const projectImages = await screen.findAllByRole("img");
+
+      projectImages.forEach(async (image) => {
+        fireEvent.click(image);
+
+        await waitFor(() => {
+          expect(setIndexImageOpened).toHaveBeenCalled();
+        });
+      });
     });
   });
 });
