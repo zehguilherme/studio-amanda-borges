@@ -1,17 +1,24 @@
 import { render, screen } from "@testing-library/react";
 
+import { GET_PROJECT } from "@/graphql/projectQueries";
+import { request } from "@/infra/cms/datocms";
 import { ProjectCard } from ".";
 
 describe("Home page", () => {
   describe("Project card component", () => {
     it("should render the image from the project", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
       render(
         <ProjectCard
-          projectUrl="projeto/186134902"
-          imgUrl="https://www.datocms-assets.com/85603/1692746232-teste-3.jpg"
-          imgAlt="Render"
-          projectTitle="Cozinha Vista Alegre"
-          projectYear="2023"
+          projectUrl={`projeto/${projectData?.project?.id}`}
+          imgUrl={projectData?.project?.images[0].url}
+          imgAlt={projectData?.project?.images[0].alt}
+          projectTitle={projectData?.project?.name}
+          projectYear={projectData?.project?.year}
         />
       );
 
@@ -24,29 +31,39 @@ describe("Home page", () => {
       expect(projectImage).toHaveAttribute("height", "351");
     });
 
-    it("should render the project title", () => {
+    it("should render the project title", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
       render(
         <ProjectCard
-          projectUrl="projeto/186134902"
-          imgUrl="https://www.datocms-assets.com/85603/1692746232-teste-3.jpg"
-          imgAlt="Render"
-          projectTitle="Cozinha Vista Alegre"
-          projectYear="2023"
+          projectUrl={`projeto/${projectData?.project?.id}`}
+          imgUrl={projectData?.project?.images[0].url}
+          imgAlt={projectData?.project?.images[0].alt}
+          projectTitle={projectData?.project?.name}
+          projectYear={projectData?.project?.year}
         />
       );
 
-      const projectTitle = screen.getByText("Cozinha Vista Alegre");
+      const projectTitle = screen.getByText("Cozinha Vista Alegre 1");
       expect(projectTitle).toBeInTheDocument();
     });
 
-    it("should render the project year", () => {
+    it("should render the project year", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
       render(
         <ProjectCard
-          projectUrl="projeto/186134902"
-          imgUrl="https://www.datocms-assets.com/85603/1692746232-teste-3.jpg"
-          imgAlt="Render"
-          projectTitle="Cozinha Vista Alegre"
-          projectYear="2023"
+          projectUrl={`projeto/${projectData?.project?.id}`}
+          imgUrl={projectData?.project?.images[0].url}
+          imgAlt={projectData?.project?.images[0].alt}
+          projectTitle={projectData?.project?.name}
+          projectYear={projectData?.project?.year}
         />
       );
 
