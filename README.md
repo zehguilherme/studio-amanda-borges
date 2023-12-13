@@ -6,7 +6,7 @@
   Studio Amanda Borges
 </h1>
 
-<br>
+![Screenshot from Home page](./.github/img/home.png)
 
 <div align="center">
   <a href="README.md">English</a>
