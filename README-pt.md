@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="https://www.datocms-assets.com/85603/1678403404-logo.svg" width="150" height="auto" alt="Logo of site">
-</div>
-
 <h1 align="center">
   Studio Amanda Borges
 </h1>
