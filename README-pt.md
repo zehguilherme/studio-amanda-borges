@@ -24,7 +24,7 @@
 
 #### Layout
 
-Você pode visualizar o layout do projeto através [deste link](https://www.figma.com/file/IEfItaPTEcPpxmHFbwy2LM/Studio-Amanda-Borges?type=design&node-id=5%3A4&t=JzoWEJRzrGCYYN0m-1). É necessário possuir uma conta no [Figma](https://www.figma.com/).
+Você pode visualizar o layout do projeto através [deste link](https://www.figma.com/file/IEfItaPTEcPpxmHFbwy2LM/Studio-Amanda-Borges?type=design&node-id=5%3A4&t=JzoWEJRzrGCYYN0m-1).
 
 ### Back-end
 
