@@ -32,7 +32,7 @@ describe("Home page", () => {
       const instagramLink = screen.getByLabelText("Navegar para o Instagram");
       expect(instagramLink).toHaveAttribute(
         "href",
-        "https://www.instagram.com/studio.amandaborges"
+        "https://www.instagram.com/amanda_detalha"
       );
 
       const { container: instagramHtmlElement } = render(<Instagram />);
