@@ -10,6 +10,10 @@
   <a href="README-pt.md">Português</a>
 </div>
 
+## 💬 Description
+
+This is the online portfolio of architect Amanda Borges. In it you can learn a little more about her main projects, a brief description about her and how you can get in touch.
+
 ## 🚀 Technologies
 
 ### Front-end
