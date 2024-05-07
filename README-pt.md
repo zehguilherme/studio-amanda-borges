@@ -10,6 +10,10 @@
   <a href="README-pt.md">Português</a>
 </div>
 
+## 💬 Descrição
+
+Este é o portfólio online da arquieta Amanda Borges. Nele você pode conhecer um pouco mais sobre seus principais projetos, uma breve descrição sobre ela e como pode entrar em contato.
+
 ## 🚀 Tecnologias
 
 ### Front-end
