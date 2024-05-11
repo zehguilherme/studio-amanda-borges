@@ -2,72 +2,72 @@
   Studio Amanda Borges
 </h1>
 
-![Screenshot from Home page](./.github/img/home.png)
+![Captura de tela da página inicial](./.github/img/home.png)
 
 <div align="center">
-  <a href="README.md">English</a>
+  <a href="README-en.md">English</a>
   ·
-  <a href="README-pt.md">Português</a>
+  <a href="README.md">Português</a>
 </div>
 
-## 💬 Description
+## 💬 Descrição
 
-This is the online portfolio of architect Amanda Borges. In it you can learn a little more about her main projects, a brief description about her and how you can get in touch.
+Este é o portfólio online da arquieta Amanda Borges. Nele você pode conhecer um pouco mais sobre seus principais projetos, uma breve descrição sobre ela e como pode entrar em contato.
 
-## 🚀 Technologies
+## 🚀 Tecnologias
 
 ### Front-end
 
 - [NextJS](https://nextjs.org/)
 - [Google Fonts](https://fonts.google.com/)
-- [Swiper](https://swiperjs.com/) - Component for creating carousels
-- [Yet Another React Lightbox](https://yet-another-react-lightbox.com/) - Image preview component
+- [Swiper](https://swiperjs.com/) - Componente para criação de carrosséis
+- [Yet Another React Lightbox](https://yet-another-react-lightbox.com/) - Componente de visualização de imagens
 - [TailwindCSS](https://tailwindcss.com/)
-- [Jest](https://jestjs.io/) - Tests
-- [Testing Library](https://testing-library.com/) - Tests
+- [Jest](https://jestjs.io/) - Testes
+- [Testing Library](https://testing-library.com/) - Testes
 
 #### Layout
 
-You can view the project layout through [this link](https://www.figma.com/file/IEfItaPTEcPpxmHFbwy2LM/Studio-Amanda-Borges?type=design&node-id=5%3A4&t=JzoWEJRzrGCYYN0m-1).
+Você pode visualizar o layout do projeto através [deste link](https://www.figma.com/file/IEfItaPTEcPpxmHFbwy2LM/Studio-Amanda-Borges?type=design&node-id=5%3A4&t=JzoWEJRzrGCYYN0m-1).
 
 ### Back-end
 
 - [DatoCMS](https://www.datocms.com/)
 
-## 🚀 Getting started
+## 🚀 Começando
 
-First of all you need to have `node` and `yarn`(or `npm`) installed on your machine.
+Primeiro de tudo você precisa ter `node` e `yarn` (ou `npm`) instalados em sua máquina.
 
-*If you decide to use npm don't forget to delete `yarn.lock` in folders.*
+*Se você decidir usar o npm, não se esqueça de deletar `yarn.lock` nas pastas.*
 
-Then you can clone the repository.
+Então você pode clonar o repositório.
 
 ```code
   git clone https://github.com/zehguilherme/studio-amanda-borges
 ```
 
-Start the application
+Inicie a aplicação
 
 1. `cd web`
-2. `yarn` or `npm install`
-3. `yarn dev` or `npm run dev`
+2. `yarn` ou `npm install`
+3. `yarn dev` ou `npm run dev`
 
-## ✅ Tests
+## ✅ Testes
 
-### Unit tests
+### Testes unitários
 
 1. `cd web`
-2. `yarn test` or `npm run test`
+2. `yarn test` ou `npm run test`
 
-## 🤔 How to contribute
+## 🤔 Como contribuir
 
-1. Fork the project;
-2. Create your feature branch: `git checkout -b my-new-feature`;
-3. Commit your changes: `git commit -m 'feat: Add some feature'`;
-4. Push to the branch: `git push origin my-new-feature`;
-5. Create a new Pull Request;
-6. After the merge of your pull request is done, you can delete your branch.
+1. Faça um fork do projeto;
+2. Crie uma branch com a sua feature: `git checkout -b minha-nova-feature`;
+3. Faça commit das suas alterações: `git commit -m 'feat: Adição de uma nova feature'`;
+4. Faça push para o branch: `git push origin minha-nova-feature`;
+5. Crie uma nova Pull Request;
+6. Depois que o merge de sua Pull Request for concluída, você pode excluir sua branch.
 
 ---
 
-Made with 💟 by José Guilherme Paro Monteiro Tomaine 👋 [Talk to me!](https://www.linkedin.com/in/josé-guilherme-paro-monteiro-tomaine/)
+Feito com 💟 por José Guilherme Paro Monteiro Tomaine 👋 [Fale comigo!](https://www.linkedin.com/in/josé-guilherme-paro-monteiro-tomaine/)
