@@ -18,13 +18,13 @@ Este é o portfólio online da arquieta Amanda Borges. Nele você pode conhecer 
 
 ### Front-end
 
-- [NextJS](https://nextjs.org/)
-- [Google Fonts](https://fonts.google.com/)
+- [NextJS](https://nextjs.org/) - Framework (baseado na biblioteca [ReactJS](https://react.dev/)) usado para construção de interfaces
+- [Google Fonts](https://fonts.google.com/) - Biblioteca contendo diversas fontes
 - [Swiper](https://swiperjs.com/) - Componente para criação de carrosséis
 - [Yet Another React Lightbox](https://yet-another-react-lightbox.com/) - Componente de visualização de imagens
-- [TailwindCSS](https://tailwindcss.com/)
-- [Jest](https://jestjs.io/) - Testes
-- [Testing Library](https://testing-library.com/) - Testes
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS para estilização
+- [Jest](https://jestjs.io/) - Framework de testes automatizados
+- [Testing Library](https://testing-library.com/) - Biblioteca de testes automatizados
 
 #### Layout
 
@@ -32,7 +32,8 @@ Você pode visualizar o layout do projeto através [deste link](https://www.figm
 
 ### Back-end
 
-- [DatoCMS](https://www.datocms.com/)
+- [DatoCMS](https://www.datocms.com/) - CMS
+- [API GraphQL](https://graphql.org/)
 
 ## 🚀 Começando
 
