@@ -34,6 +34,7 @@ Você pode visualizar o layout do projeto através [deste link](https://www.figm
 
 - [DatoCMS](https://www.datocms.com/) - CMS
 - [API GraphQL](https://graphql.org/)
+- [Mock Service Worker](https://mswjs.io/) - Biblioteca JavaScript utilizada para criar simulações de APIs em aplicações front-end. Ela permite interceptar e manipular requisições de rede feitas pelo browser, fornecendo respostas simuladas (mocked) sem a necessidade de modificar o código da aplicação
 
 ## 🚀 Começando
 
