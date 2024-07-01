@@ -34,6 +34,7 @@ You can view the project layout through [this link](https://www.figma.com/file/I
 
 - [DatoCMS](https://www.datocms.com/) - CMS
 - [API GraphQL](https://graphql.org/)
+- [Mock Service Worker](https://mswjs.io/) - JavaScript library used to create API simulations in front-end applications. It allows you to intercept and manipulate network requests made by the browser, providing mocked responses without the need to modify the application code
 
 ## 🚀 Getting started
 
