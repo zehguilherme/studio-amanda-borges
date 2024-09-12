@@ -16,7 +16,7 @@ export function Footer() {
         <ul className="flex items-center space-x-1 text-white-white1">
           <li className="flex items-center">
             <Link
-              href="https://www.instagram.com/studio.amandaborges"
+              href="https://www.instagram.com/amanda_detalha"
               target="_blank"
               className="inline-block p-[10px]"
               aria-label="Navegar para o Instagram"

@@ -1,18 +1,30 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
+import { GET_PROJECT } from "@/graphql/projectQueries";
+import { request } from "@/infra/cms/datocms";
 import { ProjectInformation } from ".";
 
 describe("Project page", () => {
   describe("Project information component", () => {
-    it("should render a project name", () => {
-      render(<ProjectInformation name={"Cozinha Vista Alegre"} />);
+    it("should render a project name", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
 
-      const projectName = screen.getByText("Cozinha Vista Alegre");
+      render(<ProjectInformation name={projectData?.project?.name} />);
+
+      const projectName = screen.getByText("Cozinha Vista Alegre 1");
       expect(projectName).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Interiores' and your content", () => {
-      render(<ProjectInformation type={"Interiores"} />);
+    it("should render the title of the section 'Interiores' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(<ProjectInformation type={projectData?.project?.projectType} />);
 
       const sectionTitle = screen.getByText("Tipo");
       expect(sectionTitle).toBeInTheDocument();
@@ -21,8 +33,15 @@ describe("Project page", () => {
       expect(projectType).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Descrição' and your content", () => {
-      render(<ProjectInformation description={"Cozinha"} />);
+    it("should render the title of the section 'Descrição' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(
+        <ProjectInformation description={projectData?.project?.description} />
+      );
 
       const sectionTitle = screen.getByText("Descrição");
       expect(sectionTitle).toBeInTheDocument();
@@ -31,22 +50,32 @@ describe("Project page", () => {
       expect(projectDescription).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Metragem' and your content", () => {
-      const meterage = 5;
+    it("should render the title of the section 'Metragem' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      const meterage = projectData?.project?.metreage;
       render(<ProjectInformation meterage={meterage} />);
 
       const sectionTitle = screen.getByText("Metragem");
       expect(sectionTitle).toBeInTheDocument();
 
-      const renderedMeterageText =
-        meterage?.toString().replace(".", ",") + " m²";
-      const projectMeterage = screen.getByText(renderedMeterageText);
+      const projectMeterage = screen.getByText("5 m²");
       expect(projectMeterage).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Etapa apresentada' and your content", () => {
+    it("should render the title of the section 'Etapa apresentada' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
       render(
-        <ProjectInformation stepsPresented={["Render", "Projeto Executivo"]} />
+        <ProjectInformation
+          stepsPresented={projectData?.project?.stepPresented}
+        />
       );
 
       const sectionTitle = screen.getByText("Etapa apresentada");
@@ -59,8 +88,17 @@ describe("Project page", () => {
       expect(secondStepPresented).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Softwares usados' and your content", () => {
-      render(<ProjectInformation usedSoftwares={["Sketchup"]} />);
+    it("should render the title of the section 'Softwares usados' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(
+        <ProjectInformation
+          usedSoftwares={projectData?.project?.usedSoftware}
+        />
+      );
 
       const sectionTitle = screen.getByText("Softwares usados");
       expect(sectionTitle).toBeInTheDocument();
@@ -69,8 +107,13 @@ describe("Project page", () => {
       expect(firstStepUsedSoftware).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Local' and your content", () => {
-      render(<ProjectInformation place={"Bauru/SP"} />);
+    it("should render the title of the section 'Local' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(<ProjectInformation place={projectData?.project?.place} />);
 
       const sectionTitle = screen.getByText("Local");
       expect(sectionTitle).toBeInTheDocument();
@@ -79,8 +122,13 @@ describe("Project page", () => {
       expect(projectPlace).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Ano' and your content", () => {
-      render(<ProjectInformation year={"2023"} />);
+    it("should render the title of the section 'Ano' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(<ProjectInformation year={projectData?.project?.year} />);
 
       const sectionTitle = screen.getByText("Ano");
       expect(sectionTitle).toBeInTheDocument();
@@ -89,11 +137,14 @@ describe("Project page", () => {
       expect(projectYear).toBeInTheDocument();
     });
 
-    it("should render the title of the section 'Programa de Necessidades' and your content", () => {
+    it("should render the title of the section 'Programa de Necessidades' and your content", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
       render(
-        <ProjectInformation
-          needsProgram={"Projeto de interiores de uma cozinha pequena."}
-        />
+        <ProjectInformation needsProgram={projectData?.project?.needsProgram} />
       );
 
       const sectionTitle = screen.getByText("Programa de Necessidades");
@@ -103,6 +154,57 @@ describe("Project page", () => {
         "Projeto de interiores de uma cozinha pequena."
       );
       expect(projectNeedsProgram).toBeInTheDocument();
+    });
+
+    it("should check if the quantity of images of the project are greater than zero", async () => {
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(<ProjectInformation images={projectData?.project?.images} />);
+
+      const imagesArray = projectData?.project?.images;
+      const imagesArrayCount = imagesArray.length;
+
+      expect(imagesArrayCount).toBeGreaterThan(0);
+
+      const projectImages = await screen.findAllByRole("img");
+
+      projectImages.forEach((image) => {
+        expect(image).toBeInTheDocument();
+        expect(image).toHaveAttribute("src");
+        expect(image).toHaveAttribute("alt");
+        expect(image).toHaveAttribute("width", "348");
+        expect(image).toHaveAttribute("height", "348");
+        expect(image).toHaveAttribute("tabIndex");
+      });
+    });
+
+    it("should check if the project image are opened when clicked", async () => {
+      const setIndexImageOpened = jest.fn();
+
+      const projectData = await request({
+        query: GET_PROJECT,
+        preview: false,
+      });
+
+      render(
+        <ProjectInformation
+          images={projectData?.project?.images}
+          setIndexImageOpened={setIndexImageOpened}
+        />
+      );
+
+      const projectImages = await screen.findAllByRole("img");
+
+      projectImages.forEach(async (image) => {
+        fireEvent.click(image);
+
+        await waitFor(() => {
+          expect(setIndexImageOpened).toHaveBeenCalled();
+        });
+      });
     });
   });
 });
