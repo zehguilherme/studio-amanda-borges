@@ -172,7 +172,7 @@ export default function Home({ carouselData, projectsData, aboutData }) {
                       src={image?.url}
                       alt={image?.alt}
                       width={0}
-                      height={0}
+                      height={500}
                       sizes="100vw"
                       className="h-[500px] w-full object-cover object-center"
                       placeholder="empty"
