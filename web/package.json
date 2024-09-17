@@ -26,6 +26,8 @@
     "yet-another-react-lightbox": "^3.21.5"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.10.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
@@ -39,6 +41,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-react": "^7.36.1",
+    "globals": "^15.9.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "msw": "^2.4.8",
