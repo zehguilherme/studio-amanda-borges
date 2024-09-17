@@ -4,7 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
+import {
+  A11y,
+  Autoplay,
+  Keyboard,
+  Navigation,
+  Pagination,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { request } from "@/infra/cms/datocms";
