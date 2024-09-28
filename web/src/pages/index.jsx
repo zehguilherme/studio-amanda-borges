@@ -4,7 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper";
+import {
+  A11y,
+  Autoplay,
+  Keyboard,
+  Navigation,
+  Pagination,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { request } from "@/infra/cms/datocms";
@@ -151,10 +157,6 @@ export default function Home({ carouselData, projectsData, aboutData }) {
             ) : (
               <Swiper
                 modules={[Navigation, Pagination, Keyboard, Autoplay, A11y]}
-                centeredSlides={true}
-                autoHeight={true}
-                setWrapperSize={true}
-                roundLengths={true}
                 navigation={true}
                 pagination={{ clickable: true }}
                 keyboard={{ enabled: true, onlyInViewport: true }}
@@ -163,19 +165,18 @@ export default function Home({ carouselData, projectsData, aboutData }) {
                   prevSlideMessage: "Slide anterior",
                   nextSlideMessage: "Próximo slide",
                 }}
-                loop={true}
-                autoplay={{ disableOnInteraction: false }}
+                className="h-[500px] w-full"
               >
                 {carouselImagesProjects.map((image) => (
                   <SwiperSlide key={image?.id}>
                     <Image
                       src={image?.url}
                       alt={image?.alt}
-                      width={0}
-                      height={500}
-                      sizes="100vw"
-                      className="h-[500px] w-full object-cover object-center"
-                      placeholder="empty"
+                      fill={true}
+                      className="object-cover object-center"
+                      quality={100}
+                      placeholder="blur"
+                      blurDataURL={image?.url}
                       priority={true}
                     />
                   </SwiperSlide>
