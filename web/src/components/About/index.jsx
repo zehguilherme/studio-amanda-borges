@@ -17,7 +17,9 @@ export function About({ imageUrl, imageAltText, description }) {
             height={392}
             className="rounded-[5px]"
             name="profile"
-            priority={true}
+            priority={false}
+            placeholder="blur"
+            blurDataURL={imageUrl}
           />
         )}
 
