@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
-    "@vercel/og": "^0.6.3",
+    "@vercel/og": "^0.6.4",
     "@vercel/speed-insights": "^1.1.0",
     "graphql": "^16.9.0",
     "graphql-request": "^5.2.0",
