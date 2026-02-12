@@ -13,7 +13,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.4.1",
+    "@vercel/analytics": "^1.6.1",
     "@vercel/og": "^0.6.5",
     "@vercel/speed-insights": "^1.1.0",
     "graphql": "^16.10.0",
