@@ -172,10 +172,6 @@ export default function Project({ projectData }) {
       </div>
 
       <ScrollUpButton />
-
-      {process.env.NODE_ENV !== "production" && (
-        <Link href="/api/preview">Modo de preview</Link>
-      )}
     </>
   );
 }

@@ -206,10 +206,6 @@ export default function Home({ carouselData, projectsData, aboutData }) {
       <Footer />
 
       <ScrollUpButton />
-
-      {process.env.NODE_ENV !== "production" && (
-        <Link href="/api/preview">Modo de preview</Link>
-      )}
     </>
   );
 }
