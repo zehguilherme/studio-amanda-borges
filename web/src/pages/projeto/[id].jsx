@@ -11,7 +11,6 @@ import { ScrollUpButton } from "@/components/ScrollUpButton";
 
 import { HeaderProject } from "@/components/HeaderProject";
 import { ProjectInformation } from "@/components/ProjectInformation";
-import Link from "next/link";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
@@ -172,10 +171,6 @@ export default function Project({ projectData }) {
       </div>
 
       <ScrollUpButton />
-
-      {process.env.NODE_ENV !== "production" && (
-        <Link href="/api/preview">Modo de preview</Link>
-      )}
     </>
   );
 }
