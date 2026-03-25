@@ -18,8 +18,9 @@ export function Footer() {
             <Link
               href="https://www.instagram.com/amanda_detalha"
               target="_blank"
-              className="inline-block p-[10px]"
-              aria-label="Navegar para o Instagram"
+              title="Navegar para a página do Instagram"
+              className="inline-block p-[10px] hover:opacity-30"
+              aria-label="Navegar para a página do Instagram"
             >
               <Instagram className="w-7" />
             </Link>
@@ -28,8 +29,9 @@ export function Footer() {
             <Link
               href="https://wa.me/5514998695347"
               target="_blank"
-              className="inline-block p-[10px]"
-              aria-label="Navegar para o WhatsApp"
+              title="Entrar em contato via WhatsApp"
+              className="inline-block p-[10px] hover:opacity-30"
+              aria-label="Entrar em contato via WhatsApp"
             >
               <WhatsApp className="w-7" />
             </Link>
@@ -38,7 +40,8 @@ export function Footer() {
             <Link
               href="mailto:amanda_leticiah@hotmail.com"
               target="_blank"
-              className="inline-block p-[10px]"
+              title="Enviar um e-mail"
+              className="inline-block p-[10px] hover:opacity-30"
               aria-label="Enviar um e-mail"
             >
               <Email className="w-7" />
