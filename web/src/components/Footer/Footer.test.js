@@ -29,10 +29,12 @@ describe("Home page", () => {
       render(<Footer />);
 
       // Instagram
-      const instagramLink = screen.getByLabelText("Navegar para o Instagram");
+      const instagramLink = screen.getByLabelText(
+        "Navegar para a página do Instagram",
+      );
       expect(instagramLink).toHaveAttribute(
         "href",
-        "https://www.instagram.com/amanda_detalha"
+        "https://www.instagram.com/amanda_detalha",
       );
 
       const { container: instagramHtmlElement } = render(<Instagram />);
@@ -42,10 +44,12 @@ describe("Home page", () => {
       expect(instagramLogo).toBeInTheDocument();
 
       // WhatsApp
-      const whatsappLink = screen.getByLabelText("Navegar para o WhatsApp");
+      const whatsappLink = screen.getByLabelText(
+        "Entrar em contato via WhatsApp",
+      );
       expect(whatsappLink).toHaveAttribute(
         "href",
-        "https://wa.me/5514998695347"
+        "https://wa.me/5514998695347",
       );
 
       const { container: whatsappHtmlElement } = render(<WhatsApp />);
@@ -58,7 +62,7 @@ describe("Home page", () => {
       const emailLink = screen.getByLabelText("Enviar um e-mail");
       expect(emailLink).toHaveAttribute(
         "href",
-        "mailto:amanda_leticiah@hotmail.com"
+        "mailto:amanda_leticiah@hotmail.com",
       );
 
       const { container: emailHtmlElement } = render(<Email />);
