@@ -9,11 +9,9 @@ export function Header({ navMenuIsOpened, handleNavMenuChange }) {
   return (
     <header className="bg-pink">
       <div
-        className={
-          navMenuIsOpened
-            ? "container mx-auto pb-6 lg:flex lg:items-center lg:justify-between lg:p-0"
-            : "container mx-auto lg:flex lg:items-center lg:justify-between lg:p-0"
-        }
+        className={`container mx-auto transition-all duration-300 ease-in-out lg:flex lg:items-center lg:justify-between lg:p-0 ${
+          navMenuIsOpened ? "pb-6" : "pb-0"
+        }`}
       >
         <div className="flex items-center justify-between pr-6 text-white-white1 lg:flex-none lg:p-0">
           <h1 className="sr-only">Studio Amanda Borges</h1>
@@ -39,7 +37,13 @@ export function Header({ navMenuIsOpened, handleNavMenuChange }) {
           </button>
         </div>
 
-        <nav className={navMenuIsOpened ? "block" : "hidden lg:block"}>
+        <nav
+          className={`overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+            navMenuIsOpened
+              ? "max-h-[300px] opacity-100"
+              : "max-h-0 opacity-0 lg:max-h-none lg:opacity-100"
+          }`}
+        >
           <ul className="text-white-white1 lg:flex lg:px-6 lg:py-5">
             <li className="text-lg font-bold">
               <Link
