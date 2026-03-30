@@ -10,7 +10,10 @@ export function ProjectCard({
   projectYear,
 }) {
   return (
-    <Link href={projectUrl} className="relative">
+    <Link
+      href={projectUrl}
+      className="relative hover:opacity-50 transition-opacity"
+    >
       <Image
         src={imgUrl}
         alt={imgAlt}
