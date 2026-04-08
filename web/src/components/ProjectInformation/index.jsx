@@ -114,11 +114,11 @@ export function ProjectInformation({
                   width={348}
                   height={348}
                   priority={true}
-                  className="aspect-square cursor-pointer rounded-[5px] object-cover object-center"
+                  className="aspect-square cursor-pointer rounded-[5px] object-cover object-center hover:opacity-50 transition-opacity"
                   onClick={() => setIndexImageOpened(index)}
                   tabIndex={index}
                 />
-              )
+              ),
           )}
         </section>
       </div>
