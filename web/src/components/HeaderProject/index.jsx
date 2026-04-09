@@ -9,7 +9,7 @@ export function HeaderProject() {
         <Link
           href="/"
           scroll={false}
-          className="p-[2px] text-black"
+          className="p-[2px] text-black hover:transition-all hover:opacity-50"
           aria-label="Navegar para a página Home"
         >
           <ArrowBack className="h-auto w-11" />
