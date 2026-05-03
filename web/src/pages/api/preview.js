@@ -1,5 +1,11 @@
+const PREVIEW_SECRET = process.env.PREVIEW_SECRET;
+
 export default async function handler(request, response) {
-  const previousPage = request.headers.referer;
+  if (request.query.secret !== PREVIEW_SECRET) {
+    return response.status(401).json({ message: "Invalid token" });
+  }
+
+  const previousPage = request.headers.referer || "/";
 
   // Turn off preview if it's on
   if (request.preview) {
