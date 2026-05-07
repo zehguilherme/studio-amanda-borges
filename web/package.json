@@ -20,7 +20,7 @@
     "graphql-request": "^5.2.0",
     "next": "16.2.5",
     "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react-dom": "19.2.6",
     "react-use": "^17.6.0",
     "swiper": "^12.1.4",
     "yet-another-react-lightbox": "^3.32.0"
