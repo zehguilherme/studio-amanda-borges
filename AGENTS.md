@@ -202,6 +202,12 @@ npx eslint src/components/Header.jsx
 npx eslint --fix src/components/Header.jsx
 ```
 
+## CI/CD
+
+- GitHub Actions executa lint e testes em toda pull request (aberta ou sincronizada)
+- Workflow: `.github/workflows/continuous-integration.yml`
+- Comandos executados: `npm run lint`, `npm run lint:fix`, `npm test`
+
 ## Environment Variables
 
 - Create `.env` file based on `.env.example`
