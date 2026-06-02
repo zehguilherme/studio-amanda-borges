@@ -38,9 +38,7 @@ Você pode visualizar o layout do projeto através [deste link](https://www.figm
 
 ## 🚀 Começando
 
-Primeiro de tudo você precisa ter `node` e `yarn` (ou `npm`) instalados em sua máquina.
-
-*Se você decidir usar o npm, não se esqueça de deletar `yarn.lock` nas pastas.*
+Primeiro de tudo você precisa ter [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.com/) instalados em sua máquina.
 
 Então você pode clonar o repositório.
 
@@ -51,15 +49,15 @@ Então você pode clonar o repositório.
 Inicie a aplicação
 
 1. `cd web`
-2. `yarn` ou `npm install`
-3. `yarn dev` ou `npm run dev`
+2. `npm install`
+3. `npm run dev`
 
 ## ✅ Testes
 
 ### Testes unitários
 
 1. `cd web`
-2. `yarn test` ou `npm run test`
+2. `npm run test`
 
 ## 🤔 Como contribuir
 
