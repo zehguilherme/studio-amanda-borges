@@ -38,9 +38,7 @@ You can view the project layout through [this link](https://www.figma.com/file/I
 
 ## 🚀 Getting started
 
-First of all you need to have `node` and `yarn`(or `npm`) installed on your machine.
-
-*If you decide to use npm don't forget to delete `yarn.lock` in folders.*
+First of all you need to have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine.
 
 Then you can clone the repository.
 
@@ -51,15 +49,15 @@ Then you can clone the repository.
 Start the application
 
 1. `cd web`
-2. `yarn` or `npm install`
-3. `yarn dev` or `npm run dev`
+2. `npm install`
+3. `npm run dev`
 
 ## ✅ Tests
 
 ### Unit tests
 
 1. `cd web`
-2. `yarn test` or `npm run test`
+2. `npm run test`
 
 ## 🤔 How to contribute
 
