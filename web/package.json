@@ -22,7 +22,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-use": "^17.6.1",
-    "swiper": "^14.0.7",
+    "swiper": "^14.1.0",
     "yet-another-react-lightbox": "^3.32.2"
   },
   "devDependencies": {
