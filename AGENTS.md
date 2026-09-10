@@ -1,215 +1,41 @@
-# AGENTS.md - Studio Amanda Borges
+# AGENTS.md — Studio Amanda Borges
 
-This file provides guidelines for agentic coding agents operating in this repository.
+## Projeto
 
-## Project Overview
+- Aplicação Next.js 16.3.4 com React 19, JavaScript e Tailwind CSS.
+- O código da aplicação fica em `web/`; execute os comandos do projeto nesse diretório.
+- Use o alias `@/` para imports internos quando ele tornar o caminho mais claro.
 
-- **Framework**: Next.js 16.2.4 with React 19
-- **Language**: JavaScript (uses jsconfig.json, not TypeScript)
-- **Styling**: Tailwind CSS with PostCSS
-- **Testing**: Jest 30 + Testing Library
-- **Linting**: ESLint + Prettier
-
-## Build & Development Commands
-
-All commands run from the `web/` directory:
+## Comandos
 
 ```bash
-cd web
+npm run dev       # desenvolvimento
+npm run lint      # ESLint
+npm test          # Jest
+npm run build     # build de produção
+npm start         # servidor de produção
 ```
 
-### Development
+## Regras globais
 
-```bash
-npm run dev          # Start dev server at http://localhost:3000
-```
+- Não commite segredos; variáveis expostas ao cliente usam o prefixo `NEXT_PUBLIC_`.
+- Não execute operações Git que alterem ou descartem histórico, arquivos ou trabalho do usuário sem autorização explícita.
+- Preserve as configurações existentes de ESLint, Prettier, Jest, Next.js e Tailwind; consulte os arquivos de configuração antes de alterá-las.
+- Corrija a causa do problema no ponto compartilhado apropriado e mantenha a mudança mínima ao escopo solicitado.
+- Valide alterações com os comandos relevantes e só declare sucesso com evidência do resultado.
 
-### Build
+## Escopo e documentação
 
-```bash
-npm run build        # Production build
-npm run start        # Start production server
-```
+- Regras específicas devem viver no documento do módulo ou em uma skill carregada sob demanda, não neste arquivo.
+- Em alterações de UI/frontend, carregue `.agents/skills/ui-accessibility-check/SKILL.md` antes de concluir.
+- Para tarefas de uma feature rastreada, consulte `progress.md`, `feature_list.json` e o `*.md` do módulo aplicável antes de editar.
+- O módulo de mocks é documentado em `web/src/mocks/mocks.md`; seus mocks devem permanecer compatíveis com as queries em `web/src/graphql/`.
+- `init.sh` é o entrypoint de verificação do harness quando o ambiente tiver Bash; no Windows, use os comandos equivalentes em `web/`.
 
-### Linting
+## Estrutura de referência
 
-```bash
-npm run lint         # Run ESLint
-npm run lint:fix     # Auto-fix linting issues
-```
-
-### Testing
-
-```bash
-npm test             # Run all tests once
-npm run test:watch  # Run tests in watch mode
-npm run test:coverage # Run tests with coverage report
-
-# Run a single test file
-npx jest path/to/test-file.test.js
-
-# Run a single test
-npx jest -t "test name pattern"
-
-# Run tests in a specific file with verbose output
-npx jest --verbose path/to/test-file.test.js
-```
-
-## Code Style Guidelines
-
-### General Rules
-
-- **Language**: JavaScript (not TypeScript). Use JSDoc for type annotations when needed.
-- **Strict mode**: Enable in all files (`"use strict";`)
-- **No console.log**: Use console.error for debugging (ESLint will error on console.log)
-
-### Formatting (Prettier)
-
-- Uses `.prettierrc` with `{"editorconfig": true}`
-- Follows EditorConfig settings in `.editorconfig`
-- Prettier plugin for Tailwind CSS is installed (`prettier-plugin-tailwindcss`)
-
-### Imports
-
-- Use absolute imports with `@/` alias (e.g., `import Component from "@/components/Component"`)
-- Group imports in this order:
-  1. External libraries (React, Next.js, etc.)
-  2. Internal imports (components, hooks, utils)
-  3. Relative imports
-- Sort alphabetically within each group
-- Example:
-
-  ```javascript
-  import "use client";
-
-  import { useState } from "react";
-
-  import Component from "@/components/Component";
-  import { useCustomHook } from "@/hooks/useCustomHook";
-
-  import styles from "./Component.module.css";
-  ```
-
-### Naming Conventions
-
-- **Components**: PascalCase (e.g., `Header.jsx`, `Footer.jsx`)
-- **Files**: kebab-case for non-component files (e.g., `graphql-client.js`)
-- **Hooks**: camelCase with `use` prefix (e.g., `useAuth.js`)
-- **Constants**: SCREAMING_SNAKE_CASE (e.g., `API_ENDPOINTS`)
-- **Variables/Functions**: camelCase
-- **Classes**: PascalCase
-
-### Component Structure
-
-```javascript
-"use client";
-
-import { useState } from "react";
-import PropTypes from "prop-types";
-
-import Component from "@/components/Component";
-import styles from "./Component.module.css";
-
-export default function ComponentName({ prop1, prop2 }) {
-  const [state, setState] = useState(null);
-
-  useEffect(() => {
-    // effect logic
-  }, []);
-
-  function handleAction() {
-    // handler logic
-  }
-
-  return <div className={styles.container}>{/* JSX content */}</div>;
-}
-
-ComponentName.propTypes = {
-  prop1: PropTypes.string.isRequired,
-  prop2: PropTypes.number,
-};
-
-ComponentName.defaultProps = {
-  prop2: 10,
-};
-```
-
-### Error Handling
-
-- Use try-catch blocks for async operations
-- Handle errors gracefully with user feedback
-- Log errors appropriately (use console.error, not console.log)
-
-### Testing Conventions
-
-- Test files: `*.test.js` or `*.spec.js`
-- Location: Same directory as the component, or `__tests__` folder
-- Use @testing-library/react for component testing
-- Use msw (Mock Service Worker) for API mocking
-- Follow Jest best practices:
-  - No focused tests in production (describe.skip, it.skip allowed)
-  - Use descriptive test names
-  - Keep tests independent
-
-### Tailwind CSS
-
-- Use Tailwind utility classes for styling
-- Custom components should use CSS modules for component-specific styles
-- Follow Tailwind CSS best practices
-
-## Project Structure
-
-```
-web/
-├── src/
-│   ├── components/     # Reusable React components
-│   │   └── icons/      # Icon components
-│   ├── contexts/       # React Context providers
-│   ├── graphql/        # GraphQL queries and client
-│   ├── hooks/          # Custom React hooks
-│   ├── infra/          # Infrastructure code (API clients, etc.)
-│   ├── mocks/          # Test mocks
-│   ├── pages/          # Next.js pages (or app directory)
-│   │   └── api/        # API routes
-│   └── styles/         # Global styles
-├── public/             # Static assets
-├── __tests__/          # Test files (optional)
-└── node_modules/
-```
-
-## Common Issues & Solutions
-
-### Running Single Tests
-
-```bash
-# Run specific test file
-npx jest src/components/Header.test.js
-
-# Run test matching pattern
-npx jest -t "should render"
-
-# Run tests in debug mode
-npx jest --inspect-brk src/components/Header.test.js
-```
-
-### Linting Specific Files
-
-```bash
-# Lint specific file
-npx eslint src/components/Header.jsx
-
-# Lint with auto-fix
-npx eslint --fix src/components/Header.jsx
-```
-
-## CI/CD
-
-- GitHub Actions executa lint e testes em toda pull request (aberta ou sincronizada)
-- Workflow: `.github/workflows/continuous-integration.yml`
-- Comandos executados: `npm run lint`, `npm run lint:fix`, `npm test`
-
-## Environment Variables
-
-- Create `.env` file based on `.env.example`
-- Never commit secrets to version control
-- Use `NEXT_PUBLIC_` prefix for client-side exposed variables
+- `web/src/components/` — componentes reutilizáveis
+- `web/src/pages/` — páginas e rotas de API
+- `web/src/graphql/` — queries GraphQL
+- `web/src/infra/` — integrações externas
+- `web/src/mocks/` — mocks usados pelos testes
