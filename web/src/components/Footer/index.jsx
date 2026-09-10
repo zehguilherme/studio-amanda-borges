@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className="bg-pink" id="contato">
       <div className="container mx-auto flex flex-col gap-4 px-3 py-5 text-white-white1">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-between sm:gap-4">
           <Link href="/" aria-label="Navegar para a página Home">
             <Logo className="w-[150px]" />
           </Link>
@@ -55,7 +55,10 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center gap-2 border-t border-white-white1/30 pt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-          <span>Feito por José Guilherme</span>
+          <div className="flex flex-col items-center gap-1 sm:items-start">
+            <span>Todos os direitos reservados © {new Date().getFullYear()}</span>
+            <span>Feito por José Guilherme</span>
+          </div>
           <ul className="flex items-center space-x-1">
             <li>
               <Link
