@@ -23,6 +23,7 @@ npm start         # servidor de produção
 - Preserve as configurações existentes de ESLint, Prettier, Jest, Next.js e Tailwind; consulte os arquivos de configuração antes de alterá-las.
 - Corrija a causa do problema no ponto compartilhado apropriado e mantenha a mudança mínima ao escopo solicitado.
 - Valide alterações com os comandos relevantes e só declare sucesso com evidência do resultado.
+- Ao criar, alterar ou renomear componentes React em `web/src/components/`, use a skill `component-structure`; mantenha nomes PascalCase, exceto arquivos de rota em `web/src/pages/`, e valide com `npm run test:component-names`.
 
 ## Escopo e documentação
 
