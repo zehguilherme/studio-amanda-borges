@@ -7,8 +7,6 @@ import { Thumbnails, Zoom } from "yet-another-react-lightbox/plugins";
 import { request } from "@/infra/cms/datocms";
 
 import { LightboxNextJsImage } from "@/components/LightboxNextJsImage";
-import { ScrollUpButton } from "@/components/ScrollUpButton";
-
 import { HeaderProject } from "@/components/HeaderProject";
 import { ProjectInformation } from "@/components/ProjectInformation";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -170,7 +168,6 @@ export default function Project({ projectData }) {
         />
       </div>
 
-      <ScrollUpButton />
     </>
   );
 }
