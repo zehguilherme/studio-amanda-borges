@@ -16,8 +16,6 @@ import { request } from "@/infra/cms/datocms";
 
 import { About } from "@/components/About";
 import { Header } from "@/components/Header";
-import { ScrollUpButton } from "@/components/ScrollUpButton";
-
 import { Footer } from "@/components/Footer";
 import { Projects } from "@/components/Projects";
 import { GET_ABOUT_DATA } from "@/graphql/aboutQuery";
@@ -204,7 +202,6 @@ export default function Home({ carouselData, projectsData, aboutData }) {
 
       <Footer />
 
-      <ScrollUpButton />
     </>
   );
 }
