@@ -72,6 +72,15 @@ describe("Home page", () => {
       expect(emailLogo).toBeInTheDocument();
     });
 
+    it("should stack the top section until small screens", () => {
+      render(<Footer />);
+
+      const homeLink = screen.getByLabelText("Navegar para a página Home");
+      expect(homeLink.parentElement).toHaveClass("flex-col", "sm:flex-row");
+      expect(homeLink.parentElement).toHaveClass("sm:justify-between");
+      expect(homeLink.parentElement).toHaveClass("gap-2", "sm:gap-4");
+    });
+
     it("should render José Guilherme signature links", () => {
       render(<Footer />);
 
@@ -103,6 +112,9 @@ describe("Home page", () => {
         expect(link).toHaveAttribute("href", href);
         expect(link.querySelector("svg")).toHaveAttribute("name", iconName);
       });
+      expect(
+        screen.getByText(`Todos os direitos reservados © ${new Date().getFullYear()}`),
+      ).toBeInTheDocument();
       expect(screen.getByText("Feito por José Guilherme")).toBeInTheDocument();
     });
   });

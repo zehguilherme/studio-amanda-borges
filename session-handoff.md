@@ -10,6 +10,7 @@
 
 - [x] Created harness state files and module documentation.
 - [x] Consolidated instructions in root `AGENTS.md` and disabled Next.js agent-file generation.
+- [x] Updated the Footer with dynamic copyright text and responsive spacing: stacked below `sm`, horizontal with `justify-between` from `sm`, and reduced mobile gap.
 
 ## Verification Evidence
 
@@ -17,12 +18,14 @@
 |---|---|---|---|
 | init.sh | `./init.sh` | blocked | Bash unavailable in current Windows runner |
 | Lint | `npm.cmd run lint` | pass | exit 0 |
-| Tests | `npm.cmd test -- --runInBand` | pass | 7 suites, 34 tests |
+| Tests | `npm.cmd test -- --runInBand` | pass | 7 suites, 36 tests |
 | Build | `npm.cmd run build` | pass | exit 0 |
+| Diff check | `git diff --check` | pass | no whitespace errors |
 
 ## Files Changed
 
 - `AGENTS.md`, `feature_list.json`, `init.sh`, `progress.md`, `session-handoff.md`, `web/next.config.js`, `web/src/mocks/mocks.md`
+- `web/src/components/Footer/index.jsx`, `web/src/components/Footer/Footer.test.js`
 
 ## Decisions Made
 

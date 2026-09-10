@@ -27,6 +27,7 @@ npm start         # servidor de produção
 ## Escopo e documentação
 
 - Regras específicas devem viver no documento do módulo ou em uma skill carregada sob demanda, não neste arquivo.
+- Após qualquer alteração de código, schema, API, infraestrutura, interface ou design system, antes de concluir, use a skill `documentation-sync` para revisar e atualizar apenas a documentação viva afetada.
 - Em alterações de UI/frontend, carregue `.agents/skills/ui-accessibility-check/SKILL.md` antes de concluir.
 - Para tarefas de uma feature rastreada, consulte `progress.md`, `feature_list.json` e o `*.md` do módulo aplicável antes de editar.
 - O módulo de mocks é documentado em `web/src/mocks/mocks.md`; seus mocks devem permanecer compatíveis com as queries em `web/src/graphql/`.
