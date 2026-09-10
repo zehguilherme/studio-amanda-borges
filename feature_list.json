@@ -1,0 +1,51 @@
+{
+  "project": "web",
+  "project_type": "fullstack",
+  "last_updated": "2026-09-09",
+  "rules": {
+    "single_active_feature": true,
+    "passing_requires_evidence": true,
+    "do_not_skip_verification": true
+  },
+  "status_legend": {
+    "not_started": "Work has not begun.",
+    "in_progress": "The feature is the current active task.",
+    "blocked": "Work cannot continue until a documented blocker is resolved.",
+    "passing": "Required verification has passed and evidence is recorded."
+  },
+  "features": [
+    {
+      "id": "harness-001",
+      "type": "api",
+      "area": "harness",
+      "title": "Minimal harness bootstrap",
+      "behavior": "Agent runs ./init.sh and reads AGENTS.md + feature_list.json without guessing",
+      "verification": "./init.sh exits 0",
+      "status": "not_started",
+      "evidence": ""
+    },
+    {
+      "id": "api-001",
+      "type": "api",
+      "area": "api",
+      "title": "First verifiable API behavior",
+      "behavior": "Replace with one concrete HTTP behavior",
+      "verification": "Replace with curl, test.http, or API test command",
+      "status": "not_started",
+      "evidence": ""
+    },
+    {
+      "id": "ui-001",
+      "type": "ui",
+      "area": "web",
+      "category": "functional",
+      "description": "Replace with one UI flow that consumes the API above",
+      "steps": [
+        "Step 1: open the screen",
+        "Step 2: trigger the action",
+        "Step 3: verify UI reflects API result"
+      ],
+      "passes": false
+    }
+  ]
+}

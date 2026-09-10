@@ -10,7 +10,8 @@
     "lint:fix": "npm run lint -- --fix",
     "test:watch": "jest --watchAll",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:component-names": "node scripts/check-component-names.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
