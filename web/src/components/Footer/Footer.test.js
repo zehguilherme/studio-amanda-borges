@@ -71,5 +71,39 @@ describe("Home page", () => {
       expect(emailLogo).toBeVisible();
       expect(emailLogo).toBeInTheDocument();
     });
+
+    it("should render José Guilherme signature links", () => {
+      render(<Footer />);
+
+      const signatureLinks = [
+        [
+          "Visitar o site de José Guilherme",
+          "https://joseguilherme.vercel.app/",
+          "website",
+        ],
+        [
+          "Visitar o GitHub de José Guilherme",
+          "https://github.com/zehguilherme",
+          "github",
+        ],
+        [
+          "Visitar o LinkedIn de José Guilherme",
+          "https://www.linkedin.com/in/josé-guilherme-paro-monteiro-tomaine/",
+          "linkedin",
+        ],
+        [
+          "Enviar um e-mail para José Guilherme",
+          "mailto:jgtomaine@hotmail.com",
+          "email",
+        ],
+      ];
+
+      signatureLinks.forEach(([label, href, iconName]) => {
+        const link = screen.getByLabelText(label);
+        expect(link).toHaveAttribute("href", href);
+        expect(link.querySelector("svg")).toHaveAttribute("name", iconName);
+      });
+      expect(screen.getByText("Feito por José Guilherme")).toBeInTheDocument();
+    });
   });
 });
