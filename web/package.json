@@ -24,7 +24,7 @@
     "react-dom": "19.0.0",
     "react-use": "^17.6.1",
     "swiper": "^14.3.0",
-    "yet-another-react-lightbox": "^3.32.2"
+    "yet-another-react-lightbox": "^3.33.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.2",
